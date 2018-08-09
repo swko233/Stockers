@@ -28,7 +28,7 @@
 	</div>
 	<div class="field">
 		<%= f.label :tag_list, 'タグ' %></br>
-		<%= text_field_tag 'tag_list', @bookmark.tag_list.join(',') %> <!-- 仮に -->
+		<%= text_field_tag 'bookmark[tag_list]', @bookmark.tag_list.join(','), "data-role" => "tagsinput" %> <!-- 仮に -->
 	</div>
 	<div class="field">
 		<%= f.label :is_published, '公開設定' %></br>
@@ -44,3 +44,6 @@
 		<%= f.submit 'ブックマークを追加' %>
 	</div>
 <% end %>
+
+<p><%= @bookmark.tag_list %></p>
+

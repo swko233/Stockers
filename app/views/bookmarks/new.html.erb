@@ -1,3 +1,7 @@
+
+
+<%= javascript_include_tag "bookmarks.js" %>
+
 <h1>Bookmarks#new</h1>
 <p>Find me in app/views/bookmarks/new.html.erb</p>
 
@@ -28,7 +32,7 @@
 	</div>
 	<div class="field">
 		<%= f.label :tag_list, 'タグ' %></br>
-		<%= text_field_tag 'bookmark[tag_list]', @bookmark.tag_list.join(',') %> <!-- 仮に -->
+		<%= text_field_tag 'bookmark[tag_list]', @bookmark.tag_list.join(','), "data-role" => "tagsinput" %> <!-- 仮に -->
 	</div>
 	<div class="field">
 		<%= f.label :is_published, '公開設定' %></br>

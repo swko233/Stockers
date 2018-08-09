@@ -76,3 +76,4 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 #タグ機能
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master'
+gem "jquery-ui-rails"
