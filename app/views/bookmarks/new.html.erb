@@ -1,2 +1,47 @@
 <h1>Bookmarks#new</h1>
 <p>Find me in app/views/bookmarks/new.html.erb</p>
+
+<%= form_for(@bookmark) do |f| %>
+	<div class="field">
+		<%= f.label :servive_name, 'サービス名(必須）' %></br>
+		<%= f.text_field :service_name %>
+	</div>
+	<div class="field">
+		<%= f.label :url, 'URL（必須）' %></br>
+		<%= f.text_field :url %>
+	</div>
+	<div class="field">
+		<%= f.label :overview, 'サービスの概要' %></br>
+		<%= f.text_field :overview %>
+	</div>
+	<div class="field">
+		<%= f.label :description, 'サービスの詳細' %></br>
+		<%= f.text_area :description %>
+	</div>
+	<div class="field">
+		<%= f.label :service_image, 'メインイメージ' %></br>
+		<%= f.attachment_field :service_image %>
+	</div>
+	<div class="field">
+		<%= f.label :folder_id, 'フォルダ' %></br>
+		<%= f.text_field :folder_id %> <!-- 仮に -->
+	</div>
+	<div class="field">
+		<%= f.label :tag_list, 'タグ' %></br>
+		<%= text_field_tag 'bookmark[tag_list]', @bookmark.tag_list.join(',') %> <!-- 仮に -->
+	</div>
+	<div class="field">
+		<%= f.label :is_published, '公開設定' %></br>
+		<span>公開<%= f.radio_button :is_published, true %><span>
+		<span>非公開<%= f.radio_button :is_published, false %></span>
+	</div>
+	<div class="field">
+		<%= f.label :is_recommended, 'おすすめ設定' %></br>
+		<span>する<%= f.radio_button :is_recommended, true %><span>
+		<span>しない<%= f.radio_button :is_recommended, false %></span>
+	</div>
+	<div class="actions">
+		<%= f.submit 'ブックマークを追加' %>
+	</div>
+<% end %>
+
