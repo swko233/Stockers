@@ -1,0 +1,2 @@
+class WorkBookmark < ApplicationRecord
+end

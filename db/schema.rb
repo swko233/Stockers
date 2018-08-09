@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_08_155352) do
+ActiveRecord::Schema.define(version: 2018_08_09_065908) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +27,28 @@ ActiveRecord::Schema.define(version: 2018_08_08_155352) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.string "service_name", null: false
+    t.string "url", null: false
+    t.string "overview"
+    t.text "description"
+    t.string "service_image_id"
+    t.boolean "is_published", default: true
+    t.boolean "is_recommended", default: false
+    t.boolean "is_work", default: false, null: false
+    t.integer "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "folders", force: :cascade do |t|
+    t.string "folder_name"
+    t.boolean "is_published", default: true
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +73,31 @@ ActiveRecord::Schema.define(version: 2018_08_08_155352) do
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "work_bookmarks", force: :cascade do |t|
+    t.boolean "is_published", default: true
+    t.boolean "is_recommended", default: false
+    t.boolean "is_work", default: true, null: false
+    t.integer "user_id"
+    t.integer "work_id"
+    t.integer "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.string "service_name", null: false
+    t.string "url", null: false
+    t.date "release_date"
+    t.string "overview"
+    t.text "description"
+    t.string "service_image_id"
+    t.boolean "is_published", default: true
+    t.boolean "is_recommended", default: false
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
