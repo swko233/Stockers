@@ -67,11 +67,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 追加
 gem 'devise'
-gem  "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
+gem 'refile', require: "refile/rails", github: 'manfe/refile'
+gem 'refile-mini_magick'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 #ツイッターログイン
 gem 'omniauth'
 gem 'omniauth-twitter'
-
+#タグ機能
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master'
+gem "jquery-ui-rails"
