@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'work_bookmarks/new'
-  get 'work_bookmarks/edit'
-  get 'bookmarks/new'
-  get 'bookmarks/edit'
+    root 'root#top'
 	devise_for :admins, controllers: {
 	  sessions:      'admins/sessions',
 	  passwords:     'admins/passwords',
@@ -14,7 +11,11 @@ Rails.application.routes.draw do
 	  registrations: 'users/registrations'
 	}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  resources :users
+  resources :users do
+  	member do
+  		get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
   resources :bookmarks
 end
