@@ -13,7 +13,7 @@ class User < ApplicationRecord
   	following_relationships.find_by(following_id: other_user.id)
   end
 
-  def follow!(other_user)
+  def follow(other_user)
   	following_relationships.create!(following_id: other_user.id)
   end
 
