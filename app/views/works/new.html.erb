@@ -1,5 +1,5 @@
 <%= javascript_include_tag "bookmarks.js" %>
-<%= stylesheet_link_tag "bookmarks/new", :medea => "all" %>
+<%= stylesheet_link_tag "bookmarks/new", :media => "all" %>
 
 <div class="container">
 	<h2>登録フォーム</h2>
@@ -28,10 +28,6 @@
 			<div class="field">
 				<%= f.label :service_image, 'メインイメージ' %></br>
 				<%= f.attachment_field :service_image %>
-			</div>
-			<div class="field">
-				<%= f.label :folder_id, 'フォルダ' %></br>
-				<%= f.text_field :folder_id %> <!-- 仮に -->
 			</div>
 			<div class="field">
 				<%= f.label :tag_list, 'タグ' %></br>
