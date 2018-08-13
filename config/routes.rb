@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
+  # post 'relationships/on_list' => 'relationships#create_on_list', as: 'relationships_on_list'
+  # delete 'relationships/:id/on_list' => 'relationships#destroy_on_list', as: 'relationship_on_list'
   resources :bookmarks
 end
