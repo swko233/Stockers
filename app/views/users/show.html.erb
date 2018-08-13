@@ -5,7 +5,7 @@
 	<div class="follow_button">
 		<%= render 'follow_form' %>
 	</div>
-	<div class="user-profile">
+	<section class="user-profile">
 		<div class="profile-main">
 			<div class="icon-box">
 				<div class="icon"></div>
@@ -23,5 +23,26 @@
 		</div>
 		<div class="profile-sub">
 		</div>
-	</div>
+	</section>
+	<section class="recommended-services">
+		<h3>おすすめWebサービス</h3>
+		<div class="services-box">
+			<% @recommended_bookmarks.each.with_index(1) do |bookmark,i| %>
+				<a href="<%= bookmark.url %>" target="_blank">
+					<div class="service-box">
+						<% if bookmark.service_image_id == nil %>
+							<div class="recommended-service-image">
+								<i class="far fa-image fa-5x"></i>
+							</div>
+						<% else %>
+							<%= attachment_image_tag bookmark, :service_image, fallback: "no_bookmark_image", class: "recommended-bookmark-image" %>
+						<% end %>
+						<p><%= bookmark.service_name %></p>
+						<p><%= bookmark.url %></p>
+					</div>
+				</a>
+				<% break if i == 3 %>
+			<% end %>
+		</div>
+	</section>
 </div>

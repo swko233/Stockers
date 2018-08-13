@@ -4,11 +4,11 @@
 <div class="container">
 	<h2>登録フォーム</h2>
 	<div class="post-title">
-		<span>ブックマーク</span>
-		<span>自作サービス</span>
+		<span><%= link_to "ブックマーク", new_bookmark_path %></span>
+		<span class="active">自作サービス</span>
 	</div>
 	<div class="new_posts">
-		<%= form_for(@bookmark) do |f| %>
+		<%= form_for(@work) do |f| %>
 			<div class="field">
 				<%= f.label :servive_name, 'サービス名(必須）' %></br>
 				<%= f.text_field :service_name %>
@@ -31,7 +31,7 @@
 			</div>
 			<div class="field">
 				<%= f.label :tag_list, 'タグ' %></br>
-				<%= text_field_tag 'bookmark[tag_list]', @bookmark.tag_list.join(','), "data-role" => "tagsinput" %> <!-- 仮に -->
+				<%= text_field_tag 'work[tag_list]', @work.tag_list.join(','), "data-role" => "tagsinput" %> <!-- 仮に -->
 			</div>
 			<div class="field">
 				<%= f.label :is_published, '公開設定' %></br>

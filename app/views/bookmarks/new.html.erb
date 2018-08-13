@@ -4,8 +4,8 @@
 <div class="container">
 	<h2>登録フォーム</h2>
 	<div class="post-title">
-		<span>ブックマーク</span>
-		<span>自作サービス</span>
+		<span class="active">ブックマーク</span>
+		<span><%= link_to "自作サービス", new_work_path %></span>
 	</div>
 	<div class="new_posts">
 		<%= form_for(@bookmark) do |f| %>

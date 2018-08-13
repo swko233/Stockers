@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@recommended_bookmarks = Bookmark.where(is_recommended: true)
 	end
 
 	def edit

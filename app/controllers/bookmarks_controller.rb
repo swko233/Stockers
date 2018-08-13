@@ -19,7 +19,7 @@ class BookmarksController < ApplicationController
   def update
   	@bookmark = Bookmark.find(params[:id])
   	if @bookmark.update(bookmark_params)
-  		redirect_to edit_bookmark_path(@bookmark.id) #仮に
+  		redirect_to user_path(current_user.id) #仮に
   	else
   		redirect_to new_bookmark_path #仮に
   	end
