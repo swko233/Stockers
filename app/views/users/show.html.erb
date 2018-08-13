@@ -1,9 +1,25 @@
-<h1>mypage</h1>
-
-<%= @user.email %>
-
-<%= render 'follow_form' %>
-
-<section class="stats">
-	<%= render 'stats' %>
-</section>
+<div class="container container-mypage">
+	<h1>mypage</h1>
+	<div class="follow_button">
+		<%= render 'follow_form' %>
+	</div>
+	<div class="user-profile">
+		<div class="profile-main">
+			<div class="icon-box">
+				<div class="icon"></div>
+			</div>
+			<div class="user-info">
+				<div class="name">
+					<%= @user.email %>
+				</div>
+				<div class="links">
+					<section class="stats">
+						<%= render 'stats' %>
+					</section>
+				</div>
+			</div>
+		</div>
+		<div class="profile-sub">
+		</div>
+	</div>
+</div>

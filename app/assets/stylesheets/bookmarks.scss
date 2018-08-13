@@ -1,3 +1,30 @@
 // Place all the styles related to the Bookmarks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.container-mypage{
+	max-width: 600px;
+}
+.profile-main{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.icon-box{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.icon{
+	background-size: cover;
+    background-position: center center;
+    background-color: gray;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.user-info{
+	padding-left: 100px;
+}
