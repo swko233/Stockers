@@ -1,0 +1,9 @@
+<div class="user-profile">
+</div>
+<div class="user-list-box">
+	<% @user.followers.each do |user| %>
+		<div class="user-box">
+			<%= user.email %>
+		</div>
+	<% end %>
+</div>
