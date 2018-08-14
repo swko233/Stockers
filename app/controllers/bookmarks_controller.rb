@@ -5,6 +5,7 @@ class BookmarksController < ApplicationController
 
   def create
   	@bookmark = Bookmark.new(bookmark_params)
+  	@bookmark.user_id = current_user.id
   	if @bookmark.save
   		redirect_to edit_bookmark_path(@bookmark.id) #仮に
   	else
@@ -23,8 +24,15 @@ class BookmarksController < ApplicationController
   	else
   		redirect_to new_bookmark_path #仮に
   	end
+  end
 
-
+  def destroy
+  	@bookmark = Bookmark.find(params[:id])
+  	if @bookmark.destroy
+  		redirect_to user_path(current_user.id) #仮に
+  	else
+  		redirect_to new_bookmark_path #仮に
+  	end
   end
 
 

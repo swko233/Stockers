@@ -24,6 +24,24 @@
 		<div class="profile-sub">
 		</div>
 	</section>
+	<% unless @recommended_work.nil? %>
+		<section class="recommended-work">
+			<h3>つくったサービス</h3>
+			<div class="work-box clearfix">
+				<div class="work-image">
+					<% if @recommended_work.service_image_id == nil %>
+						<i class="far fa-image fa-4x"></i>
+					<% else %>
+						<%= attachment_image_tag @recommended_work, :service_image, :fill,200,200, fallback: "no_service_image" %>
+					<% end %>
+				</div>
+				<div class="work-introduction">
+					<p class="overview"><%= @recommended_work.overview %></p>
+					<p class="description"><%= @recommended_work.description %></p>
+					<p class="release_date"><%= @recommended_work.release_date %></p>
+				</div>
+		</section>
+	<% end %>
 	<section class="recommended-services">
 		<h3>おすすめWebサービス</h3>
 		<div class="services-box">
@@ -32,16 +50,37 @@
 					<div class="service-box">
 						<% if bookmark.service_image_id == nil %>
 							<div class="recommended-service-image">
-								<i class="far fa-image fa-5x"></i>
+								<i class="far fa-image fa-4x"></i>
 							</div>
 						<% else %>
-							<%= attachment_image_tag bookmark, :service_image, fallback: "no_bookmark_image", class: "recommended-bookmark-image" %>
+							<%= attachment_image_tag bookmark, :service_image,:fill,205,150, fallback: "no_service_image", class: "recommended-bookmark-image" %>
 						<% end %>
-						<p><%= bookmark.service_name %></p>
-						<p><%= bookmark.url %></p>
+						<div class="service-text">
+							<p><%= bookmark.service_name %></p>
+						</div>
 					</div>
 				</a>
 				<% break if i == 3 %>
+			<% end %>
+		</div>
+	</section>
+	<section class="stock-services">
+ 		<div class="bookmarks">
+ 			<% @bookmarks.each do |bookmark| %>
+				<div class="bookmark-item">
+					<%= attachment_image_tag bookmark, :service_image,:fill,50,50, fallback: "no_service_image" %>
+					<div class="item-body">
+						<%= bookmark.overview %>
+						<%= bookmark.url %>
+					</div>
+					<div class="tag-list">
+						<ul>
+						<% @tag_list.each do |tag| %>
+							<li class ="tag"><%= tag %></li>
+						<% end %>
+						</ul>
+					</div>
+				</div>
 			<% end %>
 		</div>
 	</section>

@@ -27,10 +27,24 @@
 .user-info{
 	padding-left: 100px;
 }
+// おすすめ自作サービス
+.recommended-work{
+	background: #fff;
+	margin-top: 2px;
+	padding: 30px 0;
+
+	.work-box{
+		width: 100%;
+	}
+	.work-image,.work-introduction{
+		float: left;
+	}
+}
 // おすすめwebサービス
 .recommended-services{
 	background: #fff;
 	margin-top: 2px;
+	padding: 30px 0;
 }
 .services-box{
 	display: flex;
@@ -38,21 +52,28 @@
 	justify-content: space-around;
 }
 .services-box a{
-	width: 33%;
+	width: 28%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-right: 1px solid gray;
 	// 共通処理？？
 	color: #444;
 }
 .services-box a:last-child{
 	border: none;
 }
+.services-box a:hover{
+	text-decoration: none;
+}
+// 個別
 .service-box{
 	width: 100%;
 	height: 250px;
-	padding: 20px;
+	padding: 5px;
+	border-radius: 10px;
+}
+.service-box:hover{
+	box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
 }
 .recommended-service-image{
 	width: 100%;
@@ -60,6 +81,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border-bottom: 1px solid #EFEFEF;
+	background: white;
+}
+.service-text{
+	padding: 20px 5px 5px;
 }
 
 	// .service-box:last-child{

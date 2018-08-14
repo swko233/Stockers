@@ -18,6 +18,18 @@
  @import "bootstrap";
  @import "font-awesome";
 
+// リセットCSS
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body{
 	background: #F9F9F9;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
 }

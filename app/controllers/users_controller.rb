@@ -2,7 +2,13 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@recommended_bookmarks = Bookmark.where(is_recommended: true)
+		bookmarks = Bookmark.where(user_id: @user.id)
+		work_bookmarks = WorkBookmark.where(user_id: @user.id)
+		@bookmarks = bookmarks + work_bookmarks #ActiveRecord_Relationの配列
+		@works = Work.where(user_id: @user.id)
+		@recommended_bookmarks = @bookmarks.where(is_recommended == true)
+		@recommended_work = @works.find_by(is_recommended: true)
+		@tag_list = bookmarks.tag_list + work_bookmarks.tag_list
 	end
 
 	def edit
