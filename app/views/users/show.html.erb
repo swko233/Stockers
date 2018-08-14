@@ -65,21 +65,60 @@
 		</div>
 	</section>
 	<section class="stock-services">
+		<h3>ストック一覧</h3>
+		<div class="tag-all">
+			<h4>タグ</h4>
+			<% @tag_all.zip(@tag_count).each do |tag,n| %>
+				<div class="tag-link">
+					<%= tag %>
+					<%= n %>
+				</div>
+			<% end %>
+		</div>
  		<div class="bookmarks">
  			<% @bookmarks.each do |bookmark| %>
 				<div class="bookmark-item">
-					<%= attachment_image_tag bookmark, :service_image,:fill,50,50, fallback: "no_service_image" %>
 					<div class="item-body">
-						<%= bookmark.overview %>
-						<%= bookmark.url %>
+						<div class="item-info">
+							<a href="<%= bookmark.url %>" target="_blank">
+								<div class="item-description">
+									<p class="service-name"><%= bookmark.service_name %></p>
+									<p class="url"><%= bookmark.url %></p>
+								</div>
+							</a>
+							<div class="tag-list">
+								<ul>
+								<% bookmark.tag_list.each do |tag| %>
+									<li><a href="<%= user_path(current_user.id) %>"><span><%= tag %></span></a></li>
+								<% end %>
+								</ul>
+							</div>
+						</div>
+						<div class="item-developer">
+							<div class="developer-icon"></div>
+						</div>
 					</div>
-					<div class="tag-list">
-						<ul>
-						<% @bookmark.tag_list.each do |tag| %>
-							<li class ="tag"><%= tag %></li>
+					<% if @user == current_user %>
+					<div class="edit-tools">
+						<%= link_to edit_bookmark_path(bookmark.id) do %>
+							<i class="fas fa-edit"></i>
 						<% end %>
-						</ul>
+						<%= link_to bookmark_path(bookmark.id), method: :delete do %>
+							<i class="far fa-trash-alt"></i>
+						<% end %>
 					</div>
+					<% else %>
+					<div class="bookmark-button">
+					</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div class="works">
+			<% @works.each do |work| %>
+				<div class="work-item">
+					<%= link_to work_path(work.id) do %>
+					<% end %>
 				</div>
 			<% end %>
 		</div>

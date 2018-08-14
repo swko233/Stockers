@@ -6,6 +6,18 @@ class UsersController < ApplicationController
 		@works = Work.where(user_id: @user.id)
 		@recommended_bookmarks = @bookmarks.where(is_recommended: true)
 		@recommended_work = @works.find_by(is_recommended: true)
+		#タグ一覧取得
+		tags = []
+		@bookmarks.each do |bookmark|
+			tags += bookmark.tag_list
+		end
+		@tag_all = tags.uniq
+		##タグ個数カウント
+		@tag_count = []
+		@tag_all.each do |tag|
+			tag_number = tags.count(tag)
+			@tag_count << tag_number
+		end
 	end
 
 	def edit
