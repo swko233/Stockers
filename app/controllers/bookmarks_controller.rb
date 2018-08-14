@@ -13,6 +13,28 @@ class BookmarksController < ApplicationController
   	end
   end
 
+  def add_bookmark
+    added_bookmark = Bookmark.find(params[:id])
+    @bookmark = Bookmark.new
+    @bookmark.user_id = current_user.id
+    @bookmark.service_name = added_bookmark.service_name
+    @bookmark.url = added_bookmark.url
+    if added_bookmark.is_work == true #自作サービスの場合
+      @bookmark.is_work = true
+      @bookmark.work_id = added_bookmark.work_id
+    end
+    unless added_bookmark.service_image_id.nil?
+      @bookmark.service_image_id = added_bookmark.service_image_id
+    end
+    #タグの継承
+    @bookmark.tag_list = added_bookmark.tag_list
+    if @bookmark.save
+      redirect_to user_path(current_user.id)
+    else
+      redirect_to new_bookmark_patt
+    end
+  end
+
   def edit
   	@bookmark = Bookmark.find(params[:id])
   end

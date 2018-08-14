@@ -109,6 +109,9 @@
 					</div>
 					<% else %>
 					<div class="bookmark-button">
+						<%= link_to add_bookmark_path(bookmark.id) do %>
+							<i class="fas fa-folder-open fa-2x"></i>
+						<% end %>
 					</div>
 					<% end %>
 				</div>
