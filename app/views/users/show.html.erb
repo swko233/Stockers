@@ -46,20 +46,22 @@
 		<h3>おすすめWebサービス</h3>
 		<div class="services-box">
 			<% @recommended_bookmarks.each.with_index(1) do |bookmark,i| %>
-				<a href="<%= bookmark.url %>" target="_blank">
-					<div class="service-box">
-						<% if bookmark.service_image_id == nil %>
-							<div class="recommended-service-image">
-								<i class="far fa-image fa-4x"></i>
+				<% unless bookmark.is_published == false && @user != current_user %>
+					<a href="<%= bookmark.url %>" target="_blank">
+						<div class="service-box">
+							<% if bookmark.service_image_id == nil %>
+								<div class="recommended-service-image">
+									<i class="far fa-image fa-4x"></i>
+								</div>
+							<% else %>
+								<%= attachment_image_tag bookmark, :service_image,:fill,205,150, fallback: "no_service_image", class: "recommended-bookmark-image" %>
+							<% end %>
+							<div class="service-text">
+								<p><%= bookmark.service_name %></p>
 							</div>
-						<% else %>
-							<%= attachment_image_tag bookmark, :service_image,:fill,205,150, fallback: "no_service_image", class: "recommended-bookmark-image" %>
-						<% end %>
-						<div class="service-text">
-							<p><%= bookmark.service_name %></p>
 						</div>
-					</div>
-				</a>
+					</a>
+				<% end %>
 				<% break if i == 3 %>
 			<% end %>
 		</div>
@@ -77,50 +79,52 @@
 		</div>
  		<div class="bookmarks">
  			<% @bookmarks.each do |bookmark| %>
-				<div class="bookmark-item">
-					<div class="item-body">
-						<div class="item-info">
-							<a href="<%= bookmark.url %>" target="_blank">
-								<div class="item-description">
-									<p class="service-name"><%= bookmark.service_name %></p>
-									<p class="url"><%= bookmark.url %></p>
+ 				<% unless bookmark.is_published == false && @user != current_user %>
+					<div class="bookmark-item">
+						<div class="item-body">
+							<div class="item-info">
+								<a href="<%= bookmark.url %>" target="_blank">
+									<div class="item-description">
+										<p class="service-name"><%= bookmark.service_name %></p>
+										<p class="url"><%= bookmark.url %></p>
+									</div>
+								</a>
+								<div class="tag-list">
+									<ul>
+									<% bookmark.tag_list.each do |tag| %>
+										<li><a href="<%= user_path(current_user.id) %>"><span><%= tag %></span></a></li>
+									<% end %>
+									</ul>
 								</div>
-							</a>
-							<div class="tag-list">
-								<ul>
-								<% bookmark.tag_list.each do |tag| %>
-									<li><a href="<%= user_path(current_user.id) %>"><span><%= tag %></span></a></li>
-								<% end %>
-								</ul>
+							</div>
+							<div class="item-developer">
+								<div class="developer-icon"></div>
 							</div>
 						</div>
-						<div class="item-developer">
-							<div class="developer-icon"></div>
+						<% if @user == current_user %>
+						<div class="edit-tools">
+							<%= link_to edit_bookmark_path(bookmark.id) do %>
+								<i class="fas fa-edit"></i>
+							<% end %>
+							<%= link_to bookmark_path(bookmark.id), method: :delete do %>
+								<i class="far fa-trash-alt"></i>
+							<% end %>
 						</div>
-					</div>
-					<% if @user == current_user %>
-					<div class="edit-tools">
-						<%= link_to edit_bookmark_path(bookmark.id) do %>
-							<i class="fas fa-edit"></i>
-						<% end %>
-						<%= link_to bookmark_path(bookmark.id), method: :delete do %>
-							<i class="far fa-trash-alt"></i>
-						<% end %>
-					</div>
-					<% else %>
-					<div id="bookmark-button<%= bookmark.id %>">
-						<!-- ブックマーク済みかどうかの判別用 -->
-						<% @my_bookmark = current_user.bookmarks.find_by(url: bookmark.url) %>
-						<!-- _bookmarked,_unbookmarkedに渡すための変数 -->
-						<% @this_bookmark = bookmark %>
-						<% if @my_bookmark.nil? %>
-							<%= render 'unbookmarked' %>
 						<% else %>
-							<%= render 'bookmarked' %>
+						<div id="bookmark-button<%= bookmark.id %>">
+							<!-- ブックマーク済みかどうかの判別用 -->
+							<% @my_bookmark = current_user.bookmarks.find_by(url: bookmark.url) %>
+							<!-- _bookmarked,_unbookmarkedに渡すための変数 -->
+							<% @this_bookmark = bookmark %>
+							<% if @my_bookmark.nil? %>
+								<%= render 'unbookmarked' %>
+							<% else %>
+								<%= render 'bookmarked' %>
+							<% end %>
+						</div>
 						<% end %>
 					</div>
-					<% end %>
-				</div>
+				<% end %>
 			<% end %>
 		</div>
 		<div class="works">

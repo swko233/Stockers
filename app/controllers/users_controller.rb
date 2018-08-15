@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 		#タグ一覧取得
 		tags = []
 		@bookmarks.each do |bookmark|
-			tags += bookmark.tag_list
+			if @user == current_user
+				tags += bookmark.tag_list
+			else
+				tags += bookmark.tag_list if bookmark.is_published == true
+			end
 		end
 		@tag_all = tags.uniq
 		##タグ個数カウント
