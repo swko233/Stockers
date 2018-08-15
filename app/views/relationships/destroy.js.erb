@@ -1,6 +1,5 @@
 $(function(){
-	if($("#follow_form").length){
 		$("#follow_form").html("<%= escape_javascript(render('users/follow')) %>");
+		$("#follow_form_<%= @user.id %>").html("<%= escape_javascript(render('users/follow')) %>");
 		$("#followers").html("<%= @user.followers.count %>");
-	};
 });

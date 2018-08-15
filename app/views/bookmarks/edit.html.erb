@@ -1,6 +1,8 @@
 <h1>Bookmarks#edit</h1>
 <p>Find me in app/views/bookmarks/edit.html.erb</p>
 
+<%= link_to '削除', bookmark_path(@bookmark.id), method: :delete %>
+
 <%= form_for(@bookmark) do |f| %>
 	<div class="field">
 		<%= f.label :servive_name, 'サービス名(必須）' %></br>

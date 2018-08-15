@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <link rel="stylesheet" href="style.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,7 +19,11 @@
           <%= link_to 'ログイン', new_user_session_path %>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
           <% if user_signed_in? %>
-            <span><%= current_user.email %>でログイン中</span>
+            <ul>
+              <li><%= current_user.email %>でログイン中</li>
+              <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
+              <li><%= link_to '新規投稿', new_bookmark_path %></li>
+            </ul>
           <% end %>
         </div>
       </div>

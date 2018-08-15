@@ -1,9 +1,135 @@
-<h1>mypage</h1>
+<%= stylesheet_link_tag "users/show", :media => "all" %>
 
-<%= @user.email %>
-
-<%= render 'follow_form' %>
-
-<section class="stats">
-	<%= render 'stats' %>
-</section>
+<div class="container container-mypage">
+	<h1>mypage</h1>
+	<div class="follow_button">
+		<%= render 'follow_form' %>
+	</div>
+	<section class="user-profile">
+		<div class="profile-main">
+			<div class="icon-box">
+				<div class="icon"></div>
+			</div>
+			<div class="user-info">
+				<div class="name">
+					<%= @user.email %>
+				</div>
+				<div class="links">
+					<section class="stats">
+						<%= render 'stats' %>
+					</section>
+				</div>
+			</div>
+		</div>
+		<div class="profile-sub">
+		</div>
+	</section>
+	<% unless @recommended_work.nil? %>
+		<section class="recommended-work">
+			<h3>つくったサービス</h3>
+			<div class="work-box clearfix">
+				<div class="work-image">
+					<% if @recommended_work.service_image_id == nil %>
+						<i class="far fa-image fa-4x"></i>
+					<% else %>
+						<%= attachment_image_tag @recommended_work, :service_image, :fill,200,200, fallback: "no_service_image" %>
+					<% end %>
+				</div>
+				<div class="work-introduction">
+					<p class="overview"><%= @recommended_work.overview %></p>
+					<p class="description"><%= @recommended_work.description %></p>
+					<p class="release_date"><%= @recommended_work.release_date %></p>
+				</div>
+		</section>
+	<% end %>
+	<section class="recommended-services">
+		<h3>おすすめWebサービス</h3>
+		<div class="services-box">
+			<% @recommended_bookmarks.each.with_index(1) do |bookmark,i| %>
+				<a href="<%= bookmark.url %>" target="_blank">
+					<div class="service-box">
+						<% if bookmark.service_image_id == nil %>
+							<div class="recommended-service-image">
+								<i class="far fa-image fa-4x"></i>
+							</div>
+						<% else %>
+							<%= attachment_image_tag bookmark, :service_image,:fill,205,150, fallback: "no_service_image", class: "recommended-bookmark-image" %>
+						<% end %>
+						<div class="service-text">
+							<p><%= bookmark.service_name %></p>
+						</div>
+					</div>
+				</a>
+				<% break if i == 3 %>
+			<% end %>
+		</div>
+	</section>
+	<section class="stock-services">
+		<h3>ストック一覧</h3>
+		<div class="tag-all">
+			<h4>タグ</h4>
+			<% @tag_all.zip(@tag_count).each do |tag,n| %>
+				<div class="tag-link">
+					<%= tag %>
+					<%= n %>
+				</div>
+			<% end %>
+		</div>
+ 		<div class="bookmarks">
+ 			<% @bookmarks.each do |bookmark| %>
+				<div class="bookmark-item">
+					<div class="item-body">
+						<div class="item-info">
+							<a href="<%= bookmark.url %>" target="_blank">
+								<div class="item-description">
+									<p class="service-name"><%= bookmark.service_name %></p>
+									<p class="url"><%= bookmark.url %></p>
+								</div>
+							</a>
+							<div class="tag-list">
+								<ul>
+								<% bookmark.tag_list.each do |tag| %>
+									<li><a href="<%= user_path(current_user.id) %>"><span><%= tag %></span></a></li>
+								<% end %>
+								</ul>
+							</div>
+						</div>
+						<div class="item-developer">
+							<div class="developer-icon"></div>
+						</div>
+					</div>
+					<% if @user == current_user %>
+					<div class="edit-tools">
+						<%= link_to edit_bookmark_path(bookmark.id) do %>
+							<i class="fas fa-edit"></i>
+						<% end %>
+						<%= link_to bookmark_path(bookmark.id), method: :delete do %>
+							<i class="far fa-trash-alt"></i>
+						<% end %>
+					</div>
+					<% else %>
+					<div id="bookmark-button<%= bookmark.id %>">
+						<!-- ブックマーク済みかどうかの判別用 -->
+						<% @my_bookmark = current_user.bookmarks.find_by(url: bookmark.url) %>
+						<!-- _bookmarked,_unbookmarkedに渡すための変数 -->
+						<% @this_bookmark = bookmark %>
+						<% if @my_bookmark.nil? %>
+							<%= render 'unbookmarked' %>
+						<% else %>
+							<%= render 'bookmarked' %>
+						<% end %>
+					</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div class="works">
+			<% @works.each do |work| %>
+				<div class="work-item">
+					<%= link_to work_path(work.id) do %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,184 @@
+.container-mypage{
+	max-width: 800px;
+	background: #fff;
+}
+// ユーザープロフィール
+.user-profile{
+	background: #fff;
+	padding: 10px;
+}
+.profile-main{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.icon-box{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.icon{
+	background-size: cover;
+	background-position: center center;
+	background-color: gray;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+}
+.user-info{
+	padding-left: 100px;
+}
+// おすすめ自作サービス
+.recommended-work{
+	background: #fff;
+	margin-top: 2px;
+	padding: 30px 0;
+
+	.work-box{
+		width: 100%;
+	}
+	.work-image,.work-introduction{
+		float: left;
+	}
+}
+// おすすめwebサービス
+.recommended-services{
+	background: #fff;
+	margin-top: 2px;
+	padding: 30px 0;
+}
+.services-box{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.services-box a{
+	width: 28%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	// 共通処理？？
+	color: #444;
+}
+.services-box a:last-child{
+	border: none;
+}
+.services-box a:hover{
+	text-decoration: none;
+}
+// 個別サービス
+.service-box{
+	width: 100%;
+	height: 250px;
+	padding: 5px;
+	border-radius: 10px;
+}
+.service-box:hover{
+	box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
+}
+.recommended-service-image{
+	width: 100%;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid #EFEFEF;
+	background: white;
+}
+.service-text{
+	padding: 20px 5px 5px;
+}
+// ブックマーク一覧
+.bookmark-item{
+	padding: 1em;
+	border-bottom: 1px solid #efefef;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.item-description{
+		padding-top: 5px;
+		margin-bottom: 13px; //タグとの隙間を開ける
+	}
+	.service-name{
+		font-size: 18px;
+		color: #337ab7;
+		margin-bottom: 5px;
+	}
+	.url{
+		font-size: 12px;
+		color: #999;
+		padding-left: 2px;
+	}
+	a:hover{
+		text-decoration: none;
+		opacity: 0.8;
+	}
+	a:hover .service-name{
+		color: #23527c;
+	}
+	a:hover .url{
+		color: gray;
+	}
+}
+
+// タグクラウド
+.tag-list{
+
+	ul li {
+	  display: inline-block;
+	  margin: 0 0 0 1em;
+	  padding: 0;
+	}
+	ul{
+		margin-bottom: 0;
+	}
+	ul li a {
+	  position: relative;
+	  display: inline-block;
+	  height: 22px;
+	  line-height: 24px;
+	  padding: 0 0.8em 0 0.5em;
+	  background-color: #e0e0e0;
+	  border-radius: 0 3px 3px 0;
+	  color: #4a4a4a;
+	  font-size: 12px;
+	  text-decoration: none;
+	  -webkit-transition: .2s;
+	  transition: .2s;
+	}
+	ul li a::before {
+	  position: absolute;
+	  top: 0;
+	  left: -11px;
+	  content: '';
+	  width: 0;
+	  height: 0;
+	  border-color: transparent #e0e0e0 transparent transparent;
+	  border-style: solid;
+	  border-width: 11px 11px 11px 0;
+	  border-radius: 3px;
+	  -webkit-transition: .2s;
+	  transition: .2s;
+	}
+	ul li span {
+	  display: block;
+	  max-width: 100px;
+	  white-space: nowrap;
+	  text-overflow: ellipsis;
+	  overflow: hidden;
+	}
+	ul li a:hover {
+	  background-color: #555;
+	  color: #fff;
+	}
+	ul li a:hover::before {
+	  border-right-color: #555;
+	}
+}
+// 編集ツール
+.edit-tools a{
+	color: #4a4a4a;
+}
+
+

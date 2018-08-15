@@ -1,14 +1,14 @@
 <%= javascript_include_tag "bookmarks.js" %>
-<%= stylesheet_link_tag "bookmarks/new", :medea => "all" %>
+<%= stylesheet_link_tag "bookmarks/new", :media => "all" %>
 
 <div class="container">
 	<h2>登録フォーム</h2>
 	<div class="post-title">
-		<span class="active">ブックマーク</span>
-		<span><%= link_to "自作サービス", new_work_path %></span>
+		<span><%= link_to "ブックマーク", new_bookmark_path %></span>
+		<span class="active">自作サービス</span>
 	</div>
 	<div class="new_posts">
-		<%= form_for(@bookmark) do |f| %>
+		<%= form_for(@work) do |f| %>
 			<div class="field">
 				<%= f.label :servive_name, 'サービス名(必須）' %></br>
 				<%= f.text_field :service_name %>
@@ -30,12 +30,8 @@
 				<%= f.attachment_field :service_image %>
 			</div>
 			<div class="field">
-				<%= f.label :folder_id, 'フォルダ' %></br>
-				<%= f.text_field :folder_id %> <!-- 仮に -->
-			</div>
-			<div class="field">
 				<%= f.label :tag_list, 'タグ' %></br>
-				<%= text_field_tag 'bookmark[tag_list]', @bookmark.tag_list.join(','), "data-role" => "tagsinput" %> <!-- 仮に -->
+				<%= text_field_tag 'work[tag_list]', @work.tag_list.join(','), "data-role" => "tagsinput" %> <!-- 仮に -->
 			</div>
 			<div class="field">
 				<%= f.label :is_published, '公開設定' %></br>

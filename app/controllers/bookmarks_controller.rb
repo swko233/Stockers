@@ -5,11 +5,38 @@ class BookmarksController < ApplicationController
 
   def create
   	@bookmark = Bookmark.new(bookmark_params)
+  	@bookmark.user_id = current_user.id
   	if @bookmark.save
   		redirect_to edit_bookmark_path(@bookmark.id) #仮に
   	else
   		redirect_to new_bookmark_path #仮に
   	end
+  end
+
+  def add_bookmark
+    @added_bookmark = Bookmark.find(params[:id])
+    bookmark = Bookmark.new
+    bookmark.user_id = current_user.id
+    bookmark.service_name = @added_bookmark.service_name
+    bookmark.url = @added_bookmark.url
+    if @added_bookmark.is_work == true #自作サービスの場合
+      bookmark.is_work = true
+      bookmark.work_id = @added_bookmark.work_id
+    end
+    unless @added_bookmark.service_image_id.nil?
+      bookmark.service_image_id = @added_bookmark.service_image_id
+    end
+    bookmark.tag_list = @added_bookmark.tag_list  #タグの継承
+    if bookmark.save
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user.id) }
+        format.js do
+          @this_bookmark = @added_bookmark
+        end
+      end
+    else
+      redirect_to new_bookmark_path
+    end
   end
 
   def edit
@@ -19,12 +46,24 @@ class BookmarksController < ApplicationController
   def update
   	@bookmark = Bookmark.find(params[:id])
   	if @bookmark.update(bookmark_params)
-  		redirect_to edit_bookmark_path(@bookmark.id) #仮に
+  		redirect_to user_path(current_user.id) #仮に
   	else
   		redirect_to new_bookmark_path #仮に
   	end
+  end
 
-
+  def destroy
+  	bookmark = Bookmark.find(params[:id])
+  	if bookmark.destroy
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user.id) } #仮に
+        format.js do
+          @this_bookmark = Bookmark.find(params[:this_bookmark_id])
+        end
+      end
+  	else
+  		redirect_to new_bookmark_path #仮に
+  	end
   end
 
 
