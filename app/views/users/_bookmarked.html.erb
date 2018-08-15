@@ -1,0 +1,8 @@
+<!-- render 'users/bookmarked'の場合、@my_bookmarkを再定義 -->
+<% if @my_bookmark.nil? %>
+	<% @my_bookmark = current_user.bookmarks.find_by(url: @this_bookmark.url) %>
+<% end %>
+
+<%= link_to bookmark_path(@my_bookmark.id, this_bookmark_id: @this_bookmark.id), method: :delete, remote: true do %>
+		<i class="fas fa-folder fa-2x"></i>
+<% end %>

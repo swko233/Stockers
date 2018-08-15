@@ -108,9 +108,15 @@
 						<% end %>
 					</div>
 					<% else %>
-					<div class="bookmark-button">
-						<%= link_to add_bookmark_path(bookmark.id) do %>
-							<i class="fas fa-folder-open fa-2x"></i>
+					<div id="bookmark-button<%= bookmark.id %>">
+						<!-- ブックマーク済みかどうかの判別用 -->
+						<% @my_bookmark = current_user.bookmarks.find_by(url: bookmark.url) %>
+						<!-- _bookmarked,_unbookmarkedに渡すための変数 -->
+						<% @this_bookmark = bookmark %>
+						<% if @my_bookmark.nil? %>
+							<%= render 'unbookmarked' %>
+						<% else %>
+							<%= render 'bookmarked' %>
 						<% end %>
 					</div>
 					<% end %>
