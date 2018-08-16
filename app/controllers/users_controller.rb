@@ -56,6 +56,14 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def search
+		@user = User.find(params[:id])
+		@bookmarks = Bookmark.where(user_id: @user.id).where('service_name LIKE(?)', "%#{params[:keyword]}%")
+		respond_to do |format|
+			format.json {render 'search_bookmark',json: @bookmarks}
+		end
+	end
+
 	def following
 		@user = User.find(params[:id])
 		@users = @user.following

@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag "users/search_bookmark", :media => "all" %>
+<%= javascript_include_tag "users/search_bookmark.js" %>
 
 <div class="container">
 	<div class="col-xs-3">
@@ -8,9 +9,10 @@
 				<div class="icon-box">
 					<div class="icon"></div>
 				</div>
-				<div class="user-info">
+				<div id="user-info" value="<%= @user.id %>"> <!-- インクリメンタルサーチのurl取得用value -->
 					<div class="name">
 						<%= @user.email %>
+						<span id="user-id"><%= @user.id %></span>
 					</div>
 					<div class="links">
 						<section class="stats">
@@ -38,6 +40,12 @@
 		</div>
 	</div>
 	<div class="col-xs-9">
+		<!-- 検索フォーム -->
+		<div class="search-form">
+			<button type="button">検索</button>
+			<input type="text" name="keyword" id="search">
+			<ul id="result"></ul>
+		</div>
 		<div class="bookmarks change-content">
  			<% @bookmarks.each do |bookmark| %>
  				<% unless bookmark.is_published == false && @user != current_user %>
