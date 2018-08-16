@@ -88,10 +88,45 @@
 .service-text{
 	padding: 20px 5px 5px;
 }
+// ブックマーク・つくったサービス切り替えタブ
+.tab-list{
+	height: 45px;
+	border-bottom: 1px solid #ddd;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.change-tab-wrap{ //buttonのみだとborder-bottomが下にずれるので対策
+	border-bottom: 1px solid #ddd;
+	border-radius: 5px 5px 0 0;
+}
+.change-tab-wrap.is-active{
+	border: 1px solid #ddd;
+	border-bottom-color: #fff;
+}
+.change-tab-wrap:last-child{
+	margin-left: 3px;
+}
+.change-tab{
+	width: 140px;
+	height: 45px;
+	background: #fff;
+	border: none;
+	border-radius: 5px 5px 0 0;
+	margin: 0;
+	outline: none; //青い枠を消す
+}
+.change-tab:hover{
+	background: #EFEFEF;
+}
+.change-tab-wrap.is-active > .change-tab:hover{
+	background: none;
+	border-bottom: 1px solid #fff;
+}
 // ブックマーク一覧
 .bookmark-item{
 	padding: 1em;
-	border-bottom: 1px solid #efefef;
+	border-bottom: 1px solid #ddd;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -180,5 +215,3 @@
 .edit-tools a{
 	color: #4a4a4a;
 }
-
-
