@@ -11,13 +11,13 @@ Rails.application.routes.draw do
 	  registrations: 'users/registrations'
 	}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'users/:id/search' => 'users#search'
+  get 'users/:id/search_bookmarks' => 'users#search_bookmark', as: "search"
   resources :users do
   	member do
   		get :following, :followers
     end
   end
-  get 'users/:id/search_bookmark' => 'users#search_bookmark',as: "search_bookmark"
+  get 'users/:id/search_bookmark' => 'users#search_bookmark_tag',as: "search_bookmark_tag"
   resources :relationships, only: [:create, :destroy]
   # post 'relationships/on_list' => 'relationships#create_on_list', as: 'relationships_on_list'
   # delete 'relationships/:id/on_list' => 'relationships#destroy_on_list', as: 'relationship_on_list'
