@@ -33,6 +33,28 @@ class UsersController < ApplicationController
 	# 	if @user.save(user_params)
 	# end
 
+	def search_bookmark
+		@user = User.find(params[:id])
+		user_tag = Tag.find(params[:tag])
+		@bookmarks = Bookmark.where(user_id: @user.id).where(params[:tag])
+		#タグ一覧取得
+		tags = []
+		@bookmarks.each do |bookmark|
+			if @user == current_user
+				tags += bookmark.tag_list
+			else
+				tags += bookmark.tag_list if bookmark.is_published == true
+			end
+		end
+		@tag_all = tags.uniq
+		##タグ個数カウント
+		@tag_count = []
+		@tag_all.each do |tag|
+			tag_number = tags.count(tag)
+			@tag_count << tag_number
+		end
+	end
+
 	def following
 		@user = User.find(params[:id])
 		@users = @user.following

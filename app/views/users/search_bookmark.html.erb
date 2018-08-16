@@ -1,0 +1,92 @@
+<%= stylesheet_link_tag "users/search_bookmark", :media => "all" %>
+
+<div class="container">
+	<div class="col-xs-3">
+		<h3>ブックマーク一覧</h3>
+		<section class="user-profile">
+			<div class="profile-main">
+				<div class="icon-box">
+					<div class="icon"></div>
+				</div>
+				<div class="user-info">
+					<div class="name">
+						<%= @user.email %>
+					</div>
+					<div class="links">
+						<section class="stats">
+							<%= render 'stats' %>
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="profile-sub">
+			</div>
+			<div class="follow_button">
+				<%= render 'follow_form' %>
+			</div>
+		</section>
+		<div class="tag-all">
+			<h4>タグ</h4>
+			<% @tag_all.zip(@tag_count).each do |tag,n| %>
+				<%= link_to search_bookmark_path(tag: tag) do %>
+					<div class="tag-link">
+						<%= tag %>
+						<%= n %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-xs-9">
+		<div class="bookmarks change-content">
+ 			<% @bookmarks.each do |bookmark| %>
+ 				<% unless bookmark.is_published == false && @user != current_user %>
+					<div class="bookmark-item">
+						<div class="item-body">
+							<div class="item-info">
+								<a href="<%= bookmark.url %>" target="_blank">
+									<div class="item-description">
+										<p class="service-name"><%= bookmark.service_name %></p>
+										<p class="url"><%= bookmark.url %></p>
+									</div>
+								</a>
+								<div class="tag-list">
+									<ul>
+									<% bookmark.tag_list.each do |tag| %>
+										<li><a href="<%= user_path(current_user.id) %>"><span><%= tag %></span></a></li>
+									<% end %>
+									</ul>
+								</div>
+							</div>
+							<div class="item-developer">
+								<div class="developer-icon"></div>
+							</div>
+						</div>
+						<% if @user == current_user %>
+						<div class="edit-tools">
+							<%= link_to edit_bookmark_path(bookmark.id) do %>
+								<i class="fas fa-edit"></i>
+							<% end %>
+							<%= link_to bookmark_path(bookmark.id), method: :delete do %>
+								<i class="far fa-trash-alt"></i>
+							<% end %>
+						</div>
+						<% else %>
+						<div id="bookmark-button<%= bookmark.id %>">
+							<!-- ブックマーク済みかどうかの判別用 -->
+							<% @my_bookmark = current_user.bookmarks.find_by(url: bookmark.url) %>
+							<!-- _bookmarked,_unbookmarkedに渡すための変数 -->
+							<% @this_bookmark = bookmark %>
+							<% if @my_bookmark.nil? %>
+								<%= render 'unbookmarked' %>
+							<% else %>
+								<%= render 'bookmarked' %>
+							<% end %>
+						</div>
+						<% end %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -72,10 +72,12 @@
 		<div class="tag-all">
 			<h4>タグ</h4>
 			<% @tag_all.zip(@tag_count).each do |tag,n| %>
-				<div class="tag-link">
-					<%= tag %>
-					<%= n %>
-				</div>
+				<%= link_to search_bookmark_path(tag: tag) do %>
+					<div class="tag-link">
+						<%= tag %>
+						<%= n %>
+					</div>
+				<% end %>
 			<% end %>
 		</div>
 		<div class="tab-list">

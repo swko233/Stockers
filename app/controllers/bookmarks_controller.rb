@@ -66,7 +66,6 @@ class BookmarksController < ApplicationController
   	end
   end
 
-
   private
 
   def bookmark_params
