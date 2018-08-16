@@ -35,11 +35,12 @@ class UsersController < ApplicationController
 
 	def search_bookmark
 		@user = User.find(params[:id])
-		user_tag = Tag.find(params[:tag])
-		@bookmarks = Bookmark.where(user_id: @user.id).where(params[:tag])
+		target_tag = params[:tag]
+		@bookmarks = Bookmark.tagged_with([target_tag]).where(user_id: @user.id)
+		@all_bookmarks = Bookmark.where(user_id: @user.id)
 		#タグ一覧取得
 		tags = []
-		@bookmarks.each do |bookmark|
+		@all_bookmarks.each do |bookmark|
 			if @user == current_user
 				tags += bookmark.tag_list
 			else

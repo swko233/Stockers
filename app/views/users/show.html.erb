@@ -114,6 +114,9 @@
 						</div>
 						<% if @user == current_user %>
 						<div class="edit-tools">
+							<% if bookmark.is_published == false %>
+								<i class="fas fa-lock fa-fw lock-color"></i>
+							<% end %>
 							<%= link_to edit_bookmark_path(bookmark.id) do %>
 								<i class="fas fa-edit"></i>
 							<% end %>

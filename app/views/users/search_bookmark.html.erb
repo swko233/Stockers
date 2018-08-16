@@ -53,7 +53,7 @@
 								<div class="tag-list">
 									<ul>
 									<% bookmark.tag_list.each do |tag| %>
-										<li><a href="<%= user_path(current_user.id) %>"><span><%= tag %></span></a></li>
+										<li><a href="<%= search_bookmark_path(current_user.id, tag: tag) %>"><span><%= tag %></span></a></li>
 									<% end %>
 									</ul>
 								</div>
@@ -64,11 +64,14 @@
 						</div>
 						<% if @user == current_user %>
 						<div class="edit-tools">
+							<% if bookmark.is_published == false %>
+								<i class="fas fa-lock fa-fw lock-color"></i>
+							<% end %>
 							<%= link_to edit_bookmark_path(bookmark.id) do %>
-								<i class="fas fa-edit"></i>
+								<i class="fas fa-edit fa-fw"></i>
 							<% end %>
 							<%= link_to bookmark_path(bookmark.id), method: :delete do %>
-								<i class="far fa-trash-alt"></i>
+								<i class="far fa-trash-alt fa-fw"></i>
 							<% end %>
 						</div>
 						<% else %>
