@@ -23,6 +23,7 @@
               <li><%= current_user.email %>でログイン中</li>
               <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
               <li><%= link_to '新規投稿', new_bookmark_path %></li>
+              <li><%= link_to 'プロフィール設定', edit_user_path(current_user.id) %></li>
             </ul>
           <% end %>
         </div>

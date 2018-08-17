@@ -25,13 +25,40 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		if User.exists?(params[:id])
+			@user = User.find(params[:id])
+			# アドレス直打ち対策
+			if @user != current_user
+				redirect_to user_path(current_user.id)
+			end
+		else
+			#見つからなかったというページを作る
+			redirect_to user_path(current_user.id)
+		end
 	end
 
-	# def update
-	# 	@user = User.find(params[:id])
-	# 	if @user.save(user_params)
-	# end
+	def update
+		@user = User.find(params[:id])
+		if @user.save(user_params)
+			flash[:notice] = "ユーザー情報を変更しました"
+			redirect_to edit_user_path(current_user.id)
+		else
+			flash[:notice] = "保存に失敗しました"
+			redirect_to edit_user_path(current_user.id)
+		end
+	end
+
+	def password_update
+		@user = User.find(params[:id])
+	    if @user.update_with_password(password_params)
+	      	bypass_sign_in(@user)
+			flash[:notice] = "パスワードを変更しました"
+			redirect_to edit_user_path(current_user.id)
+	    else
+	        flash[:password_notice] = "パスワードが正しく設定されていません"
+	        redirect_to edit_user_path(current_user.id)
+	    end
+	end
 
 	def search_bookmark_tag #タグ検索
 		@user = User.find(params[:id])
@@ -60,7 +87,6 @@ class UsersController < ApplicationController
 	def search_bookmark  #文字で検索
 		@user = User.find(params[:id])
 		@all_bookmarks = Bookmark.where(user_id: @user.id)
-		
 		@bookmarks = Bookmark.search_bookmark(params[:search]).where(user_id: @user.id)
 		#タグ一覧取得
 		tags = []
@@ -98,5 +124,14 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@users = @user.followers
 		render 'show_followers'
+	end
+
+	private
+
+	def user_params
+		params.require(:user).permit(:name,:nickname,:image_id,:introduction,:email)
+	end
+	def password_params
+			params.require(:user).permit(:password, :password_confirmation, :current_password)
 	end
 end

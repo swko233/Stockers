@@ -1,0 +1,63 @@
+<%= stylesheet_link_tag "users/edit", :media => "all" %>
+
+<div class="container">
+	<% if flash[:notice] %>
+		<div class="password-notice">
+		  	<p><%= flash[:notice] %></p>
+		 </div>
+	<% end %>
+	<div class="user-info">
+		<h2>ユーザー設定</h2>
+		<%= form_for(@user) do |f| %>
+			<div class="field">
+				<%= f.label :name, 'ユーザー名' %></br>
+				<%= f.text_field :name %>
+			</div>
+			<div class="field">
+				<%= f.label :nickname, 'ユーザーID' %></br>
+				<%= f.text_field :nickname %>
+			</div>
+			<div class="field">
+				<%= f.label :email, 'メールアドレス' %></br>
+				<%= f.text_field :email %>
+			</div>
+			<div class="field image-form">
+				<%= f.label :image, 'プロフィール画像' %></br>
+				<%= f.attachment_field :image, class: "image-form" %>
+			</div>
+			<div class="field">
+				<%= f.label :introduction, 'プロフィール' %></br>
+				<%= f.text_area :name %>
+			</div>
+			<div class="action">
+				<%= f.submit '更新する' %>
+			</div>
+		<% end %>
+	</div>
+	<!-- ツイッターログインの有無で表示切り替え予定 -->
+	<div class="password-info">
+		<h3>ログイン情報</h3>
+		<% if flash[:password_notice] %>
+			<div class="password-notice">
+		  		<p><%= flash[:password_notice] %></p>
+		 	</div>
+		<% end %>
+			<%= form_for(@user, :url => {:action => "password_update"}) do |f| %>
+			<div class="field">
+            	<%= f.label :current_password, "現在のパスワード" %><br />
+              	<%= f.password_field :current_password, autocomplete: "off", size: "30" %>
+            </div>
+           	<div class="field">
+              	<%= f.label :password %><br />
+              	<%= f.password_field :password, autocomplete: "off", size: "30" %>
+           	</div>
+           	<div class="field">
+              	<%= f.label :password_confirmation %><br />
+              	<%= f.password_field :password_confirmation, autocomplete: "off", size: "30" %>
+            </div>
+            <div class="action">
+            	<%= f.submit '更新する' %>
+            </div>
+		</div>
+	<% end %>
+</div>
