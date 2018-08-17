@@ -20,7 +20,7 @@
 .icon{
 	background-size: cover;
 	background-position: center center;
-	background-color: gray;
+	border: 1px solid #efefef;
 	border-radius: 50%;
 	width: 80px;
 	height: 80px;
@@ -217,4 +217,11 @@
 }
 .lock-color{
 	color: #ffd700;
+}
+
+.icon-test{
+	margin:300px;
+}
+body{
+	background: #fff;
 }

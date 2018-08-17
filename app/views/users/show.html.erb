@@ -9,7 +9,7 @@
 	<section class="user-profile">
 		<div class="profile-main">
 			<div class="icon-box">
-					<%= attachment_image_tag @user, :image , class: "icon" %>
+				<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
 			</div>
 			<div class="user-info">
 				<div class="name">
