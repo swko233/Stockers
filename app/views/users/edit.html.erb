@@ -7,7 +7,7 @@
 		 </div>
 	<% end %>
 	<div class="user-info">
-		<h2>ユーザー設定</h2>
+		<h1>ユーザー設定</h1>
 		<%= form_for(@user) do |f| %>
 			<div class="field">
 				<%= f.label :name, 'ユーザー名' %></br>
@@ -36,7 +36,7 @@
 	</div>
 	<!-- ツイッターログインの有無で表示切り替え予定 -->
 	<div class="password-info">
-		<h3>ログイン情報</h3>
+		<h1>ログイン情報</h1>
 		<% if flash[:password_notice] %>
 			<div class="password-notice">
 		  		<p><%= flash[:password_notice] %></p>

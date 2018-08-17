@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
 	def password_update
 		@user = User.find(params[:id])
-	    if @user.update_with_password(password_params)
+	    if @user.update_with_password(user_params)
 	      	bypass_sign_in(@user)
 			flash[:notice] = "パスワードを変更しました"
 			redirect_to edit_user_path(current_user.id)
@@ -129,9 +129,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:name,:nickname,:image_id,:introduction,:email)
+		params.require(:user).permit(:name,:nickname,:image_id,:introduction,:email,:password, :password_confirmation, :current_password)
 	end
-	def password_params
-			params.require(:user).permit(:password, :password_confirmation, :current_password)
-	end
+
 end
