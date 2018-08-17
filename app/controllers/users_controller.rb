@@ -36,8 +36,8 @@ class UsersController < ApplicationController
 	def search_bookmark_tag #タグ検索
 		@user = User.find(params[:id])
 		target_tag = params[:tag]
-		@bookmarks = Bookmark.tagged_with([target_tag]).where(user_id: @user.id)
 		@all_bookmarks = Bookmark.where(user_id: @user.id)
+		@bookmarks = Bookmark.tagged_with([target_tag]).where(user_id: @user.id)
 		#タグ一覧取得
 		tags = []
 		@all_bookmarks.each do |bookmark|
@@ -59,8 +59,9 @@ class UsersController < ApplicationController
 
 	def search_bookmark  #文字で検索
 		@user = User.find(params[:id])
-		@bookmarks = Bookmark.search_bookmark(params[:search]).where(user_id: @user.id)
 		@all_bookmarks = Bookmark.where(user_id: @user.id)
+		
+		@bookmarks = Bookmark.search_bookmark(params[:search]).where(user_id: @user.id)
 		#タグ一覧取得
 		tags = []
 		@all_bookmarks.each do |bookmark|
