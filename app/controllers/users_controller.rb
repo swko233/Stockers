@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if @user.save(user_params)
+		if @user.update(user_params)
 			flash[:notice] = "ユーザー情報を変更しました"
 			redirect_to edit_user_path(current_user.id)
 		else
@@ -129,7 +129,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:name,:nickname,:image_id,:introduction,:email,:password, :password_confirmation, :current_password)
+		params.require(:user).permit(:name,:nickname,:image,:introduction,:email,:password, :password_confirmation, :current_password)
 	end
 
 end
