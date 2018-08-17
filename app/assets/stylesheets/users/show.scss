@@ -6,13 +6,16 @@
 .user-profile{
 	background: #fff;
 	padding: 10px;
+	padding-top: 50px;
 }
 .profile-main{
 	display: flex;
-	align-items: center;
+	align-items: start;
 	justify-content: flex-start;
+	position: relative;
 }
 .icon-box{
+	margin-top: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -22,11 +25,34 @@
 	background-position: center center;
 	border: 1px solid #efefef;
 	border-radius: 50%;
-	width: 80px;
-	height: 80px;
+	width: 90px;
+	height: 90px;
 }
 .user-info{
 	padding-left: 100px;
+
+	.user-name{
+		margin-bottom: 20px;
+	}
+	.name{
+		font-size: 20px;
+		margin-bottom: 5px;
+
+	}
+	.nickname{
+		font-size: 13px;
+		color: #999;
+	}
+	.stats a{
+		color: #66757f;
+		margin-right: 15px;
+		font-size: 15px;
+	}
+}
+.follow-button{
+	position: absolute;
+	right: 30px;
+	top: 5px;
 }
 // おすすめ自作サービス
 .recommended-work{
@@ -217,11 +243,4 @@
 }
 .lock-color{
 	color: #ffd700;
-}
-
-.icon-test{
-	margin:300px;
-}
-body{
-	background: #fff;
 }

@@ -36,3 +36,26 @@ li{
     display: block;
     clear: both;
 }
+.btn-follow,.btn-following{
+	width: 110px;
+	outline: 0;
+}
+.btn-follow:hover{
+	background-color: #eaf5fd;
+	border-color: #0099e8;
+	color: #0099e8;
+}
+.btn-follow{
+	border-color: #0099e8;
+	color: #0099e8;
+	background-color: #fff;
+}
+.btn-following{
+	background-color: #0099e8;
+	border-color: #0099e8;
+	color: #fff;
+}
+.btn-following:hover{
+	color: #fff;
+	opacity: 0.8;
+}

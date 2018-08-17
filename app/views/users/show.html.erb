@@ -2,24 +2,24 @@
 <%= javascript_include_tag "users/show.js" %>
 
 <div class="container container-mypage">
-	<h1>mypage</h1>
-	<div class="follow_button">
-		<%= render 'follow_form' %>
-	</div>
 	<section class="user-profile">
 		<div class="profile-main">
 			<div class="icon-box">
 				<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
 			</div>
 			<div class="user-info">
-				<div class="name">
-					<%= @user.email %>
+				<div class="user-name">
+					<p class="name"><%= @user.name %></p>
+					<p class="nickname">@<%= @user.nickname %></p>
 				</div>
 				<div class="links">
 					<section class="stats">
 						<%= render 'stats' %>
 					</section>
 				</div>
+			</div>
+			<div class="follow-button">
+				<%= render 'follow_form' %>
 			</div>
 		</div>
 		<div class="profile-sub">
