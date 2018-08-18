@@ -43,11 +43,11 @@
 		<div class="tag-all">
 			<h4>タグ</h4>
 			<div class="tag-list">
-				<div class="tag-box all">
-					<%= link_to 'すべて', search_bookmark_path(@user.id) %>
-				</div>
+				<%= link_to search_bookmark_path(@user.id) do %>
+					<div class="tag-box all"><span>すべて</span></div>
+				<% end %>
 				<% @tag_all.zip(@tag_count).each do |tag,n| %>
-					<%= link_to search_bookmark_tag_path(tag: tag) do %>
+					<%= link_to search_bookmark_tag_path(@user.id, tag: tag) do %>
 						<div class="tag-box">
 							<div class="tag-name"><%= tag %></div>
 							<div class="tag-number"><%= n %></div>
@@ -73,7 +73,7 @@
 								<div class="tag-list">
 									<ul>
 									<% bookmark.tag_list.each do |tag| %>
-										<li><a href="<%= search_bookmark_tag_path(current_user.id, tag: tag) %>"><span><%= tag %></span></a></li>
+										<li><a href="<%= search_bookmark_tag_path(@user.id, tag: tag) %>"><span><%= tag %></span></a></li>
 									<% end %>
 									</ul>
 								</div>
