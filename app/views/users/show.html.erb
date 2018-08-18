@@ -89,6 +89,14 @@
 			</div>
 		</div>
  		<div class="bookmarks change-content">
+ 		<% if @bookmarks.empty? %>
+ 			<div class="no-bookmark-wrap">
+ 				<div class="no-bookmark">
+ 					<i class="fas fa-folder-open fa-4x"></i>
+ 					<p>表示できるブックマークはありません</p>
+ 				</div>
+ 			</div>
+ 		<% else %>
  			<% @bookmarks.each do |bookmark| %>
  				<% unless bookmark.is_published == false && @user != current_user %>
 					<div class="bookmark-item">
@@ -140,8 +148,17 @@
 					</div>
 				<% end %>
 			<% end %>
+		<% end %> <!-- if @bookmarks.nil? -->
 		</div>
 		<div class="works change-content">
+		 <% if @works.empty? %>
+ 			<div class="no-work-wrap">
+ 				<div class="no-work">
+ 					<i class="fas fa-mobile-alt fa-4x"></i>
+ 					<p>投稿はありません</p>
+ 				</div>
+ 			</div>
+ 		<% else %>
 			<% @works.each do |work| %>
 				<%= link_to work_path(work.id) do %>
 					<div class="work-item">
@@ -155,6 +172,7 @@
 					</div>
 				<% end %>
 			<% end %>
+		<% end %>
 		</div>
 	</section>
 </div>

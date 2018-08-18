@@ -150,6 +150,21 @@
 	border-bottom: 1px solid #fff;
 }
 // ブックマーク一覧
+.bookmarks{
+	min-height: 400px;
+}
+.no-bookmark-wrap,.no-work-wrap{
+	height: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.no-bookmark,.no-work{
+	text-align: center;
+}
+.no-bookmark i,.no-work i{
+	margin-bottom: 25px;
+}
 .bookmark-item{
 	padding: 1em;
 	border-bottom: 1px solid #ddd;
