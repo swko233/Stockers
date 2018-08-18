@@ -28,7 +28,7 @@
 	<% unless @recommended_work.nil? %>
 		<section class="recommended-work">
 			<h3>つくったサービス</h3>
-			<div class="work-box clearfix">
+			<div class="work-box">
 				<div class="work-image">
 					<% if @recommended_work.service_image_id == nil %>
 						<i class="far fa-image fa-4x"></i>
@@ -37,10 +37,19 @@
 					<% end %>
 				</div>
 				<div class="work-introduction">
+					<a href="<%= @recommended_work.url %>" target="_blank">
+						<p class="service-name"><%= @recommended_work.service_name %></p>
+						<p class="url"><%= @recommended_work.url %></p>
+					</a>
 					<p class="overview"><%= @recommended_work.overview %></p>
-					<p class="description"><%= @recommended_work.description %></p>
 					<p class="release_date"><%= @recommended_work.release_date %></p>
+					<%= link_to add_work_bookmark_path(@recommended_work.id), remote: true do %>
+						<div class="btn btn-bookmark">
+						<i class="fas fa-plus"></i><span>ブックマークに追加</span>
+						</div>
+					<% end %>
 				</div>
+			</div>
 		</section>
 	<% end %>
 	<section class="recommended-services">
@@ -116,9 +125,19 @@
 									</ul>
 								</div>
 							</div>
+							<% if bookmark.is_work == true %>
 							<div class="item-developer">
-								<div class="developer-icon"></div>
+								<div class="developer-icon">
+									<% developer = User.find_by(id: Work.find_by(id: bookmark.work_id).user_id) %>
+									<%= link_to user_path(developer.id) do %>
+										<%= attachment_image_tag developer, :image, fallback: "no_user_image", format: "png", class: "icon developer-icon"%>
+									<% end %>
+								</div>
+								<div class="developer-introduction">
+									<p><%= link_to '@' + developer.nickname,user_path(developer.id) %><span>さんが作成</span></p>
+								</div>
 							</div>
+							<% end %>
 						</div>
 						<% if @user == current_user %>
 						<div class="edit-tools">
@@ -176,3 +195,4 @@
 		</div>
 	</section>
 </div>
+

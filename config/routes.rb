@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   # post 'relationships/on_list' => 'relationships#create_on_list', as: 'relationships_on_list'
   # delete 'relationships/:id/on_list' => 'relationships#destroy_on_list', as: 'relationship_on_list'
   get 'bookmarks/:id/add' => 'bookmarks#add_bookmark',as: "add_bookmark"
+  get 'works/:id/add_bookmark' => 'bookmarks#add_work_bookmark',as: "add_work_bookmark"
   resources :bookmarks
   resources :works
 end

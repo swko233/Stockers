@@ -62,9 +62,32 @@
 
 	.work-box{
 		width: 100%;
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+
 	}
 	.work-image,.work-introduction{
-		float: left;
+		padding-left: 20px;
+	}
+	.work-introduction{
+		padding-left: 50px;
+	}
+	.service-name{
+		font-size: 22px;
+		color: #222;
+		margin-bottom: 7px;
+	}
+	.url{
+		font-size: 15px;
+		color: #999;
+		margin-bottom: 30px;
+	}
+	.btn-bookmark{
+		width: 250px;
+	}
+	.btn-bookmark span{
+		padding-left: 15px;
 	}
 }
 // おすすめwebサービス
@@ -172,6 +195,11 @@
 	align-items: center;
 	justify-content: space-between;
 
+	.item-body{ //ブックマークと開発者情報と横並びにする
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
 	.item-description{
 		padding-top: 5px;
 		margin-bottom: 13px; //タグとの隙間を開ける
@@ -195,6 +223,22 @@
 	}
 	a:hover .url{
 		color: gray;
+	}
+	.item-developer{
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 50px;
+	}
+	.developer-icon{
+		width: 40px;
+		height: 40px;
+	}
+	.developer-introduction{
+		padding-left: 15px;
+	}
+	.developer-introduction p{
+		margin: 0;
 	}
 }
 
@@ -220,8 +264,6 @@
 	  color: #4a4a4a;
 	  font-size: 12px;
 	  text-decoration: none;
-	  -webkit-transition: .2s;
-	  transition: .2s;
 	}
 	ul li a::before {
 	  position: absolute;
@@ -234,8 +276,6 @@
 	  border-style: solid;
 	  border-width: 11px 11px 11px 0;
 	  border-radius: 3px;
-	  -webkit-transition: .2s;
-	  transition: .2s;
 	}
 	ul li span {
 	  display: block;

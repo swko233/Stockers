@@ -59,3 +59,23 @@ li{
 	color: #fff;
 	opacity: 0.8;
 }
+//ブックマークに追加ボタン
+.btn-bookmark:hover{
+	background-color: #eaf5fd;
+	border-color: #55c500;
+	color: #55c500;
+}
+.btn-bookmark{
+	border-color: #55c500;
+	color: #55c500;
+	background-color: #fff;
+}
+.btn-bookmarked{
+	background-color: #55c500;
+	border-color: #55c500;
+	color: #fff;
+}
+.btn-bookmarked:hover{
+	color: #fff;
+	opacity: 0.8;
+}

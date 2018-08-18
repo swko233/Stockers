@@ -13,7 +13,7 @@ class BookmarksController < ApplicationController
   	end
   end
 
-  def add_bookmark
+  def add_bookmark #他ユーザーのブックマークを自分のブックマークに追加
     @added_bookmark = Bookmark.find(params[:id])
     bookmark = Bookmark.new
     bookmark.user_id = current_user.id
@@ -36,6 +36,22 @@ class BookmarksController < ApplicationController
       end
     else
       redirect_to new_bookmark_path
+    end
+  end
+
+  def add_work_bookmark #自作サービスをブックマーク
+    @added_work = Work.find(params[:id])
+    bookmark = Bookmark.new
+    bookmark.service_name = @added_work.service_name
+    bookmark.url = @added_work.url
+    bookmark.user_id = current_user.id
+    bookmark.is_work = true
+    bookmark.work_id = @added_work.id
+    bookmark.tag_list = @added_work.tag_list  #タグの継承
+    if bookmark.save
+      redirect_to user_path(current_user.id)
+    else
+      redirect_to work_path(@added_work.id)
     end
   end
 
