@@ -1,3 +1,6 @@
+p{
+	margin-bottom: 0;
+}
 //検索フォーム
 body{
 	background-color: #fff;
@@ -71,9 +74,17 @@ body{
 	align-items: center;
 	justify-content: space-between;
 
+	.item-body{
+		max-width: 80%;
+	}
+	.item-info{ //ブックマークと開発者情報と横並びにする
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: 13px; //タグとの隙間を開ける
+	}
 	.item-description{
 		padding-top: 5px;
-		margin-bottom: 13px; //タグとの隙間を開ける
 	}
 	.service-name{
 		font-size: 18px;
@@ -94,6 +105,26 @@ body{
 	}
 	a:hover .url{
 		color: gray;
+	}
+	.item-developer{
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 50px;
+	}
+	.developer-icon{
+		background-size: cover;
+		background-position: center center;
+		border: 1px solid #efefef;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+	}
+	.developer-introduction{
+		padding-left: 15px;
+	}
+	.developer-introduction p{
+		margin: 0;
 	}
 }
 
@@ -148,9 +179,17 @@ body{
 	}
 }
 // 編集ツール
+.edit-tools{
+	// min-width: 80px; //押し出し防止
+}
 .edit-tools a{
 	color: #4a4a4a;
+
+	.fas,.far{
+		font-size: 20px;
+	}
 }
 .lock-color{
 	color: #ffd700;
+	font-size: 20px;
 }

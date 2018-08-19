@@ -4,5 +4,8 @@
 <% end %>
 
 <%= link_to bookmark_path(@my_bookmark.id, this_bookmark_id: @this_bookmark.id), method: :delete, remote: true do %>
-		<i class="fas fa-folder fa-2x"></i>
+	<span class="fa-stack">
+		<i class="fas fa-folder fa-stack-2x"></i>
+		<i class="fas fa-check fa-stack-1x"></i>
+	</span>
 <% end %>

@@ -3,7 +3,7 @@
 
 <div class="container">
 	<div class="search-title">
-		<h3>ブックマーク一覧</h3>
+		<h1>ブックマーク一覧</h1>
 			<!-- 検索フォーム -->
 		<div class="search-form">
 			<p>
@@ -64,22 +64,36 @@
 					<div class="bookmark-item">
 						<div class="item-body">
 							<div class="item-info">
-								<a href="<%= bookmark.url %>" target="_blank">
-									<div class="item-description">
-										<p class="service-name"><%= bookmark.service_name %></p>
-										<p class="url"><%= bookmark.url %></p>
-									</div>
-								</a>
-								<div class="tag-list">
-									<ul>
-									<% bookmark.tag_list.each do |tag| %>
-										<li><a href="<%= search_bookmark_tag_path(@user.id, tag: tag) %>"><span><%= tag %></span></a></li>
-									<% end %>
-									</ul>
+								<div class="item-detail">
+									<a href="<%= bookmark.url %>" target="_blank">
+										<div class="item-description">
+											<p class="service-name"><%= bookmark.service_name.truncate(30) %></p>
+											<p class="url"><%= bookmark.url %></p>
+										</div>
+									</a>
 								</div>
+								<!-- 自作サービスなら開発者情報を表示 -->
+								<% if bookmark.is_work == true %>
+								<div class="item-developer">
+									<div class="developer-icon">
+										<!-- ユーザー情報取得（worksとbookmarksのアソシエーションはなし） -->
+										<% developer = User.find_by(id: Work.find_by(id: bookmark.work_id).user_id) %>
+										<%= link_to user_path(developer.id) do %>
+											<%= attachment_image_tag developer, :image, fallback: "no_user_image", format: "png", class: "icon developer-icon"%>
+										<% end %>
+									</div>
+									<div class="developer-introduction">
+										<p><%= link_to '@' + developer.nickname,user_path(developer.id) %><span>さんが作成</span></p>
+									</div>
+								</div>
+								<% end %>
 							</div>
-							<div class="item-developer">
-								<div class="developer-icon"></div>
+							<div class="tag-list">
+								<ul>
+									<% bookmark.tag_list.each do |tag| %>
+										<li><a href="<%=search_bookmark_tag_path(@user.id, tag: tag) %>"><span><%= tag %></span></a></li>
+									<% end %>
+								</ul>
 							</div>
 						</div>
 						<% if @user == current_user %>

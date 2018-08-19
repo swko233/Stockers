@@ -1,20 +1,41 @@
 .container{
 	max-width: 600px;
 	background: #fff;
+	padding: 50px;
 }
 h1{
 	font-size: 20px;
 	margin-bottom: 35px;
+	text-align: center;
 }
 .post-title{
-	width: 300px;
+	width: 100%;
 	margin: 0 auto;
+	margin-bottom: 60px;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	font-size: 18px;
+}
+.post-title div{
+	width: 50%;
+	padding: 15px;
+	border-bottom: 2px solid #AEBFC7;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.post-title a{
+	color: #AEBFC7;
+	text-decoration: none;
+}
+.post-title > .active{
+	border-bottom: 3px solid #40AAFF;
+	color: #40AAFF;
+
 }
 .new-posts{
-	padding: 25px;
+	// padding: 25px;
 }
 .field{
 	margin-bottom: 20px;

@@ -1,12 +1,58 @@
+// 全体構成
 .container-mypage{
 	max-width: 800px;
+	// background: #fff;
+}
+.stock-services{
 	background: #fff;
+}
+.container{
+	max-width: 920px;
+}
+// 共通部品
+p{
+	margin-bottom: 0;
+}
+.user-profile,.recommended-work,.recommended-services,.stock-services{
+	padding: 10px 40px 40px 40px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+h1{
+	color: #345068;
+	font-size: 20px;
+	padding-bottom: 30px;
+}
+.image-box{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+}
+.image-radius{
+	border-radius: 5px;
+}
+.item-developer,.service-developer{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 50px;
+}
+.developer-icon{
+	width: 35px;
+	height: 35px;
+}
+.developer-introduction{
+	padding-left: 15px;
+}
+.developer-introduction p{
+	margin: 0;
 }
 // ユーザープロフィール
 .user-profile{
 	background: #fff;
-	padding: 10px;
-	padding-top: 50px;
+	padding: 30px 10px;
 }
 .profile-main{
 	display: flex;
@@ -16,6 +62,7 @@
 }
 .icon-box{
 	margin-top: 10px;
+	padding-left: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -58,9 +105,9 @@
 .recommended-work{
 	background: #fff;
 	margin-top: 2px;
-	padding: 30px 0;
 
 	.work-box{
+		position: relative;
 		width: 100%;
 		display: flex;
 		align-items: flex-start;
@@ -68,22 +115,37 @@
 
 	}
 	.work-image,.work-introduction{
-		padding-left: 20px;
+		// margin-left: 20px;
+	}
+	.work-image{
+		border-radius: 5px;
 	}
 	.work-introduction{
-		padding-left: 50px;
+		padding-left: 70px;
 	}
 	.service-name{
 		font-size: 22px;
+		font-weight: bold;
 		color: #222;
 		margin-bottom: 7px;
+	}
+	.overview{
+		margin-bottom: 13px;
+	}
+	.overview span{
+		padding-left: 15px;
+	}
+	.work-detail-link{
+		margin-right: 10px;
 	}
 	.url{
 		font-size: 15px;
 		color: #999;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
-	.btn-bookmark{
+	.btn-bookmark,.btn-bookmarked{
+		position: absolute;
+		bottom: 0px;
 		width: 250px;
 	}
 	.btn-bookmark span{
@@ -94,48 +156,86 @@
 .recommended-services{
 	background: #fff;
 	margin-top: 2px;
-	padding: 30px 0;
 }
-.services-box{
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-}
-.services-box a{
-	width: 28%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	// 共通処理？？
-	color: #444;
-}
-.services-box a:last-child{
-	border: none;
-}
-.services-box a:hover{
-	text-decoration: none;
-}
-// 個別サービス
+// .services-box{
+// }
+// .services-box a{
+// 	width: 28%;
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	// 共通処理？？
+// 	color: #444;
+// }
+// .services-box a:last-child{
+// 	border: none;
+// }
+// .services-box a:hover{
+// 	text-decoration: none;
+// }
+// 個別サービス(カード式)
+// .service-box{
+// 	width: 100%;
+// 	height: 250px;
+// 	border-radius: 10px;
+// 	box-shadow: 0 2px 1px rgba(25,25,25,0.2);
+// }
+// .recommended-service-image{
+// 	width: 100%;
+// 	height: 150px;
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	background: #fafafa;
+// }
+// // .service-text{
+// // 	position:relative;
+// // 	padding: 5px 10px 10px;
+
+// 	// .service-name{
+// 	// 	font-weight: bold;
+// 	// }
+// 	// .url{
+// 	// 	position: absolute;
+// 	// 	color: #999;
+// 	// 	top:30px;
+// 	// }
+// // }
+// おすすめ一覧
 .service-box{
 	width: 100%;
-	height: 250px;
-	padding: 5px;
-	border-radius: 10px;
-}
-.service-box:hover{
-	box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
-}
-.recommended-service-image{
-	width: 100%;
-	height: 150px;
+	padding: 1em;
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	border-bottom: 1px solid #EFEFEF;
-	background: white;
-}
-.service-text{
-	padding: 20px 5px 5px;
+	justify-content: space-between;
+
+	.service-info a{
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		text-decoration: none;
+	}
+	.service-info a:hover{
+		opacity: 0.8;
+	}
+	.recommended-service-image{
+		width: 100px;
+		height: 80px;
+	}
+	.service-introduction{
+		padding-left: 50px;
+	}
+	.service-name{
+		font-weight: bold;
+		padding-bottom: 10px;
+	}
+	.url{
+		color: #999;
+	}
+	.developer-icon{
+		width: 35px;
+		height: 35px;
+	}
 }
 // ブックマーク・つくったサービス切り替えタブ
 .tab-list{
@@ -166,7 +266,7 @@
 	outline: none; //青い枠を消す
 }
 .change-tab:hover{
-	background: #EFEFEF;
+	background: #D4DDE8;
 }
 .change-tab-wrap.is-active > .change-tab:hover{
 	background: none;
@@ -191,18 +291,22 @@
 .bookmark-item{
 	padding: 1em;
 	border-bottom: 1px solid #ddd;
-	display: flex;
+	display: flex; //item-bodyとedit-tools
 	align-items: center;
 	justify-content: space-between;
+
+	.item-body{
+		max-width: 80%;
+	}
 
 	.item-info{ //ブックマークと開発者情報と横並びにする
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
+		margin-bottom: 13px; //タグとの隙間を開ける
 	}
 	.item-description{
 		padding-top: 5px;
-		margin-bottom: 13px; //タグとの隙間を開ける
 	}
 	.service-name{
 		font-size: 18px;
@@ -224,21 +328,19 @@
 	a:hover .url{
 		color: gray;
 	}
-	.item-developer{
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		padding-left: 50px;
-	}
 	.developer-icon{
 		width: 40px;
 		height: 40px;
 	}
-	.developer-introduction{
-		padding-left: 15px;
+	.fa-folder-open{
+		color: #AEBFC7;
 	}
-	.developer-introduction p{
-		margin: 0;
+	.fa-stack-2x{
+		color: #55c500;
+	}
+	.fa-stack-1x{
+		padding-top: 2px;
+		color: #fff;
 	}
 }
 
@@ -293,9 +395,26 @@
 	}
 }
 // 編集ツール
+.edit-tools{
+	// min-width: 80px; //押し出し防止
+}
 .edit-tools a{
-	color: #4a4a4a;
+	color: dimgray;
+
+	.fas,.far{
+		font-size: 20px;
+	}
 }
 .lock-color{
 	color: #ffd700;
+	font-size: 20px;
+}
+
+// レスポンシブ
+@media screen and (max-width: 1024px){
+	.container{
+		width: 100%;
+		margin: 0 auto;
+		padding: 0 5px;
+	}
 }

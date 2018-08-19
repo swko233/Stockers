@@ -18,15 +18,22 @@
  @import "bootstrap";
  @import "font-awesome";
 
-// リセットCSS
+// リセットCSS＋フォント
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Noto Sans Japanese';
+	color: #345068;
 }
 
 body{
 	background: #F9F9F9;
+}
+h1{
+	color: #345068;
+	font-size: 20px;
+	padding-bottom: 30px;
 }
 li{
 	list-style: none;
@@ -42,17 +49,17 @@ li{
 }
 .btn-follow:hover{
 	background-color: #eaf5fd;
-	border-color: #0099e8;
-	color: #0099e8;
+	border-color: #40AAFF;
+	color: #40AAFF;
 }
 .btn-follow{
-	border-color: #0099e8;
-	color: #0099e8;
+	border-color: #40AAFF;
+	color: #40AAFF;
 	background-color: #fff;
 }
 .btn-following{
-	background-color: #0099e8;
-	border-color: #0099e8;
+	background-color: #40AAFF;
+	border-color: #40AAFF;
 	color: #fff;
 }
 .btn-following:hover{
@@ -61,21 +68,98 @@ li{
 }
 //ブックマークに追加ボタン
 .btn-bookmark:hover{
-	background-color: #eaf5fd;
-	border-color: #55c500;
-	color: #55c500;
+	opacity: 0.9;
+	color: #fff;
 }
-.btn-bookmark{
-	border-color: #55c500;
-	color: #55c500;
-	background-color: #fff;
-}
-.btn-bookmarked{
-	background-color: #55c500;
+.btn-bookmark,.btn-bookmark span,.btn-bookmark i{
 	border-color: #55c500;
 	color: #fff;
+	background-color: #55c500;
+}
+.btn-bookmarked,.btn-bookmarked span{
+	background-color: #fff;
+	border-color: #AEBFC7;
+	color: #AEBFC7;
 }
 .btn-bookmarked:hover{
-	color: #fff;
+	color: #999;
 	opacity: 0.8;
+}
+// フォント
+@font-face {
+font-family: 'GeosansLight';
+font-style: normal;
+font-weight: normal;
+src: local('GeosansLight'), url('GeosansLight.woff') format('woff');
+}
+@font-face {
+font-family: 'GeosansLight-Oblique';
+font-style: normal;
+font-weight: normal;
+src: local('GeosansLight-Oblique'), url('GeosansLight-Oblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 100;
+    src: url('NotoSansCJKjp-Thin.eot'); /* IE9 Compat Modes */
+    src: url('NotoSansCJKjp-Thin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('NotoSansCJKjp-Thin.woff') format('woff'), /* Modern Browsers */
+    url('NotoSansCJKjp-Thin.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 200;
+    src: url('NotoSansCJKjp-Light.eot');
+    src: url('NotoSansCJKjp-Light.eot?#iefix') format('embedded-opentype'),
+    url('NotoSansCJKjp-Light.woff') format('woff'),
+    url('NotoSansCJKjp-Light.ttf')  format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 300;
+    src: url('NotoSansCJKjp-DemiLight.eot');
+    src: url('NotoSansCJKjp-DemiLight.eot?#iefix') format('embedded-opentype'),
+    url('NotoSansCJKjp-DemiLight.woff') format('woff'),
+    url('NotoSansCJKjp-DemiLight.ttf')  format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 400;
+    src: url('NotoSansCJKjp-Regular.eot');
+    src: url('NotoSansCJKjp-Regular.eot?#iefix') format('embedded-opentype'),
+    url('NotoSansCJKjp-Regular.woff') format('woff'),
+    url('NotoSansCJKjp-Regular.ttf')  format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 500;
+    src: url('NotoSansCJKjp-Medium.eot');
+    src: url('NotoSansCJKjp-Medium.eot?#iefix') format('embedded-opentype'),
+    url('NotoSansCJKjp-Medium.woff') format('woff'),
+    url('NotoSansCJKjp-Medium.ttf')  format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 700;
+    src: url('NotoSansCJKjp-Bold.eot');
+    src: url('NotoSansCJKjp-Bold.eot?#iefix') format('embedded-opentype'),
+    url('NotoSansCJKjp-Bold.woff') format('woff'),
+    url('NotoSansCJKjp-Bold.ttf')  format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 900;
+    src: url('NotoSansCJKjp-Black.eot');
+    src: url('NotoSansCJKjp-Black.eot?#iefix') format('embedded-opentype'),
+    url('NotoSansCJKjp-Black.woff') format('woff'),
+    url('NotoSansCJKjp-Black.ttf')  format('truetype');
 }

@@ -19,7 +19,8 @@ class BookmarksController < ApplicationController
     bookmark.user_id = current_user.id
     bookmark.service_name = @added_bookmark.service_name
     bookmark.url = @added_bookmark.url
-    if @added_bookmark.is_work == true #自作サービスの場合
+    #自作サービスの場合(他ユーザーのブックマーク欄にある自作サービス、フォルダアイコンにより追加)
+    if @added_bookmark.is_work == true
       bookmark.is_work = true
       bookmark.work_id = @added_bookmark.work_id
     end
@@ -41,19 +42,27 @@ class BookmarksController < ApplicationController
 
   def add_work_bookmark #自作サービスをブックマーク
     @added_work = Work.find(params[:id])
-    bookmark = Bookmark.new
-    bookmark.service_name = @added_work.service_name
-    bookmark.url = @added_work.url
-    bookmark.user_id = current_user.id
-    bookmark.is_work = true
-    bookmark.work_id = @added_work.id
-    bookmark.tag_list = @added_work.tag_list  #タグの継承
-    if bookmark.save
-      redirect_to user_path(current_user.id)
+    # 既に追加されていないかチェック
+    if current_user.bookmarks.find_by(work_id: @added_work.id).nil?
+      bookmark = Bookmark.new
+      bookmark.service_name = @added_work.service_name
+      bookmark.url = @added_work.url
+      bookmark.user_id = current_user.id
+      bookmark.is_work = true
+      bookmark.work_id = @added_work.id
+      bookmark.tag_list = @added_work.tag_list  #タグの継承
+      if bookmark.save
+        redirect_back(fallback_location: root_path)
+      else
+        redirect_to work_path(@added_work.id)
+      end
     else
-      redirect_to work_path(@added_work.id)
+      flash[:notice] = "すでにブックマークに追加されています"
+      redirect_to user_path(current_user.id)
     end
   end
+
+
 
   def edit
   	@bookmark = Bookmark.find(params[:id])
@@ -68,11 +77,11 @@ class BookmarksController < ApplicationController
   	end
   end
 
-  def destroy
+  def destroy #フォルダアイコンを押して解除した場合
   	bookmark = Bookmark.find(params[:id])
   	if bookmark.destroy
       respond_to do |format|
-        format.html { redirect_to user_path(current_user.id) } #仮に
+        format.html { redirect_back(fallback_location: root_path) } #自作サービスのブックマークボタン
         format.js do
           @this_bookmark = Bookmark.find(params[:this_bookmark_id])
         end
