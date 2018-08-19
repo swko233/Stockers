@@ -79,3 +79,6 @@ gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'maste
 gem "jquery-ui-rails"
 #アイコン
 gem 'font-awesome-rails'
+#データ生成
+gem 'faker'
+gem 'gimei'

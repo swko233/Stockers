@@ -1,3 +1,4 @@
 $(function(){
 	$('#bookmark-button<%= @this_bookmark.id %>').html("<%= escape_javascript(render('users/unbookmarked')) %>");
+	$('#recommended-bookmark-button<%= @this_bookmark.id %>').html("<%= escape_javascript(render('users/unbookmarked')) %>");
 });

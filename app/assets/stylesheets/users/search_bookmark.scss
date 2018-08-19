@@ -1,0 +1,195 @@
+p{
+	margin-bottom: 0;
+}
+//検索フォーム
+body{
+	background-color: #fff;
+}
+.search-title{
+	display: flex;
+	align-items: flex-end;
+	margin-bottom: 30px;
+}
+.search-form{
+	margin-left: 115px;
+	height: 35px;
+	border: 2px solid #eaeaea;
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px 10px;
+	box-shadow: inset 0 0.25rem 0.125rem 0 rgba(0,0,0,0.05);
+	display: flex;
+	align-items: center;
+}
+.search-form input{
+	border: none;
+	outline: 0;
+}
+.search-form #search{
+	width: 150px;
+}
+.search-button{
+	border: none;
+	color: #333;
+	background-color: #fff;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius: 5px;
+	outline: 0;
+
+	.fa-search{
+		background-color: #fff;
+	}
+}
+.search-button:hover{
+	color: #7fbfff;
+}
+//タグメニュー
+.tag-box{
+	margin-right: 10px;
+	padding: 5px 10px;
+	border-bottom: 1px #ddd dotted;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.tag-box.all{
+	padding-left: 8px
+}
+.tag-list a{
+	text-decoration: none;
+}
+.tag-number{
+	color: #333;
+}
+.tag-box:hover{
+	background-color: #efefef;
+}
+
+// ブックマーク一覧
+.bookmark-item{
+	padding: 1em;
+	border-bottom: 1px solid #ddd;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.item-body{
+		max-width: 80%;
+	}
+	.item-info{ //ブックマークと開発者情報と横並びにする
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: 13px; //タグとの隙間を開ける
+	}
+	.item-description{
+		padding-top: 5px;
+	}
+	.service-name{
+		font-size: 18px;
+		color: #337ab7;
+		margin-bottom: 5px;
+	}
+	.url{
+		font-size: 12px;
+		color: #999;
+		padding-left: 2px;
+	}
+	a:hover{
+		text-decoration: none;
+		opacity: 0.8;
+	}
+	a:hover .service-name{
+		color: #23527c;
+	}
+	a:hover .url{
+		color: gray;
+	}
+	.item-developer{
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 50px;
+	}
+	.developer-icon{
+		background-size: cover;
+		background-position: center center;
+		border: 1px solid #efefef;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+	}
+	.developer-introduction{
+		padding-left: 15px;
+	}
+	.developer-introduction p{
+		margin: 0;
+	}
+}
+
+// タグクラウド
+.tag-list{
+
+	ul li {
+	  display: inline-block;
+	  margin: 0 0 0 1em;
+	  padding: 0;
+	}
+	ul{
+		margin-bottom: 0;
+	}
+	ul li a {
+	  position: relative;
+	  display: inline-block;
+	  height: 22px;
+	  line-height: 24px;
+	  padding: 0 0.8em 0 0.5em;
+	  background-color: #e0e0e0;
+	  border-radius: 0 3px 3px 0;
+	  color: #4a4a4a;
+	  font-size: 12px;
+	  text-decoration: none;
+	}
+	ul li a::before {
+	  position: absolute;
+	  top: 0;
+	  left: -11px;
+	  content: '';
+	  width: 0;
+	  height: 0;
+	  border-color: transparent #e0e0e0 transparent transparent;
+	  border-style: solid;
+	  border-width: 11px 11px 11px 0;
+	  border-radius: 3px;
+	}
+	ul li span {
+	  display: block;
+	  max-width: 100px;
+	  white-space: nowrap;
+	  text-overflow: ellipsis;
+	  overflow: hidden;
+	}
+	ul li a:hover {
+	  background-color: #555;
+	  color: #fff;
+	}
+	ul li a:hover::before {
+	  border-right-color: #555;
+	}
+}
+// 編集ツール
+.edit-tools{
+	// min-width: 80px; //押し出し防止
+}
+.edit-tools a{
+	color: #4a4a4a;
+
+	.fas,.far{
+		font-size: 20px;
+	}
+}
+.lock-color{
+	color: #ffd700;
+	font-size: 20px;
+}

@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "users/show", :media => "all" %>
+
+<div class="container">
+		<section class="recommended-work">
+			<h1>つくったサービス</h1>
+			<div class="work-box">
+				<div class="work-image image-box">
+					<% if @work.service_image_id == nil %>
+						<i class="far fa-image fa-4x"></i>
+					<% else %>
+						<%= attachment_image_tag @work, :service_image, :fill,200,200, fallback: "no_service_image", class: "image-radius" %>
+					<% end %>
+				</div>
+				<div class="work-introduction">
+					<a href="<%= @work.url %>" target="_blank">
+						<p class="service-name"><%= @work.service_name %></p>
+						<p class="url"><%= @work.url %></p>
+					</a>
+					<p class="overview"><%= @work.overview %></p>
+					<p class="description"><%= @work.description %></p>
+					<p class="release_date"><%= @work.release_date %></p>
+					<div class="tag-list">
+						<ul>
+							<% @work.tag_list.each do |tag| %>
+								<li><a href=""><span><%= tag %></span></a></li>
+							<% end %>
+						</ul>
+					</div>
+					<!-- ブックマークに追加ボタン -->
+					<% if @my_work_bookmark.nil? %>
+						<%= link_to add_work_bookmark_path(@work.id) do %>
+							<div class="btn btn-bookmark">
+								<i class="fas fa-plus"></i><span>ブックマークに追加</span>
+							</div>
+						<% end %>
+					<% else %>
+						<%= link_to bookmark_path(@my_work_bookmark.id), method: :delete do %>
+							<div class="btn btn-bookmarked">
+								<span>ブックマークに追加済み</span>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+		</section>
+	</div>

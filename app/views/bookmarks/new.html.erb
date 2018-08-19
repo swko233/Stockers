@@ -2,12 +2,12 @@
 <%= stylesheet_link_tag "bookmarks/new", :medea => "all" %>
 
 <div class="container">
-	<h2>登録フォーム</h2>
+	<h1>登録フォーム</h1>
 	<div class="post-title">
-		<span class="active">ブックマーク</span>
-		<span><%= link_to "自作サービス", new_work_path %></span>
+		<div class="active">ブックマーク</div>
+		<div><%= link_to "自作サービス", new_work_path %></div>
 	</div>
-	<div class="new_posts">
+	<div class="new-posts">
 		<%= form_for(@bookmark) do |f| %>
 			<div class="field">
 				<%= f.label :servive_name, 'サービス名(必須）' %></br>
@@ -48,7 +48,7 @@
 				<span>しない<%= f.radio_button :is_recommended, false %></span>
 			</div>
 			<div class="actions">
-				<%= f.submit 'ブックマークを追加' %>
+				<%= f.submit 'ブックマークに追加する', class: "btn btn-primary" %>
 			</div>
 		<% end %>
 	</div>
