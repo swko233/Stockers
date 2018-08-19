@@ -43,6 +43,15 @@ li{
     display: block;
     clear: both;
 }
+// 「必須」アイコン
+.form-require{
+	background-color: #ea352d;
+	margin: 0 0 3px 7px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 11px;
+}
 // フォローボタン
 .btn-follow,.btn-following{
 	width: 110px;

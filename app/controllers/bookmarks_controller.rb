@@ -7,10 +7,19 @@ class BookmarksController < ApplicationController
   	@bookmark = Bookmark.new(bookmark_params)
   	@bookmark.user_id = current_user.id
   	if @bookmark.save
-  		redirect_to edit_bookmark_path(@bookmark.id) #仮に
+  		redirect_to user_path(current_user.id) #仮に
   	else
-  		redirect_to new_bookmark_path #仮に
+      @service_name_errmsg = @bookmark.errors.full_messages_for(:service_name)
+      @url_errmsg = @bookmark.errors.full_messages_for(:url)
+      # binding.pry
+  		render 'new'
   	end
+  end
+
+  # create時のバリデーションエラーのページをリロードした場合の対策
+  def index
+    @bookmark = Bookmark.new
+    render 'new'
   end
 
   def add_bookmark #他ユーザーのブックマークを自分のブックマークに追加

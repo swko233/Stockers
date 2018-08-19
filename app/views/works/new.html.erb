@@ -10,12 +10,18 @@
 	<div class="new-posts">
 		<%= form_for(@work) do |f| %>
 			<div class="field">
-				<%= f.label :servive_name, 'サービス名(必須）' %></br>
+				<%= f.label :servive_name, 'サービス名' %><span class="form-require">必須</span></br>
 				<%= f.text_field :service_name %>
+				<% if @service_name_errmsg.present? %>
+					<div class="error-message">入力してください</div>
+				<% end %>
 			</div>
 			<div class="field">
-				<%= f.label :url, 'URL（必須）' %></br>
+				<%= f.label :url, 'URL' %><span class="form-require">必須</span></br>
 				<%= f.text_field :url %>
+				<% if @url_errmsg.present? %>
+					<div class="error-message">入力してください</div>
+				<% end %>
 			</div>
 			<div class="field">
 				<%= f.label :overview, 'サービスの概要' %></br>
@@ -26,8 +32,11 @@
 				<%= f.text_area :description %>
 			</div>
 			<div class="field">
-				<%= f.label :service_image, 'メインイメージ' %></br>
+				<%= f.label :service_image, 'メインイメージ' %><span class="form-require">必須</span></br>
 				<%= f.attachment_field :service_image %>
+				<% if @url_errmsg.present? %>
+					<div class="error-message">画像を選択してください</div>
+				<% end %>
 			</div>
 			<div class="field">
 				<%= f.label :tag_list, 'タグ' %></br>

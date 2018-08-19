@@ -5,13 +5,21 @@ class WorksController < ApplicationController
 	end
 
 	def create
-		work = Work.new(work_params)
-		work.user_id = current_user.id
-		if work.save
+		@work = Work.new(work_params)
+		@work.user_id = current_user.id
+		if @work.save
 			redirect_to user_path(current_user.id)
 		else
-			redirect_to new_work_path
+			@service_name_errmsg = @work.errors.full_messages_for(:service_name)
+	      	@url_errmsg = @work.errors.full_messages_for(:url)
+	      	# binding.pry
+	  		render 'new'
 		end
+	end
+
+	def index
+		@work = Work.new
+		render 'new'
 	end
 
 	def show
