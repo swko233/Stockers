@@ -11,6 +11,10 @@ class BookmarksController < ApplicationController
   	else
       @service_name_errmsg = @bookmark.errors.full_messages_for(:service_name)
       @url_errmsg = @bookmark.errors.full_messages_for(:url)
+      # urlが重複する場合
+      if @url_errmsg[0] == "Url translation missing: ja.activerecord.errors.models.bookmark.attributes.url.taken"
+        @already_exist_flag = true
+      end
       # binding.pry
   		render 'new'
   	end
@@ -82,8 +86,20 @@ class BookmarksController < ApplicationController
   	if @bookmark.update(bookmark_params)
   		redirect_to user_path(current_user.id) #仮に
   	else
-  		redirect_to new_bookmark_path #仮に
+  		@service_name_errmsg = @bookmark.errors.full_messages_for(:service_name)
+      @url_errmsg = @bookmark.errors.full_messages_for(:url)
+      # urlが重複する場合
+      if @url_errmsg[0] == "Url translation missing: ja.activerecord.errors.models.bookmark.attributes.url.taken"
+        @already_exist_flag = true
+      end
+      render 'new'
   	end
+  end
+
+  # update時のバリデーションエラーのページをリロードした場合の対策
+  def show
+    @bookmark = Bookmark.find(params[:id])
+    render 'edit'
   end
 
   def destroy #フォルダアイコンを押して解除した場合

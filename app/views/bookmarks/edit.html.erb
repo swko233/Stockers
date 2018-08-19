@@ -8,7 +8,7 @@
 			<div class="field">
 				<%= f.label :servive_name, 'サービス名' %><span class="form-require">必須</span></br>
 				<%= f.text_field :service_name %>
-				<% if @url_errmsg.present? %>
+				<% if @service_name_errmsg.present? %>
 					<div class="error-message">入力してください</div>
 				<% end %>
 			</div>
@@ -16,7 +16,11 @@
 				<%= f.label :url, 'URL' %><span class="form-require">必須</span></br>
 				<%= f.text_field :url %>
 				<% if @url_errmsg.present? %>
-					<div class="error-message">入力してください</div>
+					<% if @already_exist_flag == true %>
+						<div class="error-message">すでにブックマーク済みのURLです</div>
+					<% else %>
+						<div class="error-message">入力してください</div>
+					<% end %>
 				<% end %>
 			</div>
 			<div class="field">
