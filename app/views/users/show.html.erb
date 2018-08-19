@@ -57,6 +57,7 @@
 					</div>
 					<!-- ブックマークに追加ボタン -->
 					<% if @my_work_bookmark.nil? %>
+						<!-- ブックマーク内の重複URLチェック -->
 						<%= link_to add_work_bookmark_path(@recommended_work.id) do %>
 							<div class="btn btn-bookmark">
 								<i class="fas fa-plus"></i><span>ブックマークに追加</span>

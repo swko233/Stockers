@@ -8,8 +8,11 @@ class UsersController < ApplicationController
 		@recommended_work = @works.find_by(is_recommended: true)
 		#おすすめ自作サービスをブックマークに追加しているかどうかの判定用変数(追加している場合はブックマーク解除に使用)
 		#Ajaxでrenderした後は、ビューで変数定義し直す
-		unless @recommended_work.nil?
-			@my_work_bookmark = current_user.bookmarks.find_by(work_id: @recommended_work.id)
+
+		#念のため、ブックマーク内に重複したURLがないかどうかチェック
+		if @recommended_work.present?
+			@my_work_bookmark = current_user.bookmarks.find_by(url: @recommended_work.url)
+			@my_work_bookmark = current_user.bookmarks.find_by(work_id: @recommended_work.id) if @my_work_bookmark.nil?
 		end
 		#タグ一覧取得
 		tags = []
