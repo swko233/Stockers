@@ -78,6 +78,13 @@
 			<h1>おすすめ一覧</h1>
 		</div>
 		<div class="services-box">
+		<% if @recommended_bookmarks.empty? %>
+ 			<div class="no-service-wrap">
+ 				<div class="no-service">
+ 					<p>登録されていません</p>
+ 				</div>
+ 			</div>
+ 		<% else %>
 			<% @recommended_bookmarks.each.with_index(1) do |bookmark,i| %>
 				<% unless bookmark.is_published == false && @user != current_user %>
 					<div class="service-box">
@@ -139,6 +146,7 @@
 					</div>
 				<% end %>
 			<% end %>
+		<% end %>
 		</div>
 	</section>
 	<section class="stock-services">

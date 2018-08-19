@@ -43,6 +43,7 @@ li{
     display: block;
     clear: both;
 }
+// フォローボタン
 .btn-follow,.btn-following{
 	width: 110px;
 	outline: 0;
@@ -84,6 +85,27 @@ li{
 .btn-bookmarked:hover{
 	color: #999;
 	opacity: 0.8;
+}
+// フォルダアイコン
+.fa-folder-open{
+	color: #AEBFC7;
+}
+.fa-stack-2x{
+	color: #55c500;
+}
+.fa-stack-1x{
+	padding-top: 2px;
+	color: #fff;
+}
+// サービス画像
+.image-box{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+}
+.image-radius{
+	border-radius: 5px;
 }
 // フォント
 @font-face {

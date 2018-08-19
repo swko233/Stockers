@@ -4,11 +4,11 @@
 		<section class="recommended-work">
 			<h1>つくったサービス</h1>
 			<div class="work-box">
-				<div class="work-image">
+				<div class="work-image image-box">
 					<% if @work.service_image_id == nil %>
 						<i class="far fa-image fa-4x"></i>
 					<% else %>
-						<%= attachment_image_tag @work, :service_image, :fill,200,200, fallback: "no_service_image" %>
+						<%= attachment_image_tag @work, :service_image, :fill,200,200, fallback: "no_service_image", class: "image-radius" %>
 					<% end %>
 				</div>
 				<div class="work-introduction">
@@ -36,7 +36,7 @@
 					<% else %>
 						<%= link_to bookmark_path(@my_work_bookmark.id), method: :delete do %>
 							<div class="btn btn-bookmarked">
-								<i class="fas fa-plus"></i><span>ブックマークに追加済み</span>
+								<span>ブックマークに追加済み</span>
 							</div>
 						<% end %>
 					<% end %>

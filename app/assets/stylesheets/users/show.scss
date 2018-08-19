@@ -24,14 +24,14 @@ h1{
 	font-size: 20px;
 	padding-bottom: 30px;
 }
-.image-box{
+.no-service-wrap,.no-bookmark-wrap,.no-work-wrap{
+	height: 400px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 5px;
 }
-.image-radius{
-	border-radius: 5px;
+.no-service,.no-bookmark,.no-work{
+	text-align: center;
 }
 .item-developer,.service-developer{
 	display: flex;
@@ -157,50 +157,12 @@ h1{
 	background: #fff;
 	margin-top: 2px;
 }
-// .services-box{
-// }
-// .services-box a{
-// 	width: 28%;
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: center;
-// 	// 共通処理？？
-// 	color: #444;
-// }
-// .services-box a:last-child{
-// 	border: none;
-// }
-// .services-box a:hover{
-// 	text-decoration: none;
-// }
-// 個別サービス(カード式)
-// .service-box{
-// 	width: 100%;
-// 	height: 250px;
-// 	border-radius: 10px;
-// 	box-shadow: 0 2px 1px rgba(25,25,25,0.2);
-// }
-// .recommended-service-image{
-// 	width: 100%;
-// 	height: 150px;
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: center;
-// 	background: #fafafa;
-// }
-// // .service-text{
-// // 	position:relative;
-// // 	padding: 5px 10px 10px;
-
-// 	// .service-name{
-// 	// 	font-weight: bold;
-// 	// }
-// 	// .url{
-// 	// 	position: absolute;
-// 	// 	color: #999;
-// 	// 	top:30px;
-// 	// }
-// // }
+	.no-service-wrap{
+		height: 50px;
+	}
+	.no-service{
+		font-size: 15px;
+	}
 // おすすめ一覧
 .service-box{
 	width: 100%;
@@ -331,16 +293,6 @@ h1{
 	.developer-icon{
 		width: 40px;
 		height: 40px;
-	}
-	.fa-folder-open{
-		color: #AEBFC7;
-	}
-	.fa-stack-2x{
-		color: #55c500;
-	}
-	.fa-stack-1x{
-		padding-top: 2px;
-		color: #fff;
 	}
 }
 
