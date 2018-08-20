@@ -6,18 +6,24 @@ class BookmarksController < ApplicationController
   def create
   	@bookmark = Bookmark.new(bookmark_params)
   	@bookmark.user_id = current_user.id
-  	if @bookmark.save
-  		redirect_to user_path(current_user.id) #仮に
-  	else
+    #3つより多くおすすめ設定しようとしていないかチェック
+    if params[:bookmark][:is_recommended] == "true" && Bookmark.where(user_id: current_user.id).where(is_recommended: true).count >= 3
+      @too_many_recommended_flag = true
+      render 'new'
+      return
+    end
+    if @bookmark.save
+    	redirect_to user_path(current_user.id) #仮に
+    else
+      #バリデーションエラーメッセージ表示用
       @service_name_errmsg = @bookmark.errors.full_messages_for(:service_name)
       @url_errmsg = @bookmark.errors.full_messages_for(:url)
-      # urlが重複する場合
+      ##urlが重複する場合
       if @url_errmsg[0] == "Url translation missing: ja.activerecord.errors.models.bookmark.attributes.url.taken"
         @already_exist_flag = true
       end
-      # binding.pry
-  		render 'new'
-  	end
+      render 'new'
+    end
   end
 
   # create時のバリデーションエラーのページをリロードした場合の対策
@@ -83,6 +89,13 @@ class BookmarksController < ApplicationController
 
   def update
   	@bookmark = Bookmark.find(params[:id])
+    #3つより多くおすすめ設定しようとしていないかチェック
+    if @bookmark.is_recommended == false
+      if params[:bookmark][:is_recommended] == "true" && (Bookmark.where(user_id: current_user.id).where(is_recommended: true).count >= 3)
+        @too_many_recommended_flag = true
+        render 'edit' and return
+      end
+    end
   	if @bookmark.update(bookmark_params)
   		redirect_to user_path(current_user.id) #仮に
   	else
@@ -92,7 +105,7 @@ class BookmarksController < ApplicationController
       if @url_errmsg[0] == "Url translation missing: ja.activerecord.errors.models.bookmark.attributes.url.taken"
         @already_exist_flag = true
       end
-      render 'new'
+      render 'edit'
   	end
   end
 
