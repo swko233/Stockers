@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships
 
   has_many :bookmarks, dependent: :destroy
+  has_many :works
 
   attachment :image
 
