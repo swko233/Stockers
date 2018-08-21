@@ -14,20 +14,35 @@
   <body>
     <!-- ヘッダー -->
     <div class="my-header">
-      <div class="container wrapper">
-        <div class="contents">
-          <%= link_to 'ログイン', new_user_session_path %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <div class="header-wrapper">
+        <div class="header-contents">
+          <div class="logo">
+            <%= link_to 'ログイン', new_user_session_path %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          </div>
           <% if user_signed_in? %>
-            <ul>
-              <li><%= current_user.email %>でログイン中</li>
-              <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-              <li><%= link_to '新規投稿', new_bookmark_path %></li>
-              <li><%= link_to 'プロフィール設定', edit_user_path(current_user.id) %></li>
-            </ul>
+            <div class="user-menu">
+              <div class="dropdown-box">
+                <div class="user-info-header">
+                  <div>
+                    <p class="user-name-header"><%= current_user.name %></p>
+                    <p class="user-nickname-header"><%= current_user.nickname %></p>
+                 </div>
+                </div>
+                <div class="user-icon">
+                  <%= attachment_image_tag current_user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "header-icon" %>
+                </div>
+              </div>
+              <div id="dropdown-window">
+                  <div><%= link_to 'マイページ', user_path(current_user.id) %></div>
+                  <div><%= link_to '新規投稿', new_bookmark_path %></div>
+                  <div><%= link_to 'プロフィール設定', edit_user_path(current_user.id) %></div>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
+    </div>
 
     <%= yield %>
   </body>

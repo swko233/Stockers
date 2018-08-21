@@ -43,6 +43,74 @@ li{
     display: block;
     clear: both;
 }
+// ヘッダー
+.my-header{
+	background-color: #fff;
+	height: 60px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 20px;
+
+	.header-wrapper{
+		height: 100%;
+		width: 70%;
+		margin: 0 auto;
+	}
+
+	.header-contents{
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.user-menu{
+		cursor: pointer;
+		position: relative;
+	}
+	.dropdown-box{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	#dropdown-window{
+		display: none;
+	}
+	#dropdown-window.is-active{
+		display: block;
+		position: absolute;
+		bottom: -90px;
+		z-index: 100;
+		// デザイン
+		border: 1px solid lightgray;
+	}
+	.user-info-header{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-right: 10px;
+	}
+	.user-name-header{
+		margin-bottom: 7px;
+	}
+	.user-nickname-header{
+		font-size: 10px;
+		color: #999;
+		margin-bottom: 0;
+	}
+	.user-icon{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.header-icon{
+		background-size: cover;
+		background-position: center center;
+		border: 1px solid #efefef;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+	}
+}
+
 //ログイン失敗アラート
 .login-alert{
 	text-align: center;
