@@ -28,7 +28,7 @@ $(document).on('turbolinks:load',function(){
 	$(function(){
 		//ドロップダウンを開く
 		$('.user-menu').on('click', function(){
-			// 下の処理で、メニュー非表示のためにユーザー情報欄をクリックしてもイベントが起きなくなったので追記
+			// 閉じる処理で、メニュー非表示にしようとしてユーザー情報欄をクリックしてもイベントが起きなくなったので追記
 			if ($('#dropdown-window').hasClass('is-active')){
 				$('#dropdown-window').removeClass('is-active');
 			}else{

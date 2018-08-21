@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <div id="wrapper">
     <!-- ヘッダー -->
     <div class="my-header">
       <div class="header-wrapper">
@@ -45,5 +46,34 @@
     </div>
 
     <%= yield %>
+    <% if user_signed_in? %>
+      <div class="my-footer">
+        <div class="footer-wrapper">
+            <div class="nav-links">
+              <%= link_to search_bookmark_path(current_user.id) do %>
+                <div class="nav-my-bookmark">
+                  <i class="far fa-folder-open fa-2x"></i>
+                </div>
+              <% end %>
+              <%= link_to new_bookmark_path do %>
+                <div class="nav-new-bookmark">
+                  <i class="far fa-plus-square fa-2x"></i>
+                </div>
+              <% end %>
+              <%= link_to user_path(current_user.id) do %> <!--ユーザー検索？ -->
+                <div class="nav-search-user">
+                  <%= attachment_image_tag current_user, :image, :fill, 30, 30, fallback: "no_user_image", format: "png", class: "footer-icon" %>
+                </div>
+              <% end %>
+              <%= link_to user_path(current_user.id) do %>
+                <div class="nav-user-page">
+                  <%= attachment_image_tag current_user, :image, :fill, 30, 30, fallback: "no_user_image", format: "png", class: "footer-icon" %>
+                </div>
+              <% end %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
   </body>
 </html>

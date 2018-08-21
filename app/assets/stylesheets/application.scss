@@ -43,6 +43,15 @@ li{
     display: block;
     clear: both;
 }
+// フッター固定用
+body,#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.my-footer{
+	margin-top :auto;
+}
 // ヘッダー
 .my-header{
 	background-color: #fff;
@@ -108,6 +117,51 @@ li{
 		border-radius: 50%;
 		width: 40px;
 		height: 40px;
+	}
+}
+// フッター
+.my-footer{
+	width: 100%;
+	height: 60px;
+	background-color: #345068;
+
+	.footer-wrapper{
+		height: 100%;
+		width: 70%;
+		margin: 0 auto;
+	}
+	.nav-links{
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	// 要素数によって変動
+	.nav-links a{
+		width: 25%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.nav-links a:hover{
+		opacity: 0.8;
+	}
+	.nav-links .far{
+		color: #fff;
+	}
+	.nav-search-user{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.footer-icon{
+		background-size: cover;
+		background-position: center center;
+		border: 1px solid #efefef;
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
 	}
 }
 
