@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
+		@following_number = @user.following.count
+		@follower_number = @user.followers.count
 		@bookmarks = Bookmark.where(user_id: @user.id)
 		@works = Work.where(user_id: @user.id)
 		@recommended_bookmarks = @bookmarks.where(is_recommended: true)
@@ -124,12 +127,18 @@ class UsersController < ApplicationController
 
 	def following
 		@user = User.find(params[:id])
+		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
+		@following_number = @user.following.count
+		@follower_number = @user.followers.count
 		@users = @user.following
 		render 'show_following'
 	end
 
 	def followers
 		@user = User.find(params[:id])
+		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
+		@following_number = @user.following.count
+		@follower_number = @user.followers.count
 		@users = @user.followers
 		render 'show_followers'
 	end
