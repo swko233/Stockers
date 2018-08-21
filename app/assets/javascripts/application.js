@@ -18,3 +18,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-tagsinput.min
 
+// バリデーションエラー時の「必須」アイコンのずれ解消
+$(function(){
+	$("div.field_with_errors:has(label)").addClass("parent");
+});

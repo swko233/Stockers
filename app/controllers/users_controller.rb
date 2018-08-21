@@ -2,14 +2,20 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
+		@following_number = @user.following.count
+		@follower_number = @user.followers.count
 		@bookmarks = Bookmark.where(user_id: @user.id)
 		@works = Work.where(user_id: @user.id)
 		@recommended_bookmarks = @bookmarks.where(is_recommended: true)
 		@recommended_work = @works.find_by(is_recommended: true)
 		#おすすめ自作サービスをブックマークに追加しているかどうかの判定用変数(追加している場合はブックマーク解除に使用)
 		#Ajaxでrenderした後は、ビューで変数定義し直す
-		unless @recommended_work.nil?
-			@my_work_bookmark = current_user.bookmarks.find_by(work_id: @recommended_work.id)
+
+		#念のため、ブックマーク内に重複したURLがないかどうかチェック
+		if @recommended_work.present?
+			@my_work_bookmark = current_user.bookmarks.find_by(url: @recommended_work.url)
+			@my_work_bookmark = current_user.bookmarks.find_by(work_id: @recommended_work.id) if @my_work_bookmark.nil?
 		end
 		#タグ一覧取得
 		tags = []
@@ -121,12 +127,18 @@ class UsersController < ApplicationController
 
 	def following
 		@user = User.find(params[:id])
+		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
+		@following_number = @user.following.count
+		@follower_number = @user.followers.count
 		@users = @user.following
 		render 'show_following'
 	end
 
 	def followers
 		@user = User.find(params[:id])
+		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
+		@following_number = @user.following.count
+		@follower_number = @user.followers.count
 		@users = @user.followers
 		render 'show_followers'
 	end

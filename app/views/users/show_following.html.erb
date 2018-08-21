@@ -3,14 +3,18 @@
 <div class="container">
 	<section class="user-profile">
 		<div class="profile-main">
+			<%= link_to user_path(@user.id) do %>
 			<div class="icon-box">
 				<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
 			</div>
+			<% end %>
 			<div class="user-info">
+				<%= link_to user_path(@user.id) do %>
 				<div class="user-name">
 					<p class="name"><%= @user.name %></p>
 					<p class="nickname">@<%= @user.nickname %></p>
 				</div>
+				<% end %>
 				<div class="links">
 					<section class="stats">
 						<%= render 'stats' %>

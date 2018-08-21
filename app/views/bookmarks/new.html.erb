@@ -2,6 +2,17 @@
 <%= stylesheet_link_tag "bookmarks/new", :medea => "all" %>
 
 <div class="container">
+	<% if @bookmark.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @bookmark.errors.count %>件のエラーがあります。</h2>
+ 
+    <ul>
+    <% @bookmark.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 	<h1>登録フォーム</h1>
 	<div class="post-title">
 		<div class="active">ブックマーク</div>
@@ -10,12 +21,22 @@
 	<div class="new-posts">
 		<%= form_for(@bookmark) do |f| %>
 			<div class="field">
-				<%= f.label :servive_name, 'サービス名(必須）' %></br>
+				<%= f.label :servive_name, 'サービス名' %><span class="form-require">必須</span></br>
 				<%= f.text_field :service_name %>
+				<% if @service_name_errmsg.present? %>
+					<div class="error-message">入力してください</div>
+				<% end %>
 			</div>
 			<div class="field">
-				<%= f.label :url, 'URL（必須）' %></br>
+				<%= f.label :url, 'URL' %><span class="form-require">必須</span></br>
 				<%= f.text_field :url %>
+				<% if @url_errmsg.present? %>
+					<% if @already_exist_flag == true %>
+						<div class="error-message">すでにブックマーク済みのURLです</div>
+					<% else %>
+						<div class="error-message">入力してください</div>
+					<% end %>
+				<% end %>
 			</div>
 			<div class="field">
 				<%= f.label :overview, 'サービスの概要' %></br>
@@ -46,9 +67,12 @@
 				<%= f.label :is_recommended, 'おすすめ設定' %></br>
 				<span>する<%= f.radio_button :is_recommended, true %></span>
 				<span>しない<%= f.radio_button :is_recommended, false %></span>
+				<% if @too_many_recommended_flag.present? %>
+					<div class="error-message">おすすめ設定は3つまでです</div>
+				<% end %>
 			</div>
 			<div class="actions">
-				<%= f.submit 'ブックマークに追加する', class: "btn btn-primary" %>
+				<%= f.submit 'ブックマークに追加する', class: "btn btn-success" %>
 			</div>
 		<% end %>
 	</div>

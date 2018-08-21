@@ -34,7 +34,8 @@ h1{
 }
 label{
 	margin-bottom: 3px;
-	font-size: 12px;
+	font-size: 13px;
+	line-height: 25px;
 }
 .action{
 	margin-top: 20px;
@@ -47,3 +48,15 @@ label{
 .password-notice{
 	background: green;
 }
+//エラー時のフォーム赤枠
+.field_with_errors input, .field_with_errors textarea{
+	border: 2px solid #ea352d;
+  	outline: 0;
+ }
+ .error-message{
+ 	color: #ea352d;
+ 	padding-top: 5px;
+ }
+ .parent{
+ 	display: inline-block;
+ }
