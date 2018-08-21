@@ -1,29 +1,67 @@
-<h2>Sign up</h2>
+<%= stylesheet_link_tag "bookmarks/new", :media => "all" %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="container">
+  <h1>新規登録</h1>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="field">
+      <%= f.label :email, 'メールアドレス' %><span class="form-require">必須</span><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <% if @email_errmsg.present? %>
+        <% if @email_exist_flag == true %>
+          <div class="error-message">すでに登録済みのメールアドレスです</div>
+        <% else %>
+          <div class="error-message">入力してください</div>
+        <% end %>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <div class="field">
+      <%= f.label :name, 'ユーザー名' %><span class="form-require">必須</span><br />
+      <%= f.email_field :name, autofocus: true %>
+      <% if @nickname_errmsg.present? %>
+          <div class="error-message">入力してください</div>
+      <% end %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :nickname, 'ユーザーID' %><span class="form-require">必須</span><br />
+      <%= f.email_field :nickname, autofocus: true, placeholder: "@example のように表示されます" %>
+      <% if @nickname_errmsg.present? %>
+          <div class="error-message">入力してください</div>
+      <% end %>
+    </div>
 
-<%= render "users/shared/links" %>
+
+    <div class="field">
+      <%= f.label :password, 'パスワード' %><span class="form-require">必須</span>
+      <br />
+      <%= f.password_field :password, autocomplete: "off", placeholder: "6文字以上" %>
+      <% if @password_errmsg.present? %>
+        <% if @password_short_flag == true %>
+          <div class="error-message">パスワードが短すぎます</div>
+        <% elsif @password_long_flag == true %>
+          <div class="error-message">パスワードが長すぎます（30文字以内）</div>
+        <% else %>
+          <div class="error-message">入力してください</div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation,'パスワード(確認)' %><span class="form-require">必須</span><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <% if @password_confirmation_errmsg.present? %>
+          <div class="error-message">パスワードが一致しません</div>
+      <% end %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit "登録する", class: "btn btn-success" %>
+    </div>
+  <% end %>
+
+  <%= render "users/shared/links" %>
+</div>
