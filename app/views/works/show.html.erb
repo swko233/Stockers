@@ -1,30 +1,74 @@
-<%= stylesheet_link_tag "users/show", :media => "all" %>
+<%= stylesheet_link_tag "works/show", :media => "all" %>
 
-<div class="container">
+	<div class="container">
 		<section class="recommended-work">
-			<h1>つくったサービス</h1>
+			<h1>サービス詳細</h1>
 			<div class="work-box">
-				<div class="work-image image-box">
-					<% if @work.service_image_id == nil %>
-						<i class="far fa-image fa-4x"></i>
-					<% else %>
-						<%= attachment_image_tag @work, :service_image, :fill,200,200, fallback: "no_service_image", class: "image-radius" %>
-					<% end %>
+				<div class="work-image-communication-box">
+					<div class="work-image image-box">
+						<% if @work.service_image_id == nil %>
+							<i class="far fa-image fa-4x"></i>
+						<% else %>
+							<%= attachment_image_tag @work, :service_image, :fill,300,300, fallback: "no_service_image", class: "image-radius" %>
+						<% end %>
+					</div>
+					<!-- いいねボタンなど -->
+					<% @this_work = @work %>
+					<%= render 'users/communications' %>
 				</div>
 				<div class="work-introduction">
-					<a href="<%= @work.url %>" target="_blank">
-						<p class="service-name"><%= @work.service_name %></p>
-						<p class="url"><%= @work.url %></p>
-					</a>
-					<p class="overview"><%= @work.overview %></p>
-					<p class="description"><%= @work.description %></p>
-					<p class="release_date"><%= @work.release_date %></p>
-					<div class="tag-list">
-						<ul>
-							<% @work.tag_list.each do |tag| %>
-								<li><a href=""><span><%= tag %></span></a></li>
-							<% end %>
-						</ul>
+					<div class="work-text-box">
+						<div class="work-title">
+							<div class="work-name">
+								<a href="<%= @work.url %>" target="_blank">
+									<p class="service-name"><%= @work.service_name %></p>
+									<p class="url"><%= @work.url %></p>
+								</a>
+							</div>
+							<div class="edit-tools">
+								<% if @work.user == current_user %>
+									<% if @work.is_published == false %>
+										<i class="fas fa-lock fa-fw lock-color"></i>
+									<% end %>
+									<%= link_to edit_work_path(@work.id) do %>
+										<i class="fas fa-edit fa-2x"></i>
+									<% end %>
+								<% end %>
+							</div>
+						</div>
+						<div class="tag-list">
+							<!-- <p class="sub-headline">タグ</p> -->
+							<ul>
+								<% @work.tag_list.each do |tag| %>
+									<li><a href=""><span><%= tag %></span></a></li>
+								<% end %>
+							</ul>
+						</div>
+						<div class="overview">
+							<p class="sub-headline">概要</p>
+							<p class="overview-text"><%= @work.overview %></p>
+						</div>
+						<div class="description">
+							<p class="sub-headline">サービス詳細</p>
+							<p><%= simple_format(@work.description) %></p>
+						</div>
+						<div class="developer">
+							<p class="sub-headline">作者</p>
+							<%= link_to user_path(@work.user.id) do %>
+								<div class="developer-box">
+									<div class="developer-icon">
+					                  	<%= attachment_image_tag current_user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "icon" %>
+					                </div>
+									<div class="developer-info">
+					                	<div>
+						                    <p class="developer-name"><%= current_user.name %></p>
+						                    <p class="developer-nickname">@<%= current_user.nickname %></p>
+					                	 </div>
+				                	</div>
+			                	</div>
+			                <% end %>
+						</div>
+						
 					</div>
 					<!-- ブックマークに追加ボタン -->
 					<% if @my_work_bookmark.nil? %>
@@ -44,5 +88,11 @@
 			</div>
 		</section>
 		<section class="work-comments">
+			<div class="comment-list">
+				<% @work.comments.each do |comment| %>
+					<div class="comment-box">
+					</div>
+				<% end %>
+			</div>
 		</section>
-	</div>
+</div>

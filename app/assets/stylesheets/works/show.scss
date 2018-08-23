@@ -1,0 +1,204 @@
+// 全体構成
+.container-mypage{
+	max-width: 800px;
+	// background: #fff;
+}
+.stock-services{
+	background: #fff;
+}
+.container{
+	max-width: 920px;
+}
+// // 共通部品
+// p{
+// 	margin-bottom: 0;
+// }
+.recommended-work{
+	padding: 10px 40px 40px 40px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+h1{
+	color: #345068;
+	font-size: 20px;
+	padding-bottom: 30px;
+}
+.developer-icon{
+	width: 35px;
+	height: 35px;
+}
+.developer-introduction{
+	padding-left: 15px;
+}
+.developer-introduction p{
+	margin: 0;
+}
+// いいね、コメント
+.communications{
+	padding-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	.favorited-heart{
+		color: #ff4049;
+	}
+	.comments{
+		margin-left: 10px;
+	}
+	.favorite-count{
+		margin-left: 20px;
+	}
+}
+// ユーザープロフィール
+.user-profile{
+	background: #fff;
+	padding: 30px 10px;
+}
+.profile-main{
+	display: flex;
+	align-items: start;
+	justify-content: flex-start;
+	position: relative;
+}
+.icon-box{
+	margin-top: 10px;
+	padding-left: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.icon{
+	background-size: cover;
+	background-position: center center;
+	border: 1px solid #efefef;
+	border-radius: 50%;
+	width: 90px;
+	height: 90px;
+}
+.user-info{
+	padding-left: 100px;
+
+	.user-name{
+		margin-bottom: 20px;
+	}
+	.name{
+		font-size: 20px;
+		margin-bottom: 5px;
+
+	}
+	.nickname{
+		font-size: 13px;
+		color: #999;
+	}
+	.stats a{
+		color: #66757f;
+		margin-right: 15px;
+		font-size: 15px;
+	}
+}
+.follow-button{
+	position: absolute;
+	right: 30px;
+	top: 5px;
+}
+// おすすめ自作サービス
+.recommended-work{
+	background: #fff;
+	margin-top: 2px;
+
+	.work-box{
+		position: relative;
+		width: 100%;
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+	.work-text-box{
+		margin-bottom: 30px;
+	}
+	.overview,.description,.developer{
+		margin-bottom: 35px;
+	}
+	.work-title{
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: 20px;
+	}
+	.tag-list{
+		margin-bottom: 40px;
+	}
+	.work-name{
+		margin-bottom: 0;
+	}
+	.edit-tools{
+		padding-left: 50px;
+	}
+	.work-image{
+		border-radius: 5px;
+	}
+	.work-introduction{
+		padding-left: 70px;
+
+		.overview-text{
+			color: #345068;
+			font-size: 15px;
+		}
+		.description{
+			letter-spacing: 0.2px;
+			line-height: 22px;
+		}
+		.description p{
+			margin-bottom: 15px;
+		}
+	}
+	.service-name{
+		font-size: 25px;
+		font-weight: bold;
+		color: #222;
+		margin-bottom: 7px;
+	}
+	.overview span{
+		padding-left: 15px;
+	}
+	.url{
+		font-size: 18px;
+		color: #999;
+	}
+	// 作者
+	.developer-box{
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.developer-icon{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-right: 10px;
+	}
+	.icon{
+		background-size: cover;
+		background-position: center center;
+		border: 1px solid #efefef;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+	}
+	.developer-name{
+		margin-bottom: 7px;
+	}
+	.developer-nickname{
+		font-size: 10px;
+		color: #999;
+		margin-bottom: 0;
+	}
+	.btn-bookmark,.btn-bookmarked{
+		width: 250px;
+	}
+	.btn-bookmark span{
+		padding-left: 15px;
+	}
+}
