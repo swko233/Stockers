@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :bookmarks, dependent: :destroy
   has_many :works
+  has_many :comments
+  has_many :favorites
 
   attachment :image
   #developアカウントの許可がおりないため、ツイッターログインは一旦無視

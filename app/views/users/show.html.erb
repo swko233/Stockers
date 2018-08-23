@@ -72,6 +72,17 @@
 					<% end %>
 				</div>
 			</div>
+			<div class="communications">
+				<div class="favorite-button<%= @recommended_work.id %>">
+					<!-- 部分テンプレートの変数に合わせる -->
+					<% @this_work = @recommended_work %>
+					<% if @this_work.favorite_by?(current_user) %>
+						<%= render 'favorited' %>
+					<% else %>
+						<%= render 'unfavorited' %>
+					<% end %>
+				</div>
+			</div>
 		</section>
 	<% end %>
 	<section class="recommended-services">
@@ -267,6 +278,17 @@
 						<div class="work-description">
 							<p><%= work.service_name %></p>
 							<p><%= work.overview %></p>
+						</div>
+						<div class="communications">
+							<div class="favorite-button<%= work.id %>">
+								<!-- 部分テンプレートの変数に合わせる -->
+								<% @this_work = work %>
+								<% if @this_work.favorite_by?(current_user) %>
+									<%= render 'favorited' %>
+								<% else %>
+									<%= render 'unfavorited' %>
+								<% end %>
+							</div>
 						</div>
 					</div>
 				<% end %>

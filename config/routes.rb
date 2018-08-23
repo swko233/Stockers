@@ -28,5 +28,8 @@ Rails.application.routes.draw do
   get 'works/:id/add_bookmark' => 'bookmarks#add_work_bookmark',as: "add_work_bookmark"
   delete 'works/:id/destroy_bookmark' => 'bookmarks#destroy_work_bookmark',as: "destroy_work_bookmark"
   resources :bookmarks
-  resources :works
+  resources :works do
+    resource :comments, only: [:index, :create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
 end

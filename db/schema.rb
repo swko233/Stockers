@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_19_075222) do
+ActiveRecord::Schema.define(version: 2018_08_23_113522) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,6 +44,22 @@ ActiveRecord::Schema.define(version: 2018_08_19_075222) do
     t.integer "user_id"
     t.integer "work_id"
     t.index ["url", "user_id"], name: "index_bookmarks_on_url_and_user_id", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment", null: false
+    t.integer "user_id", null: false
+    t.integer "work_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "work_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "work_id"], name: "index_favorites_on_user_id_and_work_id", unique: true
   end
 
   create_table "folders", force: :cascade do |t|
