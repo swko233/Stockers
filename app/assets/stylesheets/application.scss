@@ -86,10 +86,32 @@ body,#wrapper {
 	#dropdown-window.is-active{
 		display: block;
 		position: absolute;
-		bottom: -90px;
+		bottom: -125px;
 		z-index: 100;
 		// デザイン
-		border: 1px solid lightgray;
+		width: 130px; //レイアウト崩れを防ぐ
+		background: #fff;
+	    font-size: 13px;
+	    text-align: left;
+	    box-shadow: 0px 2px 3px 0px rgba(25,25,25,0.2);
+	    border: 1px solid #ddd;
+	    border-radius: 3px
+	}
+	#dropdown-window.is-active a{
+		text-decoration: none;
+		color: #345068;
+
+		.dropdown-content{
+			padding: 10px;
+			border-bottom: 1px solid #efefef;
+		}
+		.dropdown-content:hover{
+			background: #efefef;
+			color: #222;
+		}
+	}
+	#dropdown-window.is-active a:hover{
+		
 	}
 	.user-info-header{
 		display: flex;
@@ -136,9 +158,8 @@ body,#wrapper {
 		align-items: center;
 		justify-content: space-around;
 	}
-	// 要素数によって変動
 	.nav-links a{
-		width: 25%;
+		width: 33%; // 要素数によって変動
 		height: 100%;
 		display: flex;
 		align-items: center;

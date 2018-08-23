@@ -35,9 +35,15 @@
                 </div>
               </div>
               <div id="dropdown-window">
-                  <div><%= link_to 'マイページ', user_path(current_user.id) %></div>
-                  <div><%= link_to '新規投稿', new_bookmark_path %></div>
-                  <div><%= link_to 'プロフィール設定', edit_user_path(current_user.id) %></div>
+                  <%= link_to user_path(current_user.id) do %>
+                    <div class="dropdown-content"><span>マイページ</span></div>
+                  <% end %>
+                  <%= link_to edit_user_path(current_user.id) do %>
+                    <div class="dropdown-content"><span>ユーザー設定</span></div>
+                  <% end %>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <div class="dropdown-content"><span>ログアウト</span></div>
+                  <% end %>
               </div>
             </div>
           <% end %>
@@ -58,11 +64,6 @@
               <%= link_to new_bookmark_path do %>
                 <div class="nav-new-bookmark">
                   <i class="far fa-plus-square fa-2x"></i>
-                </div>
-              <% end %>
-              <%= link_to user_path(current_user.id) do %> <!--ユーザー検索？ -->
-                <div class="nav-search-user">
-                  <%= attachment_image_tag current_user, :image, :fill, 30, 30, fallback: "no_user_image", format: "png", class: "footer-icon" %>
                 </div>
               <% end %>
               <%= link_to user_path(current_user.id) do %>
