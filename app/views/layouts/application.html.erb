@@ -17,11 +17,30 @@
     <div class="my-header">
       <div class="header-wrapper">
         <div class="header-contents">
-          <div class="logo">
+          <div class="contents-logo">
             <%= link_to 'ログイン', new_user_session_path %>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
           </div>
+          <div class="contents-navigation">
           <% if user_signed_in? %>
+            <div class="bookmark-menu">
+              <div class="nav-box">
+                <%= link_to search_bookmark_path(current_user.id) do %>
+                <div class="nav-button  bookmark-nav">
+                  <i class="fas fa-folder-open"></i>
+                  <span>ブックマーク一覧</span>
+                </div>
+               <% end %>
+              </div>
+              <div class="nav-box">
+                <%= link_to new_bookmark_path do %>
+                  <div class=" nav-button new-bookmark-nav">
+                    <i class="fas fa-plus"></i>
+                    <span>新規登録</span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
             <div class="user-menu">
               <div class="dropdown-box">
                 <div class="user-info-header">
@@ -47,6 +66,7 @@
               </div>
             </div>
           <% end %>
+          </div>
         </div>
       </div>
     </div>

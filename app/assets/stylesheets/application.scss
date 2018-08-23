@@ -64,14 +64,45 @@ body,#wrapper {
 		width: 70%;
 		margin: 0 auto;
 	}
-
 	.header-contents{
 		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 	}
+	.contents-navigation{
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.bookmark-menu{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.nav-box a{
+		text-decoration: none;
+	}
+	.nav-button{
+		background-color: #40aaff;
+		margin-left: 10px;
+	    padding: 7px 20px;
+	    border-radius: 3px;
+	    font-size: 12px;
+	}
+	.nav-button.new-bookmark-nav *{
+		color: #fff;
+	}
+	.nav-button.bookmark-nav{
+		background-color: #d4dde8;
+
+		span{
+			color: #73899c;
+		}
+	}
 	.user-menu{
+		margin-left: 80px;
 		cursor: pointer;
 		position: relative;
 	}
@@ -109,9 +140,6 @@ body,#wrapper {
 			background: #efefef;
 			color: #222;
 		}
-	}
-	#dropdown-window.is-active a:hover{
-		
 	}
 	.user-info-header{
 		display: flex;
