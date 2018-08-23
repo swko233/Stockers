@@ -12,23 +12,89 @@
   </head>
 
   <body>
+    <div id="wrapper">
     <!-- ヘッダー -->
     <div class="my-header">
-      <div class="container wrapper">
-        <div class="contents">
-          <%= link_to 'ログイン', new_user_session_path %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <div class="header-wrapper">
+        <div class="header-contents">
+          <div class="contents-logo">
+            <%= link_to 'ログイン', new_user_session_path %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          </div>
+          <div class="contents-navigation">
           <% if user_signed_in? %>
-            <ul>
-              <li><%= current_user.email %>でログイン中</li>
-              <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-              <li><%= link_to '新規投稿', new_bookmark_path %></li>
-              <li><%= link_to 'プロフィール設定', edit_user_path(current_user.id) %></li>
-            </ul>
+            <div class="bookmark-menu">
+              <div class="nav-box">
+                <%= link_to search_bookmark_path(current_user.id) do %>
+                <div class="nav-button  bookmark-nav">
+                  <i class="fas fa-folder-open"></i>
+                  <span>ブックマーク一覧</span>
+                </div>
+               <% end %>
+              </div>
+              <div class="nav-box">
+                <%= link_to new_bookmark_path do %>
+                  <div class=" nav-button new-bookmark-nav">
+                    <i class="fas fa-plus"></i>
+                    <span>新規登録</span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="user-menu">
+              <div class="dropdown-box">
+                <div class="user-info-header">
+                  <div>
+                    <p class="user-name-header"><%= current_user.name %></p>
+                    <p class="user-nickname-header"><%= current_user.nickname %></p>
+                 </div>
+                </div>
+                <div class="user-icon">
+                  <%= attachment_image_tag current_user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "header-icon" %>
+                </div>
+              </div>
+              <div id="dropdown-window">
+                  <%= link_to user_path(current_user.id) do %>
+                    <div class="dropdown-content"><span>マイページ</span></div>
+                  <% end %>
+                  <%= link_to edit_user_path(current_user.id) do %>
+                    <div class="dropdown-content"><span>ユーザー設定</span></div>
+                  <% end %>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <div class="dropdown-content"><span>ログアウト</span></div>
+                  <% end %>
+              </div>
+            </div>
           <% end %>
+          </div>
         </div>
       </div>
+    </div>
 
     <%= yield %>
+    <% if user_signed_in? %>
+      <div class="my-footer">
+        <div class="footer-wrapper">
+            <div class="nav-links">
+              <%= link_to search_bookmark_path(current_user.id) do %>
+                <div class="nav-my-bookmark">
+                  <i class="far fa-folder-open fa-2x"></i>
+                </div>
+              <% end %>
+              <%= link_to new_bookmark_path do %>
+                <div class="nav-new-bookmark">
+                  <i class="far fa-plus-square fa-2x"></i>
+                </div>
+              <% end %>
+              <%= link_to user_path(current_user.id) do %>
+                <div class="nav-user-page">
+                  <%= attachment_image_tag current_user, :image, :fill, 30, 30, fallback: "no_user_image", format: "png", class: "footer-icon" %>
+                </div>
+              <% end %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
   </body>
 </html>
