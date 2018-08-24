@@ -143,6 +143,18 @@ class UsersController < ApplicationController
 		render 'show_followers'
 	end
 
+	def destroy
+		@user = current_user
+		if @user.soft_delete
+			sign_out(@user)
+			redirect_to root_path
+			flash[:notice] = "退会しました"
+		else
+			redirect_to user_path(@user.id)
+			flash[:alert] = "エラーが発生しました"
+		end
+	end
+
 	private
 
 	def user_params

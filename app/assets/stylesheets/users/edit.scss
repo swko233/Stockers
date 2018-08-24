@@ -40,6 +40,14 @@ label{
 .action{
 	margin-top: 20px;
 }
+.actions{
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+.soft-delete a{
+	color: #AEBFC7;
+}
 .btn{
 	padding: 7px 15px;
 }
