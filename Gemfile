@@ -82,3 +82,5 @@ gem 'font-awesome-rails'
 #データ生成
 gem 'faker'
 gem 'gimei'
+# 削除モーダルウィンドウ
+gem 'data-confirm-modal'

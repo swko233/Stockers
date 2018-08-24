@@ -33,6 +33,7 @@ class WorksController < ApplicationController
 
 	def show
 		@work = Work.find(params[:id])
+		@comment = Comment.new
 		unless @work.nil?
 			@my_work_bookmark = current_user.bookmarks.find_by(work_id: @work.id)
 		end

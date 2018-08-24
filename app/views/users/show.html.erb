@@ -72,6 +72,9 @@
 					<% end %>
 				</div>
 			</div>
+			<!-- 部分テンプレートの変数に合わせる -->
+			<% @this_work = @recommended_work %>
+			<%= render 'communications' %>
 		</section>
 	<% end %>
 	<section class="recommended-services">
@@ -219,6 +222,7 @@
 								</ul>
 							</div>
 						</div>
+						<!-- 自分のページだと編集ツール、他人のページだとブックマークボタンを表示 -->
 						<% if @user == current_user %>
 						<div class="edit-tools">
 							<% if bookmark.is_published == false %>
@@ -268,6 +272,9 @@
 							<p><%= work.service_name %></p>
 							<p><%= work.overview %></p>
 						</div>
+						<!-- 部分テンプレートの変数に合わせる -->
+						<% @this_work = work %>
+						<%= render 'communications' %>
 					</div>
 				<% end %>
 			<% end %>

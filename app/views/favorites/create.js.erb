@@ -1,0 +1,3 @@
+$(function(){
+	$(".favorite-button<%= @this_work.id %>").html("<%= escape_javascript(render('users/favorited')) %>");
+});

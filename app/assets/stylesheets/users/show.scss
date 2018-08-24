@@ -49,6 +49,23 @@ h1{
 .developer-introduction p{
 	margin: 0;
 }
+// いいね、コメント
+.communications{
+	padding-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	.favorited-heart{
+		color: #ff4049;
+	}
+	.comments{
+		margin-left: 10px;
+	}
+	.favorite-count{
+		margin-left: 20px;
+	}
+}
 // ユーザープロフィール
 .user-profile{
 	background: #fff;
@@ -132,8 +149,8 @@ h1{
 	.overview{
 		margin-bottom: 13px;
 	}
-	.overview span{
-		padding-left: 15px;
+	.overview-text{
+		// padding-left: 15px;
 	}
 	.work-detail-link{
 		margin-right: 10px;
@@ -156,13 +173,14 @@ h1{
 .recommended-services{
 	background: #fff;
 	margin-top: 2px;
-}
+
 	.no-service-wrap{
 		height: 50px;
 	}
 	.no-service{
 		font-size: 15px;
 	}
+}
 // おすすめ一覧
 .service-box{
 	width: 100%;
@@ -296,56 +314,6 @@ h1{
 	}
 }
 
-// タグクラウド
-.tag-list{
-
-	ul li {
-	  display: inline-block;
-	  margin: 0 0 0 1em;
-	  padding: 0;
-	}
-	ul{
-		margin-bottom: 0;
-	}
-	ul li a {
-	  position: relative;
-	  display: inline-block;
-	  height: 22px;
-	  line-height: 24px;
-	  padding: 0 0.8em 0 0.5em;
-	  background-color: #e0e0e0;
-	  border-radius: 0 3px 3px 0;
-	  color: #4a4a4a;
-	  font-size: 12px;
-	  text-decoration: none;
-	}
-	ul li a::before {
-	  position: absolute;
-	  top: 0;
-	  left: -11px;
-	  content: '';
-	  width: 0;
-	  height: 0;
-	  border-color: transparent #e0e0e0 transparent transparent;
-	  border-style: solid;
-	  border-width: 11px 11px 11px 0;
-	  border-radius: 3px;
-	}
-	ul li span {
-	  display: block;
-	  max-width: 100px;
-	  white-space: nowrap;
-	  text-overflow: ellipsis;
-	  overflow: hidden;
-	}
-	ul li a:hover {
-	  background-color: #555;
-	  color: #fff;
-	}
-	ul li a:hover::before {
-	  border-right-color: #555;
-	}
-}
 // 編集ツール
 .edit-tools{
 	// min-width: 80px; //押し出し防止
