@@ -3,9 +3,7 @@
 	max-width: 800px;
 	// background: #fff;
 }
-.stock-services{
-	background: #fff;
-}
+
 .container{
 	max-width: 920px;
 }
@@ -13,7 +11,7 @@
 // p{
 // 	margin-bottom: 0;
 // }
-.recommended-work{
+.recommended-work,.work-comments{
 	padding: 10px 40px 40px 40px;
 	border-radius: 10px;
 	margin-bottom: 20px;
@@ -167,38 +165,68 @@ h1{
 		font-size: 18px;
 		color: #999;
 	}
-	// 作者
-	.developer-box{
+}
+// 作者
+.developer-box{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.developer-icon{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+}
+.icon{
+	background-size: cover;
+	background-position: center center;
+	border: 1px solid #efefef;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+}
+.developer-name{
+	margin-bottom: 7px;
+}
+.developer-nickname{
+	font-size: 10px;
+	color: #999;
+	margin-bottom: 0;
+}
+.btn-bookmark,.btn-bookmarked{
+	width: 250px;
+}
+.btn-bookmark span{
+	padding-left: 15px;
+}
+// コメント機能
+.work-comments{
+
+	.comment-form{
+		width: 100%;
+		margin-bottom: 40px;
+	}
+	.comment-form textarea{
+		outline: 0;
+		padding: 10px;
+	}
+	.comment-box{
+		padding: 20px;
+		border: 1px solid #efefef;
+		border-radius: 3px;
+		background: #fff;
+		margin-bottom: 15px;
+	}
+	.comment-header{
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: flex-start;
 	}
-	.developer-icon{
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin-right: 10px;
+	.edit-tools{
+		margin-left: 40px;
 	}
-	.icon{
-		background-size: cover;
-		background-position: center center;
-		border: 1px solid #efefef;
-		border-radius: 50%;
-		width: 40px;
-		height: 40px;
-	}
-	.developer-name{
-		margin-bottom: 7px;
-	}
-	.developer-nickname{
-		font-size: 10px;
-		color: #999;
-		margin-bottom: 0;
-	}
-	.btn-bookmark,.btn-bookmarked{
-		width: 250px;
-	}
-	.btn-bookmark span{
-		padding-left: 15px;
+	.comment-body{
+		padding: 20px 25px 10px 25px;
 	}
 }

@@ -6,7 +6,7 @@
 			<%= render 'users/unfavorited' %>
 		<% end %>
 	</div>
-	<%= link_to work_path(@this_work.id) do %>
+	<%= link_to work_path(@this_work.id), :name => "comments" do %>
 		<div class="comments">
 			<i class="far fa-comment fa-2x"></i>
 		</div>

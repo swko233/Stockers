@@ -68,7 +68,6 @@
 			                	</div>
 			                <% end %>
 						</div>
-						
 					</div>
 					<!-- ブックマークに追加ボタン -->
 					<% if @my_work_bookmark.nil? %>
@@ -88,9 +87,44 @@
 			</div>
 		</section>
 		<section class="work-comments">
+			<h1 name="comments">コメントを投稿する</h1>
+			<div class="comment-form">
+				<%= form_for(@comment, url: work_comments_path(@work.id)) do |f| %>
+					<div class="field"><%= f.text_area :comment, placeholder: "コメントを入力してください" %></div>
+					<div class=""><%= f.submit 'コメントする', class: "btn btn-success" %></div>
+				<% end %>
+			</div>
 			<div class="comment-list">
 				<% @work.comments.each do |comment| %>
 					<div class="comment-box">
+						<div class="comment-header">
+						<!-- コメントしたユーザー表示 -->
+							<div class="developer">
+								<%= link_to user_path(@work.user.id) do %>
+									<div class="developer-box">
+										<div class="developer-icon">
+						                  	<%= attachment_image_tag current_user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "icon" %>
+						                </div>
+										<div class="developer-info">
+						                	<div>
+							                    <p class="developer-name"><%= current_user.name %></p>
+							                    <p class="developer-nickname">@<%= current_user.nickname %></p>
+						                	 </div>
+					                	</div>
+				                	</div>
+				                <% end %>
+							</div>
+							<div class="edit-tools">
+								<% if comment.user == current_user %>
+									<%= link_to work_comment_path(comment.id),method: :destroy do %>
+										<i class="fas fa-trash-alt"></i>
+									<% end %>
+								<% end %>
+							</div>
+						</div>
+						<div class="comment-body">
+							<%= comment.comment %>
+						</div>
 					</div>
 				<% end %>
 			</div>

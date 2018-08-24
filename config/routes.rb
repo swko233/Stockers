@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   delete 'works/:id/destroy_bookmark' => 'bookmarks#destroy_work_bookmark',as: "destroy_work_bookmark"
   resources :bookmarks
   resources :works do
-    resource :comments, only: [:index, :create, :destroy]
+    resources :comments, only: [:edit, :create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 end
