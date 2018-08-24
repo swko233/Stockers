@@ -8,10 +8,9 @@ class CommentsController < ApplicationController
 		comment.user_id = current_user.id
 		comment.work_id = params[:work_id]
 		if comment.save
-			redirect_to work_path(comment.work.id)
+			redirect_to work_path(comment.work.id, anchor:'work-comments')
 		else
-			flash[:notice] = "コメントに失敗しました"
-			redirect_to work_comments_path(comment.work.id)
+			redirect_to work_path(comment.work.id, anchor:'work-comments')
 		end
 
 	end
@@ -21,8 +20,7 @@ class CommentsController < ApplicationController
 		if comment.destroy
 			redirect_to work_path(comment.work.id, anchor:'work-comments')
 		else
-			flash[:notice] = "コメントに失敗しました"
-			redirect_to comments_path
+			redirect_to work_path(comment.work.id, anchor:'work-comments')
 		end
 	end
 
