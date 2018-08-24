@@ -153,12 +153,22 @@ h1{
 		// padding-left: 15px;
 	}
 	.work-detail-link{
+		text-decoration: none;
+	}
+	.work-detail-link:hover{
+		opacity: 0.8;
+	}
+	.work-detail-link .text{
 		margin-right: 10px;
+		color: #73899C;
 	}
 	.url{
 		font-size: 15px;
 		color: #999;
 		margin-bottom: 20px;
+	}
+	.tag-list.recommend-work-tag{
+		margin-top: 20px;
 	}
 	.btn-bookmark,.btn-bookmarked{
 		position: absolute;

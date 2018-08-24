@@ -1,18 +1,18 @@
 .container{
-	max-width: 800px;
+	max-width: 920px;
+	// background: #fff;
+}
+.user-profile,.user-list-box{
+	padding: 10px 40px 40px 40px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
 	background: #fff;
 }
-// ユーザープロフィール
-.user-profile{
-	background: #fff;
-	padding: 10px;
-	padding-top: 50px;
-}
-.profile-main{
-	display: flex;
-	align-items: start;
-	justify-content: flex-start;
-	position: relative;
+h1{
+	color: #345068;
+	font-size: 20px;
+	padding-bottom: 30px;
 }
 .icon-box{
 	margin-top: 10px;
@@ -28,6 +28,22 @@
 	width: 90px;
 	height: 90px;
 }
+// ユーザープロフィール
+.user-profile{
+	background: #fff;
+	padding: 30px 10px;
+}
+.profile-main{
+	display: flex;
+	align-items: start;
+	justify-content: flex-start;
+	position: relative;
+
+	.icon-box{
+		padding-left: 50px;
+	}
+}
+
 .user-info{
 	padding-left: 100px;
 

@@ -17,29 +17,7 @@
 		</div>
 	</div>
 	<div class="col-xs-3">
-		<section class="user-profile">
-			<div class="profile-main">
-				<div class="icon-box">
-					<div class="icon"></div>
-				</div>
-				<div id="user-info" value="<%= @user.id %>"> <!-- インクリメンタルサーチのurl取得用value -->
-					<div class="name">
-						<%= @user.email %>
-						<span id="user-id"><%= @user.id %></span>
-					</div>
-					<div class="links">
-						<section class="stats">
-							<%= render 'stats' %>
-						</section>
-					</div>
-				</div>
-			</div>
-			<div class="profile-sub">
-			</div>
-			<div class="follow_button">
-				<%= render 'follow_form' %>
-			</div>
-		</section>
+		<%= render 'users/user_info',user:@user %>
 		<div class="tag-all">
 			<h4>タグ</h4>
 			<div class="tag-list">

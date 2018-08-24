@@ -214,6 +214,62 @@ body,#wrapper {
 		height: 30px;
 	}
 }
+// ユーザー情報
+.target-user-box{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.target-user-icon{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+}
+.target-icon{
+	background-size: cover;
+	background-position: center center;
+	border: 1px solid #efefef;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+}
+.target-user-name{
+	margin-bottom: 7px;
+}
+.target-user-nickname{
+	font-size: 10px;
+	color: #999;
+	margin-bottom: 0;
+}
+//タグメニュー
+.tag-all{
+	margin-top: 50px;
+
+	.tag-list{
+		margin-top: 10px;
+	}
+	.tag-box{
+		margin-right: 10px;
+		padding: 5px 10px;
+		border-bottom: 1px #ddd dotted;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.tag-box.all{
+		padding-left: 5px
+	}
+	.tag-list a{
+		text-decoration: none;
+	}
+	.tag-number{
+		color: #333;
+	}
+	.tag-box:hover{
+		background-color: #efefef;
+	}
+}
 
 //ログイン失敗アラート
 .login-alert{

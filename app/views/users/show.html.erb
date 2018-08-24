@@ -31,12 +31,17 @@
 				<h1>つくったサービス</h1>
 			</div>
 			<div class="work-box">
-				<div class="work-image image-box">
-					<% if @recommended_work.service_image_id == nil %>
-						<i class="far fa-image fa-4x"></i>
-					<% else %>
-						<%= attachment_image_tag @recommended_work, :service_image, :fill,200,200, fallback: "no_service_image", class: "image-radius" %>
-					<% end %>
+				<div class="work-image-communication-box">
+					<div class="work-image image-box">
+						<% if @recommended_work.service_image_id == nil %>
+							<i class="far fa-image fa-4x"></i>
+						<% else %>
+							<%= attachment_image_tag @recommended_work, :service_image, :fill,200,200, fallback: "no_service_image", class: "image-radius" %>
+						<% end %>
+					</div>
+					<!-- 部分テンプレートの変数に合わせる -->
+					<% @this_work = @recommended_work %>
+					<%= render 'communications' %>
 				</div>
 				<div class="work-introduction">
 					<a href="<%= @recommended_work.url %>" target="_blank">
@@ -44,11 +49,12 @@
 						<p class="url"><%= @recommended_work.url %></p>
 					</a>
 					<p class="overview"><%= @recommended_work.overview %></p>
-					<%= link_to work_path(@recommended_work.id) do %>
-						<span class="work-detail-link">詳しくみる</span><i class="fas fa-chevron-right"></i>
+					<%= link_to work_path(@recommended_work.id), class: "work-detail-link" do %>
+						<p><span class="text">詳しくみる</span><i class="fas fa-chevron-right"></i></p>
 					<% end %>
 					<p class="release_date"><%= @recommended_work.release_date %></p>
-					<div class="tag-list">
+					<!-- タグ表示 -->
+					<div class="tag-list recommend-work-tag">
 						<ul>
 							<% @recommended_work.tag_list.each do |tag| %>
 								<li><a href="<%= search_bookmark_tag_path(@user.id, tag: tag) %>"><span><%= tag %></span></a></li>
@@ -72,9 +78,6 @@
 					<% end %>
 				</div>
 			</div>
-			<!-- 部分テンプレートの変数に合わせる -->
-			<% @this_work = @recommended_work %>
-			<%= render 'communications' %>
 		</section>
 	<% end %>
 	<section class="recommended-services">
@@ -156,17 +159,6 @@
 	<section class="stock-services">
 		<div class="title">
 			<h1>ストック一覧</h1>
-		</div>
-		<div class="tag-all">
-			<h4>タグ</h4>
-			<% @tag_all.zip(@tag_count).each do |tag,n| %>
-				<%= link_to search_bookmark_tag_path(tag: tag) do %>
-					<div class="tag-link">
-						<%= tag %>
-						<%= n %>
-					</div>
-				<% end %>
-			<% end %>
 		</div>
 		<div class="tab-list">
 			<div class="change-tab-wrap">

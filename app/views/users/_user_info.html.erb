@@ -1,0 +1,15 @@
+<div class="target-user">
+	<%= link_to user_path(user.id) do %>
+		<div class="target-user-box">
+			<div class="target-user-icon">
+				<%= attachment_image_tag user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "target-icon" %>
+			</div>
+			<div class="target-user-info">
+				<div>
+					<p class="target-user-name"><%= user.name %></p>
+					<p class="target-user-nickname">@<%= user.nickname %></p>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

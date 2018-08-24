@@ -54,19 +54,7 @@
 						</div>
 						<div class="developer">
 							<p class="sub-headline">作者</p>
-							<%= link_to user_path(@work.user.id) do %>
-								<div class="developer-box">
-									<div class="developer-icon">
-					                  	<%= attachment_image_tag @work.user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "icon" %>
-					                </div>
-									<div class="developer-info">
-					                	<div>
-						                    <p class="developer-name"><%= @work.user.name %></p>
-						                    <p class="developer-nickname">@<%= @work.user.nickname %></p>
-					                	 </div>
-				                	</div>
-			                	</div>
-			                <% end %>
+							<%= render 'users/user_info', user: @work.user %>
 						</div>
 					</div>
 					<!-- ブックマークに追加ボタン -->
@@ -99,21 +87,7 @@
 					<div class="comment-box">
 						<div class="comment-header">
 						<!-- コメントしたユーザー表示 -->
-							<div class="developer">
-								<%= link_to user_path(comment.user.id) do %>
-									<div class="developer-box">
-										<div class="developer-icon">
-						                  	<%= attachment_image_tag comment.user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "icon" %>
-						                </div>
-										<div class="developer-info">
-						                	<div>
-							                    <p class="developer-name"><%= comment.user.name %></p>
-							                    <p class="developer-nickname">@<%= comment.user.nickname %></p>
-						                	 </div>
-					                	</div>
-				                	</div>
-				                <% end %>
-							</div>
+							<%= render 'users/user_info', user: comment.user %>
 							<div class="edit-tools">
 								<% if comment.user == current_user %>
 									<%= link_to work_comment_path(work_id: @work.id,id: comment.id),method: :delete,data: {confirm: "コメントを削除しますか？",cancel: "やめる",commit: "削除する"},title: "コメントの削除" do %>
