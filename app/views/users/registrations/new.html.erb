@@ -2,6 +2,7 @@
 
 <div class="container">
   <h1>新規登録</h1>
+  <%= devise_error_messages! %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
@@ -19,15 +20,15 @@
 
     <div class="field">
       <%= f.label :name, 'ユーザー名' %><span class="form-require">必須</span><br />
-      <%= f.email_field :name, autofocus: true %>
-      <% if @nickname_errmsg.present? %>
+      <%= f.text_field :name, autofocus: true %>
+      <% if @name_errmsg.present? %>
           <div class="error-message">入力してください</div>
       <% end %>
     </div>
 
     <div class="field">
       <%= f.label :nickname, 'ユーザーID' %><span class="form-require">必須</span><br />
-      <%= f.email_field :nickname, autofocus: true, placeholder: "@example のように表示されます" %>
+      <%= f.text_field :nickname, autofocus: true, placeholder: "@example のように表示されます" %>
       <% if @nickname_errmsg.present? %>
           <div class="error-message">入力してください</div>
       <% end %>
