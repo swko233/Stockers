@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
 		comment = Comment.new(comment_params)
 		comment.user_id = current_user.id
 		comment.work_id = params[:work_id]
-		binding.pry
 		if comment.save
 			redirect_to work_path(comment.work.id)
 		else
@@ -20,7 +19,7 @@ class CommentsController < ApplicationController
 	def destroy
 		comment = Comment.find(params[:id])
 		if comment.destroy
-			redirect_to work_path(comment.work.id)
+			redirect_to work_path(comment.work.id, anchor:'work-comments')
 		else
 			flash[:notice] = "コメントに失敗しました"
 			redirect_to comments_path

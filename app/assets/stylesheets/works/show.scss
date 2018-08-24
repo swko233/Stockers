@@ -11,7 +11,7 @@
 // p{
 // 	margin-bottom: 0;
 // }
-.recommended-work,.work-comments{
+.recommended-work,#work-comments{
 	padding: 10px 40px 40px 40px;
 	border-radius: 10px;
 	margin-bottom: 20px;
@@ -201,7 +201,7 @@ h1{
 	padding-left: 15px;
 }
 // コメント機能
-.work-comments{
+#work-comments{
 
 	.comment-form{
 		width: 100%;

@@ -6,12 +6,14 @@
 			<%= render 'users/unfavorited' %>
 		<% end %>
 	</div>
-	<%= link_to work_path(@this_work.id), :name => "comments" do %>
+	<%= link_to work_path(@this_work.id, anchor:'work-comments'), :name => "comments" do %>
 		<div class="comments">
 			<i class="far fa-comment fa-2x"></i>
 		</div>
 	<% end %>
 	<div class="favorite-count">
-		<%= @this_work.favorites.count %><span>件のいいね!</span>
+		<% if @this_work.favorites.count > 0 %>
+			<%= @this_work.favorites.count %><span>件のいいね!</span>
+		<% end %>
 	</div>
 </div>

@@ -57,12 +57,12 @@
 							<%= link_to user_path(@work.user.id) do %>
 								<div class="developer-box">
 									<div class="developer-icon">
-					                  	<%= attachment_image_tag current_user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "icon" %>
+					                  	<%= attachment_image_tag @work.user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "icon" %>
 					                </div>
 									<div class="developer-info">
 					                	<div>
-						                    <p class="developer-name"><%= current_user.name %></p>
-						                    <p class="developer-nickname">@<%= current_user.nickname %></p>
+						                    <p class="developer-name"><%= @work.user.name %></p>
+						                    <p class="developer-nickname">@<%= @work.user.nickname %></p>
 					                	 </div>
 				                	</div>
 			                	</div>
@@ -86,7 +86,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="work-comments">
+		<section id="work-comments">
 			<h1 name="comments">コメントを投稿する</h1>
 			<div class="comment-form">
 				<%= form_for(@comment, url: work_comments_path(@work.id)) do |f| %>
@@ -100,15 +100,15 @@
 						<div class="comment-header">
 						<!-- コメントしたユーザー表示 -->
 							<div class="developer">
-								<%= link_to user_path(@work.user.id) do %>
+								<%= link_to user_path(comment.user.id) do %>
 									<div class="developer-box">
 										<div class="developer-icon">
-						                  	<%= attachment_image_tag current_user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "icon" %>
+						                  	<%= attachment_image_tag comment.user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "icon" %>
 						                </div>
 										<div class="developer-info">
 						                	<div>
-							                    <p class="developer-name"><%= current_user.name %></p>
-							                    <p class="developer-nickname">@<%= current_user.nickname %></p>
+							                    <p class="developer-name"><%= comment.user.name %></p>
+							                    <p class="developer-nickname">@<%= comment.user.nickname %></p>
 						                	 </div>
 					                	</div>
 				                	</div>
@@ -116,14 +116,14 @@
 							</div>
 							<div class="edit-tools">
 								<% if comment.user == current_user %>
-									<%= link_to work_comment_path(comment.id),method: :destroy do %>
+									<%= link_to work_comment_path(work_id: @work.id,id: comment.id),method: :delete,data: {confirm: "コメントを削除しますか？",cancel: "やめる",commit: "削除する"},title: "コメントの削除" do %>
 										<i class="fas fa-trash-alt"></i>
 									<% end %>
 								<% end %>
 							</div>
 						</div>
 						<div class="comment-body">
-							<%= comment.comment %>
+							<%= simple_format(comment.comment) %>
 						</div>
 					</div>
 				<% end %>
