@@ -17,6 +17,7 @@ Rails.application.config.assets.precompile += %w( bookmarks.js )
 Rails.application.config.assets.precompile += %w( users/show.js )
 Rails.application.config.assets.precompile += %w( users/search_bookmark.js )
 
+Rails.application.config.assets.precompile += %w( root/top.scss )
 Rails.application.config.assets.precompile += %w( bookmarks/new.scss )
 Rails.application.config.assets.precompile += %w( works/new.scss )
 Rails.application.config.assets.precompile += %w( works/show.scss )

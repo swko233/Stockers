@@ -38,6 +38,13 @@ h1{
 li{
 	list-style: none;
 }
+#logo{
+	font-family: 'Nunito', sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	color: #40aaff;
+	letter-spacing: 0.1em;
+}
 .clearfix:after {
     content: "";
     display: block;
@@ -57,7 +64,7 @@ body,#wrapper {
 	background-color: #fff;
 	height: 60px;
 	border-bottom: 1px solid #ddd;
-	margin-bottom: 20px;
+	margin-bottom: 0;
 
 	.header-wrapper{
 		height: 100%;

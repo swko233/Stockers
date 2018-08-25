@@ -1,0 +1,33 @@
+.container-fluid{
+	margin: 0;
+	padding: 0;
+}
+.main-title{
+	width: 100%;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	background: #40aaff;
+
+	.about-main{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.about-main *{
+		color: #fff;
+	}
+	.catch-copy{
+		font-size: 50px;
+	}
+	h1#logo{
+		font-family: 'Nunito', sans-serif;
+		font-size: 70px;
+		font-weight: bold;
+		letter-spacing: 0.1em;
+		color: #fff;
+	}
+	.title-description{
+		font-size: 20px;
+	}
+}

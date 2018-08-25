@@ -1,25 +1,33 @@
 <%= stylesheet_link_tag "users/edit", :media => "all" %>
 
 <div class="container">
-	<% if flash[:notice] %>
-		<div class="password-notice">
-		  	<p><%= flash[:notice] %></p>
-		 </div>
-	<% end %>
 	<div class="user-info">
 		<h1>ユーザー設定</h1>
 		<%= form_for(@user) do |f| %>
 			<div class="field">
 				<%= f.label :name, 'ユーザー名' %></br>
 				<%= f.text_field :name %>
+				<% if @name_errmsg.present? %>
+		          <div class="error-message">入力してください</div>
+		      <% end %>
 			</div>
 			<div class="field">
 				<%= f.label :nickname, 'ユーザーID' %></br>
 				<%= f.text_field :nickname %>
+				<% if @nickname_errmsg.present? %>
+		          <div class="error-message">入力してください</div>
+		      <% end %>
 			</div>
 			<div class="field">
 				<%= f.label :email, 'メールアドレス' %></br>
 				<%= f.text_field :email %>
+				<% if @email_errmsg.present? %>
+			        <% if @email_exist_flag == true %>
+			          <div class="error-message">すでに登録済みのメールアドレスです</div>
+			        <% else %>
+			          <div class="error-message">入力してください</div>
+			        <% end %>
+			   	<% end %>
 			</div>
 			<div class="field">
 				<%= f.label :image, 'プロフィール画像' %></br>

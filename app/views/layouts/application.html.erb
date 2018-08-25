@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800" rel="stylesheet">
     <!-- <link rel="stylesheet" href="style.css"> -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,11 +18,10 @@
     <div class="my-header">
       <div class="header-wrapper">
         <div class="header-contents">
-          <div class="contents-logo">
-            <%= link_to 'ログイン', new_user_session_path %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          <div id="logo">Stockers
           </div>
           <div class="contents-navigation">
+          <!-- ログイン状態判別 -->
           <% if user_signed_in? %>
             <div class="bookmark-menu">
               <div class="nav-box">
@@ -64,6 +64,12 @@
                     <div class="dropdown-content"><span>ログアウト</span></div>
                   <% end %>
               </div>
+            </div>
+          <% else %>
+          <!-- ログインしていない場合 -->
+            <div class="bookmark-menu">
+              <%= link_to 'ログイン', new_user_session_path %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
             </div>
           <% end %>
           </div>

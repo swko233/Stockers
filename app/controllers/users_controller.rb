@@ -36,14 +36,9 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		if User.exists?(params[:id])
-			@user = User.find(params[:id])
-			# アドレス直打ち対策
-			if @user != current_user
-				redirect_to user_path(current_user.id)
-			end
-		else
-			#見つからなかったというページを作る
+		@user = User.find(params[:id])
+		# アドレス直打ち対策
+		if @user != current_user
 			redirect_to user_path(current_user.id)
 		end
 	end
@@ -54,8 +49,14 @@ class UsersController < ApplicationController
 			flash[:notice] = "ユーザー情報を変更しました"
 			redirect_to edit_user_path(current_user.id)
 		else
-			flash[:notice] = "保存に失敗しました"
-			redirect_to edit_user_path(current_user.id)
+			@email_errmsg = @user.errors.full_messages_for(:email)
+		    if @email_errmsg[0] == "Eメール translation missing: ja.activerecord.errors.models.user.attributes.email.taken"
+		    	@email_exist_flag = true
+		    end
+		    @name_errmsg = @user.errors.full_messages_for(:name)
+		    @nickname_errmsg = @user.errors.full_messages_for(:nickname)
+			binding.pry
+			render 'edit'
 		end
 	end
 

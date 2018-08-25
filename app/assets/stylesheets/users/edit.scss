@@ -54,7 +54,10 @@ label{
 
 // ログイン情報編集
 .password-notice{
-	background: green;
+	text-align: center;
+}
+.password-notice p{
+	color: #ea352d;
 }
 //エラー時のフォーム赤枠
 .field_with_errors input, .field_with_errors textarea{
