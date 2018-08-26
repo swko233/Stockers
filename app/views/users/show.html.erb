@@ -36,7 +36,7 @@
 						<% if @recommended_work.service_image_id == nil %>
 							<i class="far fa-image fa-4x"></i>
 						<% else %>
-							<%= attachment_image_tag @recommended_work, :service_image, :fill,200,200, fallback: "no_service_image", class: "image-radius" %>
+							<%= attachment_image_tag @recommended_work, :service_image, :fill,260,210, fallback: "no_service_image", class: "image-radius" %>
 						<% end %>
 					</div>
 					<!-- 部分テンプレートの変数に合わせる -->
@@ -48,9 +48,11 @@
 						<p class="service-name"><%= @recommended_work.service_name %></p>
 						<p class="url"><%= @recommended_work.url %></p>
 					</a>
-					<p class="overview"><%= @recommended_work.overview %></p>
-					<%= link_to work_path(@recommended_work.id), class: "work-detail-link" do %>
-						<p><span class="text">詳しくみる</span><i class="fas fa-chevron-right"></i></p>
+					<p class="overview sub-headline"><%= @recommended_work.overview %></p>
+					<%= link_to work_path(@recommended_work.id) do %>
+						<div class="work-detail-link nav-button">
+							<span class="text">詳しくみる</span><i class="fas fa-chevron-right"></i>
+						</div>
 					<% end %>
 					<p class="release_date"><%= @recommended_work.release_date %></p>
 					<!-- タグ表示 -->
@@ -254,22 +256,33 @@
  				</div>
  			</div>
  		<% else %>
-			<% @works.each do |work| %>
-				<%= link_to work_path(work.id) do %>
+	 		<div class="work-items">
+				<% @works.each do |work| %>
 					<div class="work-item">
-						<div class="work-image">
-							<%= attachment_image_tag work, :service_image, :fill, 80,80 %>
+						<div class="work-item-main">
+							<%= link_to work_path(work.id), class: "work-item-link" do %>
+								<div class="work-image-box">
+									<%= attachment_image_tag work, :service_image, :fill, 300,230, class: "work-image" %>
+								</div>
+								<div class="work-description">
+									<p class="work-name"><%= work.service_name %></p>
+								<% end %>
+									<p class="work-overview"><%= work.overview %></p>
+									<div class="tag-list">
+									<ul>
+										<% work.tag_list.each do |tag| %>
+											<li><a href="<%= search_bookmark_tag_path(@user.id, tag: tag) %>"><span><%= tag %></span></a></li>
+										<% end %>
+									</ul>
+									</div>
+								</div>
+								<!-- 部分テンプレートの変数に合わせる -->
+							<% @this_work = work %>
+							<%= render 'communications' %>
 						</div>
-						<div class="work-description">
-							<p><%= work.service_name %></p>
-							<p><%= work.overview %></p>
-						</div>
-						<!-- 部分テンプレートの変数に合わせる -->
-						<% @this_work = work %>
-						<%= render 'communications' %>
 					</div>
 				<% end %>
-			<% end %>
+			</div>
 		<% end %>
 		</div>
 	</section>

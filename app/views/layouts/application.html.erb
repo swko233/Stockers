@@ -18,8 +18,15 @@
     <div class="my-header">
       <div class="header-wrapper">
         <div class="header-contents">
-          <div id="logo">Stockers
-          </div>
+          <% if user_signed_in? %>
+            <%= link_to user_path(current_user.id) do %>
+              <div id="logo">Stockers</div>
+            <% end %>
+          <% else %>
+            <%= link_to root_path do %>
+              <div id="logo">Stockers</div>
+            <% end %>
+          <% end %>
           <div class="contents-navigation">
           <!-- ログイン状態判別 -->
           <% if user_signed_in? %>
@@ -68,8 +75,8 @@
           <% else %>
           <!-- ログインしていない場合 -->
             <div class="bookmark-menu">
-              <%= link_to 'ログイン', new_user_session_path %>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+              <%= link_to 'ログイン', new_user_session_path, class: "btn btn-follow header-login" %>
+              <%= link_to '新規登録', new_user_registration_path, class: "btn btn-following header-signup" %>
             </div>
           <% end %>
           </div>

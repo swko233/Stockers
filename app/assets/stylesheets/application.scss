@@ -28,12 +28,11 @@
 }
 
 body{
-	background: #F9F9F9;
+	background: #EAEAE0;
 }
 h1{
 	color: #345068;
 	font-size: 20px;
-	// padding-bottom: 30px;
 }
 li{
 	list-style: none;
@@ -50,6 +49,14 @@ li{
     display: block;
     clear: both;
 }
+// フォームページ
+.form-wraper{
+	background: #fff;
+	border-radius: 5px;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	padding: 50px;
+}
 // フッター固定用
 body,#wrapper {
   display: flex;
@@ -58,6 +65,9 @@ body,#wrapper {
 }
 .my-footer{
 	margin-top :auto;
+}
+.user-profile{
+	margin-top: 20px;
 }
 // ヘッダー
 .my-header{
@@ -77,6 +87,9 @@ body,#wrapper {
 		align-items: center;
 		justify-content: space-between;
 	}
+	.header-contents a{
+		text-decoration: none;
+	}
 	.contents-navigation{
 		height: 100%;
 		display: flex;
@@ -87,6 +100,9 @@ body,#wrapper {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+	}
+	.header-login{
+		margin-right: 15px;
 	}
 	.nav-box a{
 		text-decoration: none;

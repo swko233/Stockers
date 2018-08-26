@@ -16,13 +16,14 @@ p{
 .user-profile,.recommended-work,.recommended-services,.stock-services{
 	padding: 10px 40px 40px 40px;
 	border-radius: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
 }
 h1{
 	color: #345068;
 	font-size: 20px;
-	padding-bottom: 30px;
+	font-weight: bold;
+	margin-bottom: 40px;
 }
 .no-service-wrap,.no-bookmark-wrap,.no-work-wrap{
 	height: 400px;
@@ -143,17 +144,24 @@ h1{
 	.service-name{
 		font-size: 22px;
 		font-weight: bold;
-		color: #222;
 		margin-bottom: 7px;
 	}
 	.overview{
-		margin-bottom: 13px;
+		margin-left: 10px;
+		margin-bottom: 30px;
 	}
 	.overview-text{
 		// padding-left: 15px;
 	}
 	.work-detail-link{
 		text-decoration: none;
+		background-color: #eaeaea;
+		display: inline-block;
+		padding: 5px 20px;
+		border-radius: 3px;
+	}
+	.work-detail-link .text{
+		color: #73899c;
 	}
 	.work-detail-link:hover{
 		opacity: 0.8;
@@ -177,6 +185,12 @@ h1{
 	}
 	.btn-bookmark span{
 		padding-left: 15px;
+	}
+	.fa-comment, .fa-heart{
+		font-size: 25px;
+	}
+	.fa-heart{
+		margin-right: 10px;
 	}
 }
 // おすすめwebサービス
@@ -323,7 +337,54 @@ h1{
 		height: 40px;
 	}
 }
+// 自作サービス一覧
+.work-items{
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+.work-item{
+	margin: 40px;
+	min-height: 420px;
+	border-radius: 3px;
 
+	.work-item-main{
+		box-shadow: 0 1px 2px 1px #eaeaea;
+		border-radius: 3px;
+		min-height: 420px;
+		position: relative;
+	}
+	.work-image-box, .work-image{
+		border-radius: 3px 3px 0 0;
+	}
+	.work-description{
+		padding: 15px;
+	}
+	.work-name{
+		font-weight: bold;
+		font-size: 15px;
+		padding-bottom: 15px;
+	}
+	.work-overview{
+		padding-bottom: 20px;
+	}
+	.communications{
+		position: absolute;
+		width: 90%;
+		bottom: 0;
+		margin: 15px;
+		margin-top: 0;
+		// padding-bottom: 15px;
+		border-top: 1px solid #eaeaea;
+	}
+	.fa-comment, .fa-heart{
+		font-size: 17px;
+	}
+	.fa-heart{
+		margin-right: 10px;
+	}
+}
 // 編集ツール
 .edit-tools{
 	// min-width: 80px; //押し出し防止

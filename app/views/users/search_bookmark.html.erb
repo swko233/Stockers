@@ -4,17 +4,6 @@
 <div class="container">
 	<div class="search-title">
 		<h1>ブックマーク一覧</h1>
-			<!-- 検索フォーム -->
-		<div class="search-form">
-			<p>
-				<%= form_tag search_bookmark_path, :method => 'get' do %>
-				    <%= text_field_tag :search, params[:search] %>
-				    <%= button_tag type: :submit, :searvice_name => nil, class: "search-button" do %>
-				    	<i class="fas fa-search"></i>
-				    <% end %>
-				<% end %>
-			</p>
-		</div>
 	</div>
 	<div class="col-xs-3">
 		<%= render 'users/user_info',user:@user %>
@@ -36,6 +25,17 @@
 		</div>
 	</div>
 	<div class="col-xs-9">
+		<!-- 検索フォーム -->
+		<div class="search-form">
+			<p>
+				<%= form_tag search_bookmark_path, :method => 'get' do %>
+				    <%= text_field_tag :search, params[:search] %>
+				    <%= button_tag type: :submit, :searvice_name => nil, class: "search-button" do %>
+				    	<i class="fas fa-search"></i>
+				    <% end %>
+				<% end %>
+			</p>
+		</div>
 		<div class="bookmarks change-content">
  			<% @bookmarks.each do |bookmark| %>
  				<% unless bookmark.is_published == false && @user != current_user %>
