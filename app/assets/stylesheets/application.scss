@@ -50,7 +50,7 @@ li{
     clear: both;
 }
 // フォームページ
-.form-wraper{
+.form-wrapper{
 	background: #fff;
 	border-radius: 5px;
 	margin-top: 30px;
@@ -170,14 +170,18 @@ body,#wrapper {
 		align-items: center;
 		justify-content: center;
 		margin-right: 10px;
+		max-width: 50%;
 	}
 	.user-name-header{
 		margin-bottom: 7px;
+		word-break: break-all;
 	}
 	.user-nickname-header{
+		width: 100%;
 		font-size: 10px;
 		color: #999;
 		margin-bottom: 0;
+		word-break: break-all;
 	}
 	.user-icon{
 		display: flex;
@@ -463,6 +467,69 @@ label{
 .actions{
 	margin-top: 50px;
 }
+// レスポンシブ
+@media screen and (max-width:1024px) {
+// ヘッダー
+ .my-header .header-wrapper{
+	width: 80%;
+	}
+}
+// 768より小さい端末用
+@media screen and (max-width:767px) {
+  header {
+    width: 100%;
+  }
+  .container{
+  	width: 100%;
+  }
+ // ヘッダー
+ .my-header{
+ 	.header-wrapper{
+		width: 90%;
+	}
+  	// ロゴを中心に
+  	.my-header .header-contents{
+  		justify-content: center;
+ 	 }
+ 	 .bookmark-menu{
+ 	 	display: none;
+ 	 }
+  	.header-login, .header-signup{
+  		display: none;
+ 	}
+ 	// ドロップダウンメニューの位置調整
+ 	#dropdown-window.is-active{
+ 		left: -10px;
+ 	}
+ }
+  // フォームの入力欄確保
+  .form-wrapper{
+  	margin-top: 15px;
+  	padding: 20px;
+  }
+  // フッター
+  .my-footer{
+  	position: fixed;
+  	bottom: 0;
+  }
+}
+@media screen and (max-width:350px) {
+	// ドロップダウンメニューの位置調整
+ 	.my-header{
+	 	#dropdown-window.is-active{
+	 		left: -25px;
+	 	}
+	 	.user-menu{
+	 		margin-left: 40px;
+	 	}
+	 }
+	 // ボタン
+	 .btn-follow,.btn-following{
+	 	width: 90px;
+	 	font-size: 12px;
+	 }
+
+}
 // フォント
 @font-face {
 font-family: 'GeosansLight';
@@ -540,4 +607,43 @@ src: local('GeosansLight-Oblique'), url('GeosansLight-Oblique.woff') format('wof
     src: url('NotoSansCJKjp-Black.eot?#iefix') format('embedded-opentype'),
     url('NotoSansCJKjp-Black.woff') format('woff'),
     url('NotoSansCJKjp-Black.ttf')  format('truetype');
+}
+// レスポンシブ
+@media screen and (max-width:425px) {
+	.container{
+		padding: 0 5px;
+	}
+	// ヘッダー
+	.my-header{
+		.user-info-header{
+			max-width: 70%;
+		}
+	}
+	.my-footer .footer-wrapper{
+		width: 85%;
+	}
+	// ユーザープロフィール
+	.user-profile{
+
+		.icon-box{
+			padding-left: 20px;
+		}
+		.icon{
+			width: 70px;
+			height: 70px;
+		}
+		.user-info{
+			padding-left: 40px;
+		}
+		.name{
+			font-size: 17px;
+		}
+		.nickname{
+			font-size: 12px;
+		}
+		.stats a{
+			margin-right: 15px;
+			font-size: 14px;
+		}
+	}
 }

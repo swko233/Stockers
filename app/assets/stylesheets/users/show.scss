@@ -34,7 +34,7 @@ h1{
 .no-service,.no-bookmark,.no-work{
 	text-align: center;
 }
-.item-developer,.service-developer{
+.item-developer,.service-developer, .item-developer-mobile{
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
@@ -50,7 +50,16 @@ h1{
 .developer-introduction p{
 	margin: 0;
 }
+// 文字がはみ出した時の三点リーダ
+.service-name,.url,.item-developer-mobile span{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 // いいね、コメント
+.recommended-work-communications-mobile{
+	display: none;
+}
 .communications{
 	padding-top: 20px;
 	display: flex;
@@ -143,8 +152,15 @@ h1{
 	}
 	.service-name{
 		font-size: 22px;
+		word-break: break-all;
 		font-weight: bold;
 		margin-bottom: 7px;
+	}
+	.url{
+		font-size: 15px;
+		color: #999;
+		margin-bottom: 20px;
+		word-break: break-all;
 	}
 	.overview{
 		margin-left: 10px;
@@ -169,11 +185,6 @@ h1{
 	.work-detail-link .text{
 		margin-right: 10px;
 		color: #73899C;
-	}
-	.url{
-		font-size: 15px;
-		color: #999;
-		margin-bottom: 20px;
 	}
 	.tag-list.recommend-work-tag{
 		margin-top: 20px;
@@ -292,15 +303,18 @@ h1{
 .no-bookmark i,.no-work i{
 	margin-bottom: 25px;
 }
-.bookmark-item{
+.bookmark-box{
 	padding: 1em;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #ddd; //レスポンシブ対応により追加
+}
+.bookmark-item{
+	
 	display: flex; //item-bodyとedit-tools
 	align-items: center;
 	justify-content: space-between;
 
 	.item-body{
-		max-width: 80%;
+		max-width: 75%;
 	}
 
 	.item-info{ //ブックマークと開発者情報と横並びにする
@@ -336,6 +350,21 @@ h1{
 		width: 40px;
 		height: 40px;
 	}
+	.item-developer .developer-introduction br{
+		display: none;
+	}
+	.edit-tools i{
+		margin-right: 7px;
+	}
+	.edit-tools .fa-lock{
+		padding-right: 12px;
+	}
+}
+.bookmark-box:last-child{
+	border: none;
+}
+.bookmarks .item-developer-mobile{
+	display: none;
 }
 // 自作サービス一覧
 .work-items{
@@ -407,5 +436,197 @@ h1{
 		width: 100%;
 		margin: 0 auto;
 		padding: 0 5px;
+	}
+	.recommended-work .work-introduction{
+		max-width: 60%; //768px付近の文字はみ出しを防ぐため
+	}
+}
+@media screen and (max-width:767px) {
+	// ユーザープロフィール
+	.user-profile{
+
+		.icon-box{
+			padding-left: 20px;
+		}
+		.icon{
+			width: 70px;
+			height: 70px;
+		}
+		.user-info{
+			padding-left: 40px;
+		}
+		.name{
+			font-size: 17px;
+		}
+		.nickname{
+			font-size: 12px;
+		}
+		.stats a{
+			margin-right: 15px;
+			font-size: 14px;
+		}
+	}
+	// おすすめ自作サービス
+	.recommended-work{
+		background: #fff;
+		margin-top: 2px;
+
+		.work-box{
+			position: relative;
+			width: 100%;
+			display: block;
+		}
+		.work-image{
+			margin-bottom: 20px;
+		}
+		.image-radius{
+			width: 100%;
+			height: 200px;
+		}
+		.service-name{
+			margin-bottom: 10px;
+			word-break: break-all;
+			overflow: visible;
+			white-space: normal;
+		}
+		.url{
+			width: 80%;
+			margin-bottom: 40px;
+		}
+		.overview{
+			margin-bottom: 20px;
+		}
+		.work-detail-link{
+			margin-bottom: 15px;
+		}
+		.recommended-work-communications{
+			display: none;
+		}
+		.recommended-work-communications-mobile{
+			display: block;
+		}
+		.communications{
+			padding-bottom: 20px;
+		}
+		.work-introduction{
+			margin-top: 20px;
+			padding-left: 0;
+		}
+		.btn-bookmarked,.btn-bookmark{
+			width: 100%;
+		}
+	}
+	.recommended-services{
+
+		.service-box{
+			display: block;
+			border-bottom: 1px solid #ddd;
+		}
+		.service-box:last-child{
+			border: none;
+		}
+		.service-info a{
+			display: block;
+		}
+		.image-radius{
+			width: 200px;
+			height: 150px;
+		}
+		.recommended-service-image{
+			margin: 0 auto;
+			width: 200px;
+			height: 150px;
+			padding-bottom: 20px;
+		}
+		.service-introduction{
+			padding-left: 0;
+			margin-bottom: 25px;
+		}
+		.service-developer{
+			padding-left: 0;
+			margin-bottom: 35px;
+		}
+		.edit-tools i{
+			margin-right: 10px;
+			padding-bottom: 10px;
+		}
+	}
+	// ブックマーク一覧
+	.stock-services{
+		padding: 10px 20px 20px 20px;
+		margin-bottom: 80px;
+
+		.change-tab-wrap{
+			width: 50%;
+		}
+		.change-tab{
+			width: 100%;
+		}
+		.item-body{
+			max-width: 80%;
+		}
+		.item-detail{
+			width: 100%;
+		}
+		// .edit-tools{
+		// 	width: 30px;
+		// }
+		.edit-tools i{
+			display: block;
+			margin: 0; //リセット
+			padding: 0; //リセット
+			margin-bottom: 10px;
+		}
+		.item-developer{
+			display: none;
+		}
+		.item-developer-mobile{
+			display: flex;
+			padding: 0;
+			margin-top: 7px;
+
+			.developer-icon{
+				width: 30px;
+				height: 30px;
+			}
+			.developer-introduction br{
+				display: none;
+			}
+			.developer-introduction *{
+				font-size: 12px;
+			}
+		}
+		// 自作サービス
+		.work-items{
+			padding: 30px 15px;
+		}
+		.work-item{
+			width: 100%;
+			margin: 0 0 40px 0;
+		}
+		.work-image{
+			width: 100%;
+		}
+		.work-item-main{
+			box-shadow: 0 1px 20px 1px #eaeaea;
+		}
+		.work-item-box{
+			width: 100%;
+		}
+		.work-name{
+			word-break: break-all;
+		}
+	}
+}
+@media screen and (max-width:350px) {
+	.user-profile{
+
+		.icon{
+			width: 60px;
+			height: 60px;
+		}
+		.user-info{
+			padding-left: 25px;
+		}
 	}
 }

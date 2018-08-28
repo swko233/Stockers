@@ -104,3 +104,75 @@ h1{
 		color: #999;
 	}
 }
+// レスポンシブ
+@media screen and (max-width:767px) {
+	// ユーザープロフィール
+	.user-profile{
+
+		.icon-box{
+			padding-left: 20px;
+		}
+		.icon{
+			width: 70px;
+			height: 70px;
+		}
+		.user-info{
+			padding-left: 40px;
+		}
+		.name{
+			font-size: 17px;
+		}
+		.nickname{
+			font-size: 12px;
+		}
+		.stats a{
+			margin-right: 15px;
+			font-size: 14px;
+		}
+	}
+	.user-list-box{
+		padding: 10px 2px;
+
+		.user-box a{
+			max-width: 65%;
+		}
+		.nickname{
+			word-break: break-all;
+		}
+	}
+}
+@media screen and (max-width:350px) {
+	.user-profile{
+		.icon{
+			width: 60px;
+			height: 60px;
+		}
+		.user-info{
+			padding-left: 25px;
+		}
+	}
+	.follow-user-profile{
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		.icon{
+			width: 45px;
+			height: 45px;
+		}
+		.user-name{
+			padding-left: 20px;
+		}
+		.user-name p{
+			margin-bottom: 0;
+		}
+		.name{
+			font-size: 14px;
+			margin-bottom: 5px;
+			color: #222;
+		}
+		.nickname{
+			font-size: 12px;
+		}
+	}
+}

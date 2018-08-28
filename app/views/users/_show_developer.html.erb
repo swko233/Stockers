@@ -1,0 +1,9 @@
+<div class="developer-icon">
+	<%= link_to user_path(developer.id) do %>
+		<%= attachment_image_tag developer, :image, fallback: "no_user_image", format: "png", class: "icon developer-icon" %>
+	<% end %>
+</div>
+<div class="developer-introduction">
+	<p><%= link_to '@' + developer.nickname,user_path(developer.id) %><br>
+	<span>さんが作成</span></p>
+</div>

@@ -1,6 +1,12 @@
 p{
 	margin-bottom: 0;
 }
+// 文字がはみ出した時の三点リーダ
+.service-name,.url,.item-developer-mobile span{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 //検索フォーム
 body{
 	background-color: #fff;
@@ -77,15 +83,17 @@ body{
 
 
 // ブックマーク一覧
-.bookmark-item{
+.bookmark-box{
 	padding: 1em;
 	border-bottom: 1px solid #ddd;
+}
+.bookmark-item{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 
 	.item-body{
-		max-width: 80%;
+		max-width: 75%;
 	}
 	.item-info{ //ブックマークと開発者情報と横並びにする
 		display: flex;
@@ -136,6 +144,18 @@ body{
 	.developer-introduction p{
 		margin: 0;
 	}
+	.edit-tools i{
+		margin-right: 7px;
+	}
+	.edit-tools .fa-lock{
+		padding-right: 12px;
+	}
+}
+.item-developer-mobile{
+	display: none;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 50px;
 }
 
 // タグクラウド
@@ -202,4 +222,54 @@ body{
 .lock-color{
 	color: #ffd700;
 	font-size: 20px;
+}
+// レスポンシブ
+@media screen and (max-width:1024px) {
+	.bookmark-box{
+
+		.item-body{
+			max-width: 80%;
+		}
+		.item-detail{
+			width: 100%;
+		}
+		.item-developer{
+			display: none;
+		}
+		.edit-tools i{
+			display: block;
+			margin: 0; //リセット
+			padding: 0; //リセット
+			margin-bottom: 10px;
+		}
+		.edit-tools .fa-lock{
+		padding-right: 0;
+		}
+		.item-developer-mobile{
+			display: flex;
+			padding: 0;
+			margin-top: 7px;
+
+			.item-developer-mobile .developer-icon{
+				width: 30px;
+				height: 30px;
+			}
+			.icon{
+				width: 30px;
+				height: 30px;
+			}
+			.developer-introduction br{
+				display: none;
+			}
+			.developer-introduction *{
+				font-size: 12px;
+			}
+		}
+	}
+}
+@media screen and (max-width:768px) {
+	.col-xs-3, .col-xs9{
+		float: none;
+		width: 100%;
+	}
 }

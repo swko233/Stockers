@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800" rel="stylesheet">
     <!-- <link rel="stylesheet" href="style.css"> -->
@@ -53,7 +54,7 @@
                 <div class="user-info-header">
                   <div>
                     <p class="user-name-header"><%= current_user.name %></p>
-                    <p class="user-nickname-header"><%= current_user.nickname %></p>
+                    <p class="user-nickname-header">@<%= current_user.nickname %></p>
                  </div>
                 </div>
                 <div class="user-icon">
