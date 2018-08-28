@@ -268,8 +268,21 @@ body{
 	}
 }
 @media screen and (max-width:768px) {
-	.col-xs-3, .col-xs9{
-		float: none;
-		width: 100%;
+	body{
+		background-color: #EAEAE0;
+	}
+	.bookmark-index{
+		padding: 0 5px;
+	}
+	.container{
+		padding-top: 10px;
+		margin-bottom: 80px;
+		background: #fff;
+		border-radius: 10px;
+	    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+	    margin-top: 10px;
+	}
+	.tag-all{
+		margin-bottom: 50px;
 	}
 }
