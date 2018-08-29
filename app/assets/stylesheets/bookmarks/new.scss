@@ -32,6 +32,20 @@ h1{
 	color: #40AAFF;
 
 }
+.radio-area{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.radio-area div{
+	width: 50%;
+}
+.radio-area input{
+	width: 35px;
+}
+.radio-button{
+	width: 35px;
+}
 .new-posts{
 	// padding: 25px;
 }

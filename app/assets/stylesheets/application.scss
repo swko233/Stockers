@@ -67,7 +67,7 @@ body,#wrapper {
 	margin-top :auto;
 }
 .user-profile{
-	margin-top: 20px;
+	margin-top: 10px;
 }
 // ヘッダー
 .my-header{
@@ -170,7 +170,7 @@ body,#wrapper {
 		align-items: center;
 		justify-content: center;
 		margin-right: 10px;
-		max-width: 50%;
+		max-width: 70%;
 	}
 	.user-name-header{
 		margin-bottom: 7px;
@@ -482,6 +482,9 @@ label{
   .container{
   	width: 100%;
   }
+  .form-wrapper{
+  	margin-bottom: 80px;
+  }
  // ヘッダー
  .my-header{
  	.header-wrapper{
@@ -613,6 +616,7 @@ src: local('GeosansLight-Oblique'), url('GeosansLight-Oblique.woff') format('wof
 	.container{
 		padding: 0 5px;
 	}
+
 	// ヘッダー
 	.my-header{
 		.user-info-header{

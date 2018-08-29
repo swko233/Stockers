@@ -73,6 +73,9 @@ h1{
 	align-items: center;
 	justify-content: space-between;
 }
+.user-box:last-child{
+	border: none;
+}
 .user-box a{
 		text-decoration: none;
 }
@@ -132,6 +135,7 @@ h1{
 	}
 	.user-list-box{
 		padding: 10px 2px;
+		margin-bottom: 80px;
 
 		.user-box a{
 			max-width: 65%;

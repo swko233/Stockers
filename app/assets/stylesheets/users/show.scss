@@ -389,6 +389,7 @@ h1{
 	}
 	.work-description{
 		padding: 15px;
+		min-height: 135px;
 	}
 	.work-name{
 		font-weight: bold;
@@ -413,6 +414,9 @@ h1{
 	.fa-heart{
 		margin-right: 10px;
 	}
+}
+.work-items .work-item:last-child{
+	margin-bottom: 0;
 }
 // 編集ツール
 .edit-tools{
@@ -439,6 +443,12 @@ h1{
 	}
 	.recommended-work .work-introduction{
 		max-width: 60%; //768px付近の文字はみ出しを防ぐため
+	}
+}
+@media screen and (max-width:900px) {
+	.work-item{
+		margin-right: 5px;
+		margin-left: 5px;
 	}
 }
 @media screen and (max-width:767px) {
@@ -511,6 +521,7 @@ h1{
 		.work-introduction{
 			margin-top: 20px;
 			padding-left: 0;
+			max-width: 100%;
 		}
 		.btn-bookmarked,.btn-bookmark{
 			width: 100%;
@@ -577,6 +588,9 @@ h1{
 			padding: 0; //リセット
 			margin-bottom: 10px;
 		}
+		.edit-tools .fa-lock{
+			padding-right: 0;
+		}
 		.item-developer{
 			display: none;
 		}
@@ -599,6 +613,8 @@ h1{
 		// 自作サービス
 		.work-items{
 			padding: 30px 15px;
+			// 写真が大きくなった分
+			min-height: 465px;
 		}
 		.work-item{
 			width: 100%;
@@ -612,6 +628,9 @@ h1{
 		}
 		.work-item-box{
 			width: 100%;
+		}
+		.work-description{
+			min-height: 200px;
 		}
 		.work-name{
 			word-break: break-all;
@@ -627,6 +646,15 @@ h1{
 		}
 		.user-info{
 			padding-left: 25px;
+		}
+	}
+	.work-items{
+
+		.work-item-main{
+			min-height: 300px;
+		}
+		.work-description{
+			max-height: 135px;
 		}
 	}
 }

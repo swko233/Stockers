@@ -49,13 +49,17 @@
 				</div>
 				<div class="field">
 					<%= f.label :is_published, '公開設定' %></br>
-					<span>公開<%= f.radio_button :is_published, true %></span>
-					<span>非公開<%= f.radio_button :is_published, false %></span>
+					<div class="radio-area">
+						<div><span>公開<%= f.radio_button :is_published, true %></span></div>
+						<div><span>非公開<%= f.radio_button :is_published, false %></span></div>
+					</div>
 				</div>
 				<div class="field">
 					<%= f.label :is_recommended, 'おすすめ設定' %></br>
-					<span>する<%= f.radio_button :is_recommended, true %></span>
-					<span>しない<%= f.radio_button :is_recommended, false %></span>
+					<div class="radio-area">
+						<div><span>する<%= f.radio_button :is_recommended, true %></span></div>
+						<div><span>しない<%= f.radio_button :is_recommended, false %></span></div>
+					</div>
 					<% if @too_many_recommended_flag.present? %>
 						<div class="error-message">おすすめ設定は1つまでです</div>
 					<% end %>
