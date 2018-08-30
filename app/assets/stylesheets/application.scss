@@ -214,7 +214,7 @@ body,#wrapper {
 		justify-content: space-around;
 	}
 	.nav-links a{
-		width: 33%; // 要素数によって変動
+		width: 25%; // 要素数によって変動
 		height: 100%;
 		display: flex;
 		align-items: center;
@@ -223,7 +223,7 @@ body,#wrapper {
 	.nav-links a:hover{
 		opacity: 0.8;
 	}
-	.nav-links .far{
+	.nav-links .far, .nav-links .fas{
 		color: #fff;
 	}
 	.nav-search-user{

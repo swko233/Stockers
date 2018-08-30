@@ -66,12 +66,15 @@ h1{
 	}
 }
 // フォロー/フォロワー
-.user-box{
+.user-box-wrap{
 	padding: 20px;
 	border-bottom: 1px solid #efefef;
+}
+.user-box{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding-bottom: 15px;
 }
 .user-box:last-child{
 	border: none;
@@ -105,6 +108,34 @@ h1{
 	.nickname{
 		font-size: 13px;
 		color: #999;
+	}
+}
+// ユーザー一覧（ブックマーク数表示)
+.using-stats{
+}
+.bookmark-count, .work-count{
+	color: #73899c;
+	padding-right: 5px;
+	font-size: 13px;
+}
+.bookmark-count > span,.work-count > span{
+	padding-left: 3px;
+	color: #73899c;
+}
+// 一覧ページ
+.user-index{
+	padding: 10px 40px 40px 40px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+	background: #fff;
+	margin-top: 10px;
+
+	.user-list-box{
+		padding: 0;
+		border-radius: none;
+		margin-bottom: 0;
+		box-shadow: none;
 	}
 }
 // レスポンシブ

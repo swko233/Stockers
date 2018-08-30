@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+	def index
+		@users = User.all
+	end
+
 	def show
 		@user = User.find(params[:id])
 		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
