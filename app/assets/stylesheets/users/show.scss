@@ -386,6 +386,7 @@ h1{
 .work-item{
 	margin: 40px;
 	min-height: 420px;
+	max-width: 300px;
 	border-radius: 3px;
 
 	.work-item-main{
@@ -410,12 +411,12 @@ h1{
 		padding-bottom: 20px;
 	}
 	.communications{
-		position: absolute;
+		// position: absolute;
 		width: 90%;
-		bottom: 0;
+		// bottom: 0;
 		margin: 15px;
 		margin-top: 0;
-		// padding-bottom: 15px;
+		padding-bottom: 15px;
 		border-top: 1px solid #eaeaea;
 	}
 	.fa-comment, .fa-heart{
@@ -645,6 +646,7 @@ h1{
 		}
 		.work-item{
 			width: 100%;
+			max-width: 100%; //max-widthをリセット
 			margin: 0 0 40px 0;
 		}
 		.work-image{
@@ -657,7 +659,7 @@ h1{
 			width: 100%;
 		}
 		.work-description{
-			min-height: 200px;
+			// min-height: 200px;
 		}
 		.work-name{
 			word-break: break-all;
@@ -678,10 +680,10 @@ h1{
 	.work-items{
 
 		.work-item-main{
-			min-height: 300px;
+			// min-height: 300px;
 		}
 		.work-description{
-			max-height: 135px;
+			// max-height: 135px;
 		}
 	}
 }
