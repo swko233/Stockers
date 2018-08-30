@@ -4,18 +4,20 @@
 <div class="container">
 	<section class="user-profile">
 		<div class="profile-main">
-			<div class="icon-box">
-				<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
-			</div>
-			<div class="user-info">
-				<div class="user-name">
-					<p class="name"><%= @user.name %></p>
-					<p class="nickname">@<%= @user.nickname %></p>
+			<div class="profile-body">
+				<div class="icon-box">
+					<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
 				</div>
-				<div class="links">
-					<section class="stats">
-						<%= render 'stats' %>
-					</section>
+				<div class="user-info">
+					<div class="user-name">
+						<p class="name"><%= @user.name %></p>
+						<p class="nickname">@<%= @user.nickname %></p>
+					</div>
+					<div class="links">
+						<section class="stats">
+							<%= render 'stats' %>
+						</section>
+					</div>
 				</div>
 			</div>
 			<div class="follow-button">
@@ -23,6 +25,7 @@
 			</div>
 		</div>
 		<div class="profile-sub">
+			<%= @user.introduction %>
 		</div>
 	</section>
 	<% unless @recommended_work.nil? %>

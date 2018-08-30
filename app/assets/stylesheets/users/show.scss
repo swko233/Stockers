@@ -86,9 +86,16 @@ h1{
 	align-items: start;
 	justify-content: flex-start;
 	position: relative;
+	padding-bottom: 30px;
+}
+.profile-body{
+	display: flex;
+	align-items: start;
+	justify-content: flex-start;
+	padding-top:15px;
 }
 .icon-box{
-	margin-top: 10px;
+	// margin-top: 10px;
 	padding-left: 50px;
 	display: flex;
 	align-items: center;
@@ -128,6 +135,9 @@ h1{
 	right: 30px;
 	top: 5px;
 }
+.profile-sub{
+	padding-left: 50px;
+}
 // おすすめ自作サービス
 .recommended-work{
 	background: #fff;
@@ -141,8 +151,8 @@ h1{
 		justify-content: flex-start;
 
 	}
-	.work-image,.work-introduction{
-		// margin-left: 20px;
+	.work-introduction{
+		max-width: 65%;
 	}
 	.work-image{
 		border-radius: 5px;
@@ -475,6 +485,20 @@ h1{
 			margin-right: 15px;
 			font-size: 14px;
 		}
+		.profile-main{
+			display: block;
+			position: static;
+		}
+		.profile-body{
+			padding-bottom: 20px;
+		}
+		.follow-button{
+			position: static;
+			margin-left: 20px;
+		}
+		.profile-sub{
+			padding-left: 20px;
+		}
 	}
 	// おすすめ自作サービス
 	.recommended-work{
@@ -567,6 +591,9 @@ h1{
 		padding: 10px 20px 20px 20px;
 		margin-bottom: 80px;
 
+		.title{
+			padding-left: 10px;
+		}
 		.change-tab-wrap{
 			width: 50%;
 		}

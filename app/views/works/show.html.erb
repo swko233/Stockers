@@ -14,7 +14,9 @@
 					</div>
 					<!-- いいねボタンなど -->
 					<% @this_work = @work %>
-					<%= render 'users/communications' %>
+					<div class="recommended-work-communications">
+						<%= render 'users/communications' %>
+					</div>
 				</div>
 				<div class="work-introduction">
 					<div class="work-text-box">
@@ -43,6 +45,9 @@
 									<li><a href=""><span><%= tag %></span></a></li>
 								<% end %>
 							</ul>
+						</div>
+						<div class="recommended-work-communications-mobile">
+							<%= render 'users/communications' %>
 						</div>
 						<div class="overview">
 							<p class="sub-headline">概要</p>

@@ -130,15 +130,17 @@ h1{
 	}
 	.work-name{
 		margin-bottom: 0;
+		max-width: 80%;
 	}
 	.edit-tools{
-		padding-left: 50px;
+		padding-left: 30px;
 	}
 	.work-image{
 		border-radius: 5px;
 	}
 	.work-introduction{
 		padding-left: 70px;
+		max-width: 70%; //レスポンシブで変更
 
 		.overview-text{
 			color: #345068;
@@ -152,6 +154,10 @@ h1{
 			margin-bottom: 15px;
 		}
 	}
+	.service-name,.url,.overview-text,.work-introduction .description p{
+		word-break: break-all;
+		width: 100%;
+	}
 	.service-name{
 		font-size: 25px;
 		font-weight: bold;
@@ -164,6 +170,12 @@ h1{
 	.url{
 		font-size: 18px;
 		color: #999;
+	}
+	.recommended-work-communications{
+		display: block;
+	}
+	.recommended-work-communications-mobile{
+		display: none;
 	}
 }
 .btn-bookmark,.btn-bookmarked{
@@ -200,5 +212,44 @@ h1{
 	}
 	.comment-body{
 		padding: 20px 25px 10px 25px;
+	}
+}
+// レスポンシブ
+@media screen and (max-width: 1024px) {
+	.container{
+		padding: 0 5px;
+		margin: 10px 0;
+		max-width: 1024px;
+		width: 100%;
+	}
+}
+@media screen and (max-width: 767px) {
+	.recommended-work .work-box{
+		display: block;
+
+		.work-introduction {
+	    	padding-left: 0;
+	    	max-width: 100%;
+	    }
+	    .work-image{
+	    	margin-bottom: 20px;
+	    }
+	    .image-radius{
+    		width: 100%;
+    		height: 200px;
+		}
+		.recommended-work-communications{
+			display: none;
+		}
+		.recommended-work-communications-mobile{
+			display: block;
+			padding-bottom: 40px;
+		}
+		.tag-list{
+			margin-bottom: 0;
+		}
+	}
+	.btn-bookmark, .btn-bookmarked {
+    	width: 100%;
 	}
 }
