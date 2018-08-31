@@ -49,16 +49,28 @@
 		// margin: 20px;
 	}
 }
-	.about-overview,.about-overview-2,.intro-bookmark-box,.intro-bookmark-image{
+	.about-overview,.intro-wrap,.about-overview-2,.intro-bookmark-box,.intro-bookmark-image,.intro-work-box,.intro-work-image{
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
 	}
+	.intro-bookmark-box{
+		justify-content: flex-start;
+	}
+	.intro-work-box{
+		justify-content: flex-end;
+	}
 	.about-overview,.about-overview-2{
 		width: 100%;
-		padding-top: 80px;
-		padding-bottom: 80px;
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+	.intro-wrap{
+		width: 70%;
+	}
+	.intro-bookmark,.intro-work{
+		text-align: left;
 	}
 	.intro-title{
 		font-size: 25px;
@@ -68,13 +80,46 @@
 	.intro-text{
 		line-height: 25px;
 	}
-	.intro-bookmark-box,.intro-bookmark-image{
+	.intro-bookmark-box,.intro-bookmark-image,.intro-work-box,.intro-work-image{
 		width: 50%;
 		text-align: left;
 	}
-	.fa-folder-open{
+	.intro-bookmark-image .fa-folder-open{
 		font-size: 80px;
 	}
-	.about-overview-2{
-		background: #fff;
+	.intro-bookmark-image,.intro-work-image{
+		width: 250px;
+		height: 450px;
+		background-size: cover;
+		background-position: center center;
+		border-radius: 3px;
 	}
+	.intro-bookmark-image{
+		background-image: url(/assets/bookmark-image.png);
+	}
+	.intro-work-image{
+		background-image: url(/assets/work-image.png);
+	}
+	.intro-work-image-wrap{
+		background: #fff;
+		width: 280px;
+		height: 450px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 3px;
+	}
+	.about-overview-2{
+		background: #40aaff;
+		background: #73899c;
+	}
+@media screen and (max-width:767px) {
+	.intro-bookmark-image,.intro-work-image{
+		width: 150px;
+		height: 270px;
+	}
+	.intro-work-image-wrap{
+		width: 180px;
+		height: 270px;
+	}
+}
