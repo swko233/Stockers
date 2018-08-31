@@ -50,6 +50,24 @@ h1{
 .developer-introduction p{
 	margin: 0;
 }
+// 詳しく見るボタン
+.link-area{
+		text-decoration: none;
+		background-color: #eaeaea;
+		display: inline-block;
+		padding: 5px 20px;
+		border-radius: 3px;
+	}
+	.link-area .text{
+		color: #73899c;
+	}
+	.link-area:hover{
+		opacity: 0.8;
+	}
+	.link-area .text{
+		margin-right: 10px;
+		color: #73899C;
+	}
 // 文字がはみ出した時の三点リーダ
 .service-name,.url,.item-developer-mobile span{
 	overflow: hidden;
@@ -136,7 +154,8 @@ h1{
 	top: 5px;
 }
 .profile-sub{
-	padding-left: 50px;
+	padding: 0 50px;
+	word-break: break-all;
 }
 // おすすめ自作サービス
 .recommended-work{
@@ -178,23 +197,6 @@ h1{
 	}
 	.overview-text{
 		// padding-left: 15px;
-	}
-	.work-detail-link{
-		text-decoration: none;
-		background-color: #eaeaea;
-		display: inline-block;
-		padding: 5px 20px;
-		border-radius: 3px;
-	}
-	.work-detail-link .text{
-		color: #73899c;
-	}
-	.work-detail-link:hover{
-		opacity: 0.8;
-	}
-	.work-detail-link .text{
-		margin-right: 10px;
-		color: #73899C;
 	}
 	.tag-list.recommend-work-tag{
 		margin-top: 20px;
@@ -263,6 +265,13 @@ h1{
 	}
 }
 // ブックマーク・つくったサービス切り替えタブ
+.stock-services h1{
+	// display: inline-block;
+	// margin-bottom: 20px;
+}
+.stock-services .title .link-area{
+	margin-bottom: 25px;
+}
 .tab-list{
 	height: 45px;
 	border-bottom: 1px solid #ddd;
@@ -312,6 +321,9 @@ h1{
 }
 .no-bookmark i,.no-work i{
 	margin-bottom: 25px;
+}
+.no-bookmark .fa-folder-open{
+	color: #73899c;
 }
 .bookmark-box{
 	padding: 1em;

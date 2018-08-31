@@ -9,7 +9,7 @@
 						<% if @work.service_image_id == nil %>
 							<i class="far fa-image fa-4x"></i>
 						<% else %>
-							<%= attachment_image_tag @work, :service_image, :fill,300,300, fallback: "no_service_image", class: "image-radius" %>
+							<%= attachment_image_tag @work, :service_image, :fill,300,250, fallback: "no_service_image", class: "image-radius" %>
 						<% end %>
 					</div>
 					<!-- いいねボタンなど -->

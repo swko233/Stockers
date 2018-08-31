@@ -32,6 +32,15 @@
           <div class="contents-navigation">
           <!-- ログイン状態判別 -->
           <% if user_signed_in? %>
+            <div class="discover-menu">
+              <div class="nav-box">
+                <%= link_to users_path do %>
+                  <div class="nav-button  discover-nav">
+                    <span>ユーザ一覧</span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
             <div class="bookmark-menu">
               <div class="nav-box">
                 <%= link_to search_bookmark_path(current_user.id) do %>

@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if @user.update(user_params)
 			flash[:notice] = "ユーザー情報を変更しました"
-			redirect_to edit_user_path(current_user.id)
+			redirect_to user_path(current_user.id)
 		else
 			@email_errmsg = @user.errors.full_messages_for(:email)
 		    if @email_errmsg[0] == "Eメール translation missing: ja.activerecord.errors.models.user.attributes.email.taken"
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 		    end
 		    @name_errmsg = @user.errors.full_messages_for(:name)
 		    @nickname_errmsg = @user.errors.full_messages_for(:nickname)
-			binding.pry
+			# binding.pry
 			render 'edit'
 		end
 	end

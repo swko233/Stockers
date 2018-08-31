@@ -175,6 +175,14 @@ h1{
 			word-break: break-all;
 		}
 	}
+	.user-index{
+		padding: 0;
+		margin-bottom: 80px;
+	}
+	.user-index h1{
+		padding-top: 30px;
+		padding-left: 20px;
+	}
 }
 @media screen and (max-width:350px) {
 	.user-profile{

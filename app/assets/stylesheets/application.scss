@@ -85,6 +85,7 @@ body,#wrapper {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		position: relative; //discover-nav用
 	}
 	.header-contents a{
 		text-decoration: none;
@@ -94,6 +95,10 @@ body,#wrapper {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+	}
+	.discover-menu{
+		position: absolute;
+		left: 170px;
 	}
 	.bookmark-menu{
 		display: flex;
@@ -119,6 +124,15 @@ body,#wrapper {
 	}
 	.nav-button.bookmark-nav{
 		background-color: #d4dde8;
+
+		span{
+			color: #73899c;
+		}
+	}
+	.nav-button.discover-nav{
+		background-color: #fff;
+		border: 1px solid #d4dde8;
+		border-radius: 20px;
 
 		span{
 			color: #73899c;
@@ -433,12 +447,11 @@ body,#wrapper {
 	  text-overflow: ellipsis;
 	  overflow: hidden;
 	}
-	ul li a:hover {
-	  background-color: #555;
-	  color: #fff;
+	ul li a:hover{
+	  opacity: 0.8;
 	}
 	ul li a:hover::before {
-	  border-right-color: #555;
+	  opacity: 0.8;
 	}
 }
 // フォーム入力欄
@@ -469,8 +482,12 @@ label{
 // レスポンシブ
 @media screen and (max-width:1024px) {
 // ヘッダー
- .my-header .header-wrapper{
-	width: 80%;
+	.my-header .header-wrapper{
+		width: 95%;
+	}
+	.my-header .discover-menu{
+		position: absolute;
+		left: 135px;
 	}
 }
 // 768より小さい端末用
@@ -487,12 +504,15 @@ label{
  // ヘッダー
  .my-header{
  	.header-wrapper{
-		width: 90%;
+		width: 95%;
 	}
   	// ロゴを中心に
   	.my-header .header-contents{
   		justify-content: center;
  	 }
+ 	 .discover-menu{
+		display: none;
+	}
  	 .bookmark-menu{
  	 	display: none;
  	 }
@@ -514,6 +534,45 @@ label{
   	position: fixed;
   	bottom: 0;
   }
+}
+@media screen and (max-width:425px) {
+	.container{
+		padding: 0 5px;
+	}
+
+	// ヘッダー
+	.my-header{
+		.user-info-header{
+			max-width: 70%;
+		}
+	}
+	.my-footer .footer-wrapper{
+		width: 85%;
+	}
+	// ユーザープロフィール
+	.user-profile{
+
+		.icon-box{
+			padding-left: 20px;
+		}
+		.icon{
+			width: 70px;
+			height: 70px;
+		}
+		.user-info{
+			padding-left: 40px;
+		}
+		.name{
+			font-size: 17px;
+		}
+		.nickname{
+			font-size: 12px;
+		}
+		.stats a{
+			margin-right: 15px;
+			font-size: 14px;
+		}
+	}
 }
 @media screen and (max-width:350px) {
 	// ドロップダウンメニューの位置調整
@@ -610,43 +669,4 @@ src: local('GeosansLight-Oblique'), url('GeosansLight-Oblique.woff') format('wof
     url('NotoSansCJKjp-Black.woff') format('woff'),
     url('NotoSansCJKjp-Black.ttf')  format('truetype');
 }
-// レスポンシブ
-@media screen and (max-width:425px) {
-	.container{
-		padding: 0 5px;
-	}
 
-	// ヘッダー
-	.my-header{
-		.user-info-header{
-			max-width: 70%;
-		}
-	}
-	.my-footer .footer-wrapper{
-		width: 85%;
-	}
-	// ユーザープロフィール
-	.user-profile{
-
-		.icon-box{
-			padding-left: 20px;
-		}
-		.icon{
-			width: 70px;
-			height: 70px;
-		}
-		.user-info{
-			padding-left: 40px;
-		}
-		.name{
-			font-size: 17px;
-		}
-		.nickname{
-			font-size: 12px;
-		}
-		.stats a{
-			margin-right: 15px;
-			font-size: 14px;
-		}
-	}
-}

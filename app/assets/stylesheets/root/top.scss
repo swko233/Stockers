@@ -13,6 +13,7 @@
 		align-items: center;
 		justify-content: center;
 		text-align: center;
+		height: 100%;
 	}
 	.about-main *{
 		color: #fff;
@@ -47,5 +48,33 @@
 		color: #40aaff;
 		// margin: 20px;
 	}
-
 }
+	.about-overview,.about-overview-2,.intro-bookmark-box,.intro-bookmark-image{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.about-overview,.about-overview-2{
+		width: 100%;
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	.intro-title{
+		font-size: 25px;
+		font-weight: bold;
+		padding-bottom: 20px;
+	}
+	.intro-text{
+		line-height: 25px;
+	}
+	.intro-bookmark-box,.intro-bookmark-image{
+		width: 50%;
+		text-align: left;
+	}
+	.fa-folder-open{
+		font-size: 80px;
+	}
+	.about-overview-2{
+		background: #fff;
+	}

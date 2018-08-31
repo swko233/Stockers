@@ -33,20 +33,12 @@
 					<%= f.text_field :overview %>
 				</div>
 				<div class="field">
-					<%= f.label :description, 'サービスの詳細' %></br>
-					<%= f.text_area :description %>
-				</div>
-				<div class="field">
 					<%= f.label :service_image, 'メインイメージ' %></br>
 					<%= f.attachment_field :service_image %>
 				</div>
 				<div class="field">
-					<%= f.label :folder_id, 'フォルダ' %></br>
-					<%= f.text_field :folder_id %> <!-- 仮に -->
-				</div>
-				<div class="field">
 					<%= f.label :tag_list, 'タグ' %></br>
-					<%= text_field_tag 'bookmark[tag_list]', @bookmark.tag_list.join(','), "data-role" => "tagsinput" %> <!-- 仮に -->
+					<%= text_field_tag 'bookmark[tag_list]', @bookmark.tag_list.join(','), placeholder: "カンマ区切りで入力（例：SNS,写真)", "data-role" => "tagsinput" %> <!-- 仮に -->
 				</div>
 				<div class="field">
 					<%= f.label :is_published, '公開設定' %></br>
@@ -56,7 +48,7 @@
 					</div>
 				</div>
 				<div class="field">
-					<%= f.label :is_recommended, 'おすすめ設定' %></br>
+					<%= f.label :is_recommended, 'おすすめ設定（3つまで）' %></br>
 					<div class="radio-area">
 						<div><span>する<%= f.radio_button :is_recommended, true %></span></div>
 						<div><span>しない<%= f.radio_button :is_recommended, false %></span></div>
