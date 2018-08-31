@@ -1,6 +1,15 @@
 p{
 	margin-bottom: 0;
 }
+h1{
+	padding-left: 20px;
+}
+// 文字がはみ出した時の三点リーダ
+.service-name,.url,.item-developer-mobile span{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 //検索フォーム
 body{
 	background-color: #fff;
@@ -11,8 +20,9 @@ body{
 	margin-bottom: 30px;
 }
 .search-form{
-	margin-left: 115px;
+	// margin-left: 115px;
 	height: 35px;
+	width: 300px;
 	border: 2px solid #eaeaea;
 	background-color: white;
 	border-radius: 5px;
@@ -20,13 +30,15 @@ body{
 	box-shadow: inset 0 0.25rem 0.125rem 0 rgba(0,0,0,0.05);
 	display: flex;
 	align-items: center;
+	margin-bottom: 20px;
+	position: relative;
 }
 .search-form input{
 	border: none;
 	outline: 0;
 }
 .search-form #search{
-	width: 150px;
+	width: 245px;
 }
 .search-button{
 	border: none;
@@ -36,6 +48,9 @@ body{
 	padding-right: 5px;
 	border-radius: 5px;
 	outline: 0;
+	position: absolute;
+	right: 15px;
+	top: 5px;
 
 	.fa-search{
 		background-color: #fff;
@@ -45,37 +60,47 @@ body{
 	color: #7fbfff;
 }
 //タグメニュー
-.tag-box{
-	margin-right: 10px;
-	padding: 5px 10px;
-	border-bottom: 1px #ddd dotted;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-.tag-box.all{
-	padding-left: 8px
-}
-.tag-list a{
-	text-decoration: none;
-}
-.tag-number{
-	color: #333;
-}
-.tag-box:hover{
-	background-color: #efefef;
+.tag-all{
+	margin-top: 50px;
+
+	.tag-list{
+		margin-top: 10px;
+	}
+	.tag-box{
+		margin-right: 10px;
+		padding: 5px 10px;
+		border-bottom: 1px #ddd dotted;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.tag-box.all{
+		padding-left: 5px
+	}
+	.tag-list a{
+		text-decoration: none;
+	}
+	.tag-number{
+		color: #333;
+	}
+	.tag-box:hover{
+		background-color: #efefef;
+	}
 }
 
+
 // ブックマーク一覧
-.bookmark-item{
+.bookmark-box{
 	padding: 1em;
 	border-bottom: 1px solid #ddd;
+}
+.bookmark-item{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 
 	.item-body{
-		max-width: 80%;
+		max-width: 75%;
 	}
 	.item-info{ //ブックマークと開発者情報と横並びにする
 		display: flex;
@@ -126,58 +151,20 @@ body{
 	.developer-introduction p{
 		margin: 0;
 	}
-}
-
-// タグクラウド
-.tag-list{
-
-	ul li {
-	  display: inline-block;
-	  margin: 0 0 0 1em;
-	  padding: 0;
+	.edit-tools i{
+		margin-right: 7px;
 	}
-	ul{
-		margin-bottom: 0;
-	}
-	ul li a {
-	  position: relative;
-	  display: inline-block;
-	  height: 22px;
-	  line-height: 24px;
-	  padding: 0 0.8em 0 0.5em;
-	  background-color: #e0e0e0;
-	  border-radius: 0 3px 3px 0;
-	  color: #4a4a4a;
-	  font-size: 12px;
-	  text-decoration: none;
-	}
-	ul li a::before {
-	  position: absolute;
-	  top: 0;
-	  left: -11px;
-	  content: '';
-	  width: 0;
-	  height: 0;
-	  border-color: transparent #e0e0e0 transparent transparent;
-	  border-style: solid;
-	  border-width: 11px 11px 11px 0;
-	  border-radius: 3px;
-	}
-	ul li span {
-	  display: block;
-	  max-width: 100px;
-	  white-space: nowrap;
-	  text-overflow: ellipsis;
-	  overflow: hidden;
-	}
-	ul li a:hover {
-	  background-color: #555;
-	  color: #fff;
-	}
-	ul li a:hover::before {
-	  border-right-color: #555;
+	.edit-tools .fa-lock{
+		padding-right: 12px;
 	}
 }
+.item-developer-mobile{
+	display: none;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 50px;
+}
+
 // 編集ツール
 .edit-tools{
 	// min-width: 80px; //押し出し防止
@@ -192,4 +179,79 @@ body{
 .lock-color{
 	color: #ffd700;
 	font-size: 20px;
+}
+// レスポンシブ
+@media screen and (max-width:1024px) {
+	.bookmark-box{
+
+		.item-body{
+			max-width: 80%;
+		}
+		.item-detail{
+			width: 100%;
+		}
+		.item-developer{
+			display: none;
+		}
+		.edit-tools i{
+			display: block;
+			margin: 0; //リセット
+			padding: 0; //リセット
+			margin-bottom: 10px;
+		}
+		.edit-tools .fa-lock{
+			padding-right: 0;
+		}
+		.item-developer-mobile{
+			display: flex;
+			padding: 0;
+			margin-top: 7px;
+
+			.developer-icon{
+				width: 30px;
+				height: 30px;
+				border: 1px solid #efefef;
+				border-radius: 50%;
+				background-size: cover;
+				margin-right: 5px;
+			}
+			.icon{
+				width: 30px;
+				height: 30px;
+			}
+			.developer-introduction br{
+				display: none;
+			}
+			.developer-introduction *{
+				font-size: 12px;
+			}
+		}
+	}
+}
+@media screen and (max-width:767px) {
+	body{
+		background-color: #EAEAE0;
+	}
+	.bookmark-index{
+		padding: 0 5px;
+	}
+	.container{
+		padding-top: 10px;
+		margin-bottom: 80px;
+		background: #fff;
+		border-radius: 10px;
+	    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+	    margin-top: 10px;
+	}
+	.tag-all{
+		margin-bottom: 50px;
+	}
+}
+@media screen and (max-width:375px) {
+	.search-form{
+		width: 100%;
+	}
+	.search-form #search{
+		width: 80%;
+	}
 }

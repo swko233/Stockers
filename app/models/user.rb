@@ -32,4 +32,14 @@ class User < ApplicationRecord
   	following_relationships.find_by(following_id: other_user.id).destroy
   end
 
+  # 論理削除
+  def soft_delete
+    update(deleted_at: Time.now)
+  end
+
+  # 退会していないという条件を追加
+  def active_for_authentication?
+    !deleted_at
+  end
+
 end

@@ -1,7 +1,5 @@
 .container{
 	max-width: 600px;
-	background: #fff;
-	padding: 50px;
 }
 h1{
 	font-size: 20px;
@@ -20,7 +18,6 @@ h1{
 .post-title div{
 	width: 50%;
 	padding: 15px;
-	border-bottom: 2px solid #AEBFC7;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -38,7 +35,7 @@ h1{
 	// padding: 25px;
 }
 
-.btn{
+.btn-success{
 	padding: 7px 15px;
 	width: 100%;
 }
@@ -57,4 +54,27 @@ h1{
  // プレースホルダ
  input::placeholder{
   color: #999;
+}
+// 新規登録、ログイン
+.links-new{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 30px;
+}
+@media screen and (max-width:767px) {
+	.radio-area{
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.radio-area div{
+		width: 50%;
+	}
+	.radio-area input{
+		width: 35px;
+	}
+	.radio-button{
+		width: 35px;
+	}
 }

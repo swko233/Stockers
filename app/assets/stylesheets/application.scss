@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap-tagsinput
  *= require_self
  */
 
@@ -28,20 +27,34 @@
 }
 
 body{
-	background: #F9F9F9;
+	background: #EAEAE0;
 }
 h1{
 	color: #345068;
 	font-size: 20px;
-	// padding-bottom: 30px;
 }
 li{
 	list-style: none;
+}
+#logo{
+	font-family: 'Nunito', sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	color: #40aaff;
+	letter-spacing: 0.1em;
 }
 .clearfix:after {
     content: "";
     display: block;
     clear: both;
+}
+// フォームページ
+.form-wrapper{
+	background: #fff;
+	border-radius: 5px;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	padding: 50px;
 }
 // フッター固定用
 body,#wrapper {
@@ -52,12 +65,15 @@ body,#wrapper {
 .my-footer{
 	margin-top :auto;
 }
+.user-profile{
+	margin-top: 10px;
+}
 // ヘッダー
 .my-header{
 	background-color: #fff;
 	height: 60px;
 	border-bottom: 1px solid #ddd;
-	margin-bottom: 20px;
+	margin-bottom: 0;
 
 	.header-wrapper{
 		height: 100%;
@@ -69,6 +85,10 @@ body,#wrapper {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		position: relative; //discover-nav用
+	}
+	.header-contents a{
+		text-decoration: none;
 	}
 	.contents-navigation{
 		height: 100%;
@@ -76,10 +96,17 @@ body,#wrapper {
 		align-items: center;
 		justify-content: space-between;
 	}
+	.discover-menu{
+		position: absolute;
+		left: 170px;
+	}
 	.bookmark-menu{
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+	}
+	.header-login{
+		margin-right: 15px;
 	}
 	.nav-box a{
 		text-decoration: none;
@@ -97,6 +124,15 @@ body,#wrapper {
 	}
 	.nav-button.bookmark-nav{
 		background-color: #d4dde8;
+
+		span{
+			color: #73899c;
+		}
+	}
+	.nav-button.discover-nav{
+		background-color: #fff;
+		border: 1px solid #d4dde8;
+		border-radius: 20px;
 
 		span{
 			color: #73899c;
@@ -147,14 +183,18 @@ body,#wrapper {
 		align-items: center;
 		justify-content: center;
 		margin-right: 10px;
+		max-width: 70%;
 	}
 	.user-name-header{
 		margin-bottom: 7px;
+		word-break: break-all;
 	}
 	.user-nickname-header{
+		width: 100%;
 		font-size: 10px;
 		color: #999;
 		margin-bottom: 0;
+		word-break: break-all;
 	}
 	.user-icon{
 		display: flex;
@@ -188,7 +228,7 @@ body,#wrapper {
 		justify-content: space-around;
 	}
 	.nav-links a{
-		width: 33%; // 要素数によって変動
+		width: 25%; // 要素数によって変動
 		height: 100%;
 		display: flex;
 		align-items: center;
@@ -197,7 +237,7 @@ body,#wrapper {
 	.nav-links a:hover{
 		opacity: 0.8;
 	}
-	.nav-links .far{
+	.nav-links .far, .nav-links .fas{
 		color: #fff;
 	}
 	.nav-search-user{
@@ -212,6 +252,62 @@ body,#wrapper {
 		border-radius: 50%;
 		width: 30px;
 		height: 30px;
+	}
+}
+// ユーザー情報
+.target-user-box{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.target-user-icon{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+}
+.target-icon{
+	background-size: cover;
+	background-position: center center;
+	border: 1px solid #efefef;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+}
+.target-user-name{
+	margin-bottom: 7px;
+}
+.target-user-nickname{
+	font-size: 10px;
+	color: #999;
+	margin-bottom: 0;
+}
+//タグメニュー
+.tag-all{
+	margin-top: 50px;
+
+	.tag-list{
+		margin-top: 10px;
+	}
+	.tag-box{
+		margin-right: 10px;
+		padding: 5px 10px;
+		border-bottom: 1px #ddd dotted;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.tag-box.all{
+		padding-left: 5px
+	}
+	.tag-list a{
+		text-decoration: none;
+	}
+	.tag-number{
+		color: #333;
+	}
+	.tag-box:hover{
+		background-color: #efefef;
 	}
 }
 
@@ -351,12 +447,11 @@ body,#wrapper {
 	  text-overflow: ellipsis;
 	  overflow: hidden;
 	}
-	ul li a:hover {
-	  background-color: #555;
-	  color: #fff;
+	ul li a:hover{
+	  opacity: 0.8;
 	}
 	ul li a:hover::before {
-	  border-right-color: #555;
+	  opacity: 0.8;
 	}
 }
 // フォーム入力欄
@@ -383,6 +478,118 @@ label{
 }
 .actions{
 	margin-top: 50px;
+}
+// レスポンシブ
+@media screen and (max-width:1024px) {
+// ヘッダー
+	.my-header .header-wrapper{
+		width: 95%;
+	}
+	.my-header .discover-menu{
+		position: absolute;
+		left: 135px;
+	}
+}
+// 768より小さい端末用
+@media screen and (max-width:767px) {
+  header {
+    width: 100%;
+  }
+  .container{
+  	width: 100%;
+  }
+  .form-wrapper{
+  	margin-bottom: 80px;
+  }
+ // ヘッダー
+ .my-header{
+ 	.header-wrapper{
+		width: 95%;
+	}
+  	// ロゴを中心に
+  	.my-header .header-contents{
+  		justify-content: center;
+ 	 }
+ 	 .discover-menu{
+		display: none;
+	}
+ 	 .bookmark-menu{
+ 	 	display: none;
+ 	 }
+  	.header-login, .header-signup{
+  		display: none;
+ 	}
+ 	// ドロップダウンメニューの位置調整
+ 	#dropdown-window.is-active{
+ 		left: -10px;
+ 	}
+ }
+  // フォームの入力欄確保
+  .form-wrapper{
+  	margin-top: 15px;
+  	padding: 20px;
+  }
+  // フッター
+  .my-footer{
+  	position: fixed;
+  	bottom: 0;
+  }
+}
+@media screen and (max-width:425px) {
+	.container{
+		padding: 0 5px;
+	}
+
+	// ヘッダー
+	.my-header{
+		.user-info-header{
+			max-width: 70%;
+		}
+	}
+	.my-footer .footer-wrapper{
+		width: 85%;
+	}
+	// ユーザープロフィール
+	.user-profile{
+
+		.icon-box{
+			padding-left: 20px;
+		}
+		.icon{
+			width: 70px;
+			height: 70px;
+		}
+		.user-info{
+			padding-left: 40px;
+		}
+		.name{
+			font-size: 17px;
+		}
+		.nickname{
+			font-size: 12px;
+		}
+		.stats a{
+			margin-right: 15px;
+			font-size: 14px;
+		}
+	}
+}
+@media screen and (max-width:350px) {
+	// ドロップダウンメニューの位置調整
+ 	.my-header{
+	 	#dropdown-window.is-active{
+	 		left: -25px;
+	 	}
+	 	.user-menu{
+	 		margin-left: 40px;
+	 	}
+	 }
+	 // ボタン
+	 .btn-follow,.btn-following{
+	 	width: 90px;
+	 	font-size: 12px;
+	 }
+
 }
 // フォント
 @font-face {
@@ -462,3 +669,4 @@ src: local('GeosansLight-Oblique'), url('GeosansLight-Oblique.woff') format('wof
     url('NotoSansCJKjp-Black.woff') format('woff'),
     url('NotoSansCJKjp-Black.ttf')  format('truetype');
 }
+

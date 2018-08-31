@@ -1,0 +1,8 @@
+<%= stylesheet_link_tag 'users/show_following', :media => "all" %>
+
+<div class="container">
+	<div class="user-index">
+		<h1>ユーザ一覧</h1>
+		<%= render 'user_index', users: @users, user_index_flag: true %>
+	</div>
+</div>

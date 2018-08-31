@@ -1,18 +1,18 @@
 .container{
-	max-width: 800px;
+	max-width: 920px;
+	// background: #fff;
+}
+.user-profile,.user-list-box{
+	padding: 10px 40px 40px 40px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
 	background: #fff;
 }
-// ユーザープロフィール
-.user-profile{
-	background: #fff;
-	padding: 10px;
-	padding-top: 50px;
-}
-.profile-main{
-	display: flex;
-	align-items: start;
-	justify-content: flex-start;
-	position: relative;
+h1{
+	color: #345068;
+	font-size: 20px;
+	padding-bottom: 30px;
 }
 .icon-box{
 	margin-top: 10px;
@@ -28,6 +28,22 @@
 	width: 90px;
 	height: 90px;
 }
+// ユーザープロフィール
+.user-profile{
+	background: #fff;
+	padding: 30px 10px;
+}
+.profile-main{
+	display: flex;
+	align-items: start;
+	justify-content: flex-start;
+	position: relative;
+
+	.icon-box{
+		padding-left: 50px;
+	}
+}
+
 .user-info{
 	padding-left: 100px;
 
@@ -50,12 +66,18 @@
 	}
 }
 // フォロー/フォロワー
-.user-box{
+.user-box-wrap{
 	padding: 20px;
 	border-bottom: 1px solid #efefef;
+}
+.user-box{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding-bottom: 15px;
+}
+.user-box:last-child{
+	border: none;
 }
 .user-box a{
 		text-decoration: none;
@@ -86,5 +108,114 @@
 	.nickname{
 		font-size: 13px;
 		color: #999;
+	}
+}
+// ユーザー一覧（ブックマーク数表示)
+.using-stats{
+}
+.bookmark-count, .work-count{
+	color: #73899c;
+	padding-right: 5px;
+	font-size: 13px;
+}
+.bookmark-count > span,.work-count > span{
+	padding-left: 3px;
+	color: #73899c;
+}
+// 一覧ページ
+.user-index{
+	padding: 10px 40px 40px 40px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+	background: #fff;
+	margin-top: 10px;
+
+	.user-list-box{
+		padding: 0;
+		border-radius: none;
+		margin-bottom: 0;
+		box-shadow: none;
+	}
+}
+// レスポンシブ
+@media screen and (max-width:767px) {
+	// ユーザープロフィール
+	.user-profile{
+
+		.icon-box{
+			padding-left: 20px;
+		}
+		.icon{
+			width: 70px;
+			height: 70px;
+		}
+		.user-info{
+			padding-left: 40px;
+		}
+		.name{
+			font-size: 17px;
+		}
+		.nickname{
+			font-size: 12px;
+		}
+		.stats a{
+			margin-right: 15px;
+			font-size: 14px;
+		}
+	}
+	.user-list-box{
+		padding: 10px 2px;
+		margin-bottom: 80px;
+
+		.user-box a{
+			max-width: 65%;
+		}
+		.nickname{
+			word-break: break-all;
+		}
+	}
+	.user-index{
+		padding: 0;
+		margin-bottom: 80px;
+	}
+	.user-index h1{
+		padding-top: 30px;
+		padding-left: 20px;
+	}
+}
+@media screen and (max-width:350px) {
+	.user-profile{
+		.icon{
+			width: 60px;
+			height: 60px;
+		}
+		.user-info{
+			padding-left: 25px;
+		}
+	}
+	.follow-user-profile{
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		.icon{
+			width: 45px;
+			height: 45px;
+		}
+		.user-name{
+			padding-left: 20px;
+		}
+		.user-name p{
+			margin-bottom: 0;
+		}
+		.name{
+			font-size: 14px;
+			margin-bottom: 5px;
+			color: #222;
+		}
+		.nickname{
+			font-size: 12px;
+		}
 	}
 }

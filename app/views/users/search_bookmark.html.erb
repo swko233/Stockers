@@ -1,129 +1,109 @@
 <%= stylesheet_link_tag "users/search_bookmark", :media => "all" %>
 <%= javascript_include_tag "users/search_bookmark.js" %>
 
-<div class="container">
-	<div class="search-title">
-		<h1>ブックマーク一覧</h1>
-			<!-- 検索フォーム -->
-		<div class="search-form">
-			<p>
-				<%= form_tag search_bookmark_path, :method => 'get' do %>
-				    <%= text_field_tag :search, params[:search] %>
-				    <%= button_tag type: :submit, :searvice_name => nil, class: "search-button" do %>
-				    	<i class="fas fa-search"></i>
-				    <% end %>
-				<% end %>
-			</p>
+<div class="bookmark-index">
+	<div class="container">
+		<div class="search-title">
+			<h1>ブックマーク一覧</h1>
 		</div>
-	</div>
-	<div class="col-xs-3">
-		<section class="user-profile">
-			<div class="profile-main">
-				<div class="icon-box">
-					<div class="icon"></div>
+		<div class="col-sm-3">
+			<%= render 'users/user_info',user:@user %>
+			<div class="tag-all">
+				<h4>タグ</h4>
+				<div class="tag-list">
+					<%= link_to search_bookmark_path(@user.id) do %>
+						<div class="tag-box all"><span>すべて</span></div>
+					<% end %>
+					<% @tag_all.zip(@tag_count).each do |tag,n| %>
+						<%= link_to search_bookmark_tag_path(@user.id, tag: tag) do %>
+							<div class="tag-box">
+								<div class="tag-name"><%= tag %></div>
+								<div class="tag-number"><%= n %></div>
+							</div>
+						<% end %>
+					<% end %>
 				</div>
-				<div id="user-info" value="<%= @user.id %>"> <!-- インクリメンタルサーチのurl取得用value -->
-					<div class="name">
-						<%= @user.email %>
-						<span id="user-id"><%= @user.id %></span>
-					</div>
-					<div class="links">
-						<section class="stats">
-							<%= render 'stats' %>
-						</section>
-					</div>
-				</div>
 			</div>
-			<div class="profile-sub">
+		</div>
+		<div class="col-sm-9">
+			<!-- 検索フォーム -->
+			<div class="search-form">
+				<p>
+					<%= form_tag search_bookmark_path, :method => 'get' do %>
+					    <%= text_field_tag :search, params[:search] %>
+					    <%= button_tag type: :submit, :searvice_name => nil, class: "search-button" do %>
+					    	<i class="fas fa-search"></i>
+					    <% end %>
+					<% end %>
+				</p>
 			</div>
-			<div class="follow_button">
-				<%= render 'follow_form' %>
-			</div>
-		</section>
-		<div class="tag-all">
-			<h4>タグ</h4>
-			<div class="tag-list">
-				<%= link_to search_bookmark_path(@user.id) do %>
-					<div class="tag-box all"><span>すべて</span></div>
-				<% end %>
-				<% @tag_all.zip(@tag_count).each do |tag,n| %>
-					<%= link_to search_bookmark_tag_path(@user.id, tag: tag) do %>
-						<div class="tag-box">
-							<div class="tag-name"><%= tag %></div>
-							<div class="tag-number"><%= n %></div>
+			<div class="bookmarks change-content">
+	 			<% @bookmarks.each do |bookmark| %>
+	 				<% unless bookmark.is_published == false && @user != current_user %>
+	 					<div class="bookmark-box">
+							<div class="bookmark-item">
+								<div class="item-body">
+									<div class="item-info">
+										<div class="item-detail">
+											<a href="<%= bookmark.url %>" target="_blank">
+												<div class="item-description">
+													<p class="service-name"><%= bookmark.service_name.truncate(30) %></p>
+													<p class="url"><%= bookmark.url %></p>
+												</div>
+											</a>
+										</div>
+										<!-- 自作サービスなら開発者情報を表示 -->
+										<% if bookmark.is_work == true %>
+										<!-- ユーザー情報取得（worksとbookmarksのアソシエーションはなし） -->
+										<% developer = User.find_by(id: Work.find_by(id: bookmark.work_id).user_id) %>
+											<div class="item-developer">
+												<%= render 'users/show_developer', developer: developer %>
+											</div>
+										<% end %>
+									</div>
+									<div class="tag-list">
+										<ul>
+											<% bookmark.tag_list.each do |tag| %>
+												<li><a href="<%=search_bookmark_tag_path(@user.id, tag: tag) %>"><span><%= tag %></span></a></li>
+											<% end %>
+										</ul>
+									</div>
+								</div>
+								<% if @user == current_user %>
+								<div class="edit-tools">
+									<% if bookmark.is_published == false %>
+										<i class="fas fa-lock lock-color"></i>
+									<% end %>
+									<%= link_to edit_bookmark_path(bookmark.id) do %>
+										<i class="fas fa-edit"></i>
+									<% end %>
+									<%= link_to bookmark_path(bookmark.id), method: :delete do %>
+										<i class="far fa-trash-alt"></i>
+									<% end %>
+								</div>
+								<% else %>
+								<div id="bookmark-button<%= bookmark.id %>">
+									<!-- ブックマーク済みかどうかの判別用 -->
+									<% @my_bookmark = current_user.bookmarks.find_by(url: bookmark.url) %>
+									<!-- _bookmarked,_unbookmarkedに渡すための変数 -->
+									<% @this_bookmark = bookmark %>
+									<% if @my_bookmark.nil? %>
+										<%= render 'unbookmarked' %>
+									<% else %>
+										<%= render 'bookmarked' %>
+									<% end %>
+								</div>
+								<% end %>
+							</div>
+							<div class="item-developer-mobile">
+								<% if bookmark.is_work == true %>
+									<%= render 'users/show_developer', developer: developer %>
+								<% end %>
+							</div>
 						</div>
 					<% end %>
 				<% end %>
 			</div>
-		</div>
-	</div>
-	<div class="col-xs-9">
-		<div class="bookmarks change-content">
- 			<% @bookmarks.each do |bookmark| %>
- 				<% unless bookmark.is_published == false && @user != current_user %>
-					<div class="bookmark-item">
-						<div class="item-body">
-							<div class="item-info">
-								<div class="item-detail">
-									<a href="<%= bookmark.url %>" target="_blank">
-										<div class="item-description">
-											<p class="service-name"><%= bookmark.service_name.truncate(30) %></p>
-											<p class="url"><%= bookmark.url %></p>
-										</div>
-									</a>
-								</div>
-								<!-- 自作サービスなら開発者情報を表示 -->
-								<% if bookmark.is_work == true %>
-								<div class="item-developer">
-									<div class="developer-icon">
-										<!-- ユーザー情報取得（worksとbookmarksのアソシエーションはなし） -->
-										<% developer = User.find_by(id: Work.find_by(id: bookmark.work_id).user_id) %>
-										<%= link_to user_path(developer.id) do %>
-											<%= attachment_image_tag developer, :image, fallback: "no_user_image", format: "png", class: "icon developer-icon"%>
-										<% end %>
-									</div>
-									<div class="developer-introduction">
-										<p><%= link_to '@' + developer.nickname,user_path(developer.id) %><span>さんが作成</span></p>
-									</div>
-								</div>
-								<% end %>
-							</div>
-							<div class="tag-list">
-								<ul>
-									<% bookmark.tag_list.each do |tag| %>
-										<li><a href="<%=search_bookmark_tag_path(@user.id, tag: tag) %>"><span><%= tag %></span></a></li>
-									<% end %>
-								</ul>
-							</div>
-						</div>
-						<% if @user == current_user %>
-						<div class="edit-tools">
-							<% if bookmark.is_published == false %>
-								<i class="fas fa-lock fa-fw lock-color"></i>
-							<% end %>
-							<%= link_to edit_bookmark_path(bookmark.id) do %>
-								<i class="fas fa-edit fa-fw"></i>
-							<% end %>
-							<%= link_to bookmark_path(bookmark.id), method: :delete do %>
-								<i class="far fa-trash-alt fa-fw"></i>
-							<% end %>
-						</div>
-						<% else %>
-						<div id="bookmark-button<%= bookmark.id %>">
-							<!-- ブックマーク済みかどうかの判別用 -->
-							<% @my_bookmark = current_user.bookmarks.find_by(url: bookmark.url) %>
-							<!-- _bookmarked,_unbookmarkedに渡すための変数 -->
-							<% @this_bookmark = bookmark %>
-							<% if @my_bookmark.nil? %>
-								<%= render 'unbookmarked' %>
-							<% else %>
-								<%= render 'bookmarked' %>
-							<% end %>
-						</div>
-						<% end %>
-					</div>
-				<% end %>
-			<% end %>
 		</div>
 	</div>
 </div>

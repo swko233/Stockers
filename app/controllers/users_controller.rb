@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+	def index
+		@users = User.all
+	end
+
 	def show
 		@user = User.find(params[:id])
 		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
@@ -36,14 +40,9 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		if User.exists?(params[:id])
-			@user = User.find(params[:id])
-			# アドレス直打ち対策
-			if @user != current_user
-				redirect_to user_path(current_user.id)
-			end
-		else
-			#見つからなかったというページを作る
+		@user = User.find(params[:id])
+		# アドレス直打ち対策
+		if @user != current_user
 			redirect_to user_path(current_user.id)
 		end
 	end
@@ -52,10 +51,16 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if @user.update(user_params)
 			flash[:notice] = "ユーザー情報を変更しました"
-			redirect_to edit_user_path(current_user.id)
+			redirect_to user_path(current_user.id)
 		else
-			flash[:notice] = "保存に失敗しました"
-			redirect_to edit_user_path(current_user.id)
+			@email_errmsg = @user.errors.full_messages_for(:email)
+		    if @email_errmsg[0] == "Eメール translation missing: ja.activerecord.errors.models.user.attributes.email.taken"
+		    	@email_exist_flag = true
+		    end
+		    @name_errmsg = @user.errors.full_messages_for(:name)
+		    @nickname_errmsg = @user.errors.full_messages_for(:nickname)
+			# binding.pry
+			render 'edit'
 		end
 	end
 
@@ -141,6 +146,18 @@ class UsersController < ApplicationController
 		@follower_number = @user.followers.count
 		@users = @user.followers
 		render 'show_followers'
+	end
+
+	def destroy
+		@user = current_user
+		if @user.soft_delete
+			sign_out(@user)
+			redirect_to root_path
+			flash[:notice] = "退会しました"
+		else
+			redirect_to user_path(@user.id)
+			flash[:alert] = "エラーが発生しました"
+		end
 	end
 
 	private

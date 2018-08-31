@@ -16,7 +16,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require bootstrap-tagsinput.min
 // = require data-confirm-modal
 
 // ブラウザバック時にドロップダウンが開けなかったので対策

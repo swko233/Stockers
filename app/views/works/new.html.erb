@@ -2,66 +2,72 @@
 <%= stylesheet_link_tag "bookmarks/new", :media => "all" %>
 
 <div class="container">
-	<h1>登録フォーム</h1>
-	<div class="post-title">
-		<div><%= link_to "ブックマーク", new_bookmark_path %></div>
-		<div class="active">自作サービス</div>
-	</div>
-	<div class="new-posts">
-		<%= form_for(@work) do |f| %>
-			<div class="field">
-				<%= f.label :servive_name, 'サービス名' %><span class="form-require">必須</span></br>
-				<%= f.text_field :service_name %>
-				<% if @service_name_errmsg.present? %>
-					<div class="error-message">入力してください</div>
-				<% end %>
-			</div>
-			<div class="field">
-				<%= f.label :url, 'URL' %><span class="form-require">必須</span></br>
-				<%= f.text_field :url %>
-				<% if @url_errmsg.present? %>
-					<% if @already_exist_flag == true %>
-						<div class="error-message">すでに投稿済みのURLです</div>
-					<% else %>
+	<div class="form-wrapper">
+		<h1>登録フォーム</h1>
+		<div class="post-title">
+			<div><%= link_to "ブックマーク", new_bookmark_path %></div>
+			<div class="active">自作サービス</div>
+		</div>
+		<div class="new-posts">
+			<%= form_for(@work) do |f| %>
+				<div class="field">
+					<%= f.label :servive_name, 'サービス名' %><span class="form-require">必須</span></br>
+					<%= f.text_field :service_name %>
+					<% if @service_name_errmsg.present? %>
 						<div class="error-message">入力してください</div>
 					<% end %>
-				<% end %>
-			</div>
-			<div class="field">
-				<%= f.label :overview, 'サービスの概要' %></br>
-				<%= f.text_field :overview %>
-			</div>
-			<div class="field">
-				<%= f.label :description, 'サービスの詳細' %></br>
-				<%= f.text_area :description %>
-			</div>
-			<div class="field">
-				<%= f.label :service_image, 'メインイメージ' %><span class="form-require">必須</span></br>
-				<%= f.attachment_field :service_image %>
-				<% if @url_errmsg.present? %>
-					<div class="error-message">画像を選択してください</div>
-				<% end %>
-			</div>
-			<div class="field">
-				<%= f.label :tag_list, 'タグ' %></br>
-				<%= text_field_tag 'work[tag_list]', @work.tag_list.join(','), "data-role" => "tagsinput" %> <!-- 仮に -->
-			</div>
-			<div class="field">
-				<%= f.label :is_published, '公開設定' %></br>
-				<span>公開<%= f.radio_button :is_published, true %></span>
-				<span>非公開<%= f.radio_button :is_published, false %></span>
-			</div>
-			<div class="field">
-				<%= f.label :is_recommended, 'おすすめ設定' %></br>
-				<span>する<%= f.radio_button :is_recommended, true %></span>
-				<span>しない<%= f.radio_button :is_recommended, false %></span>
-				<% if @too_many_recommended_flag.present? %>
-					<div class="error-message">おすすめ設定は1つまでです</div>
-				<% end %>
-			</div>
-			<div class="actions">
-				<%= f.submit '投稿する', class: "btn btn-success" %>
-			</div>
-		<% end %>
+				</div>
+				<div class="field">
+					<%= f.label :url, 'URL' %><span class="form-require">必須</span></br>
+					<%= f.text_field :url %>
+					<% if @url_errmsg.present? %>
+						<% if @already_exist_flag == true %>
+							<div class="error-message">すでに投稿済みのURLです</div>
+						<% else %>
+							<div class="error-message">入力してください</div>
+						<% end %>
+					<% end %>
+				</div>
+				<div class="field">
+					<%= f.label :overview, 'サービスの概要' %></br>
+					<%= f.text_field :overview %>
+				</div>
+				<div class="field">
+					<%= f.label :description, 'サービスの詳細' %></br>
+					<%= f.text_area :description %>
+				</div>
+				<div class="field">
+					<%= f.label :service_image, 'メインイメージ' %><span class="form-require">必須</span></br>
+					<%= f.attachment_field :service_image %>
+					<% if @url_errmsg.present? %>
+						<div class="error-message">画像を選択してください</div>
+					<% end %>
+				</div>
+				<div class="field">
+					<%= f.label :tag_list, 'タグ' %></br>
+					<%= text_field_tag 'work[tag_list]', @work.tag_list.join(','), placeholder: "カンマ区切りで入力（例：SNS,写真)", "data-role" => "tagsinput" %>
+				</div>
+				<div class="field">
+					<%= f.label :is_published, '公開設定' %></br>
+					<div class="radio-area">
+						<div><span>公開<%= f.radio_button :is_published, true %></span></div>
+						<div><span>非公開<%= f.radio_button :is_published, false %></span></div>
+					</div>
+				</div>
+				<div class="field">
+					<%= f.label :is_recommended, 'おすすめ設定（1つまで）' %></br>
+					<div class="radio-area">
+						<div><span>する<%= f.radio_button :is_recommended, true %></span></div>
+						<div><span>しない<%= f.radio_button :is_recommended, false %></span></div>
+					</div>
+					<% if @too_many_recommended_flag.present? %>
+						<div class="error-message">おすすめ設定は1つまでです</div>
+					<% end %>
+				</div>
+				<div class="actions">
+					<%= f.submit '投稿する', class: "btn btn-success" %>
+				</div>
+			<% end %>
+		</div>
 	</div>
 </div>

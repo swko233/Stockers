@@ -5,7 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800" rel="stylesheet">
+
     <!-- <link rel="stylesheet" href="style.css"> -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,12 +20,27 @@
     <div class="my-header">
       <div class="header-wrapper">
         <div class="header-contents">
-          <div class="contents-logo">
-            <%= link_to 'ログイン', new_user_session_path %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-          </div>
-          <div class="contents-navigation">
           <% if user_signed_in? %>
+            <%= link_to user_path(current_user.id) do %>
+              <div id="logo">Stockers</div>
+            <% end %>
+          <% else %>
+            <%= link_to root_path do %>
+              <div id="logo">Stockers</div>
+            <% end %>
+          <% end %>
+          <div class="contents-navigation">
+          <!-- ログイン状態判別 -->
+          <% if user_signed_in? %>
+            <div class="discover-menu">
+              <div class="nav-box">
+                <%= link_to users_path do %>
+                  <div class="nav-button  discover-nav">
+                    <span>ユーザ一覧</span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
             <div class="bookmark-menu">
               <div class="nav-box">
                 <%= link_to search_bookmark_path(current_user.id) do %>
@@ -46,7 +64,7 @@
                 <div class="user-info-header">
                   <div>
                     <p class="user-name-header"><%= current_user.name %></p>
-                    <p class="user-nickname-header"><%= current_user.nickname %></p>
+                    <p class="user-nickname-header">@<%= current_user.nickname %></p>
                  </div>
                 </div>
                 <div class="user-icon">
@@ -65,6 +83,12 @@
                   <% end %>
               </div>
             </div>
+          <% else %>
+          <!-- ログインしていない場合 -->
+            <div class="bookmark-menu">
+              <%= link_to 'ログイン', new_user_session_path, class: "btn btn-follow header-login" %>
+              <%= link_to '新規登録', new_user_registration_path, class: "btn btn-following header-signup" %>
+            </div>
           <% end %>
           </div>
         </div>
@@ -76,6 +100,11 @@
       <div class="my-footer">
         <div class="footer-wrapper">
             <div class="nav-links">
+              <%= link_to users_path do %>
+                <div class="nav-users">
+                  <i class="fas fa-users fa-2x"></i>
+                </div>
+              <% end %>
               <%= link_to search_bookmark_path(current_user.id) do %>
                 <div class="nav-my-bookmark">
                   <i class="far fa-folder-open fa-2x"></i>

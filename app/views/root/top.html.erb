@@ -1,1 +1,48 @@
-<h1>Stockers</h1>
+<%= stylesheet_link_tag "root/top", :media => "all" %>
+
+<div class="container-fluid">
+	<section class="main-title">
+		<div class="about-main">
+			<div class="about-body">
+				<div class="about-title">
+					<h1 id="logo">Stockers</h1>
+					<p class="title-description">ブックマーク共有サービス</p>
+				</div>
+				<div class="catch-copy">
+					<p class="catch-copy">いいサービスは、だれかが知っている。</p>
+				</div>
+				<div class="buttons">
+					<%= link_to 'ログイン', new_user_session_path ,class: "login-button btn btn-following" %>
+					<%= link_to '新規登録', new_user_registration_path, class: "registration-button btn btn-following" %>
+				</div>
+			</div>
+		</div>
+	</section>
+		<div class="about-overview">
+			<div class="intro-bookmark-box">
+				<div class="intro-bookmark">
+					<p class="intro-title">ブックマークを登録</p>
+					<p class="intro-text">●お気に入りのWebサービスをブックマークに登録<br>
+						●他のユーザのブックマークを登録<br>
+						●おすすめのサービスを選ぶ</p>
+				</div>
+			</div>
+			<div class="intro-bookmark-image">
+				<i class="fas fa-folder-open fa-4x"></i>
+			</div>
+		</div>
+		<div class="about-overview-2">
+			<div class="intro-bookmark-image">
+				<i class="fas fa-mobile-alt fa-4x"></i>
+			</div>
+			<div class="intro-bookmark-box">
+				<div class="intro-bookmark">
+					<p class="intro-title">自作サービスを投稿</p>
+					<p class="intro-text">
+						●つくったサービスをマイページに投稿<br>
+						●投稿されたサービスにいいね、コメント<br>
+						●自作サービスをブックマークする</p>
+				</div>
+			</div>
+		</div>
+</div>

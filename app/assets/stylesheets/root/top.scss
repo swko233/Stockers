@@ -1,0 +1,80 @@
+.container-fluid{
+	margin: 0;
+	padding: 0;
+}
+.main-title{
+	width: 100%;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	background: #40aaff;
+
+	.about-main{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		height: 100%;
+	}
+	.about-main *{
+		color: #fff;
+	}
+	.about-title{
+		margin-bottom: 60px;
+	}
+	.catch-copy{
+		font-size: 30px;
+		margin-bottom: 40px;
+	}
+	h1#logo{
+		font-family: 'Nunito', sans-serif;
+		font-size: 80px;
+		font-weight: bold;
+		letter-spacing: 0.1em;
+		color: #fff;
+	}
+	.title-description{
+		font-size: 20px;
+	}
+	.buttons .login-button,.buttons .registration-button{
+		margin: 20px;
+		width: 200px;
+	}
+	.buttons .login-button{
+		border-color: #fff;
+	}
+	.buttons .registration-button{
+		border-color: #fff;
+		background: #fff;
+		color: #40aaff;
+		// margin: 20px;
+	}
+}
+	.about-overview,.about-overview-2,.intro-bookmark-box,.intro-bookmark-image{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.about-overview,.about-overview-2{
+		width: 100%;
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	.intro-title{
+		font-size: 25px;
+		font-weight: bold;
+		padding-bottom: 20px;
+	}
+	.intro-text{
+		line-height: 25px;
+	}
+	.intro-bookmark-box,.intro-bookmark-image{
+		width: 50%;
+		text-align: left;
+	}
+	.fa-folder-open{
+		font-size: 80px;
+	}
+	.about-overview-2{
+		background: #fff;
+	}
