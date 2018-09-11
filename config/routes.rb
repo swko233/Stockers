@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   root 'root#top'
-
+  get 'privacy_policy' =>'root#privacy_policy', as: "privacy"
+  get 'terms_of_service' => 'root#terms_of_service', as: "terms"
+  get 'contact' => 'root#contact', as: "contact"
 	devise_for :admins, controllers: {
 	  sessions:      'admins/sessions',
 	  passwords:     'admins/passwords',

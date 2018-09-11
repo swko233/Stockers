@@ -42,6 +42,7 @@ class BookmarksController < ApplicationController
     if @added_bookmark.is_work == true
       bookmark.is_work = true
       bookmark.work_id = @added_bookmark.work_id
+      bookmark.service_image_id = @added_bookmark.service_image_id
     end
     unless @added_bookmark.service_image_id.nil?
       bookmark.service_image_id = @added_bookmark.service_image_id
@@ -69,6 +70,7 @@ class BookmarksController < ApplicationController
       bookmark.user_id = current_user.id
       bookmark.is_work = true
       bookmark.work_id = @added_work.id
+      bookmark.service_image_id = @added_work.service_image_id
       bookmark.tag_list = @added_work.tag_list  #タグの継承
       if bookmark.save
         redirect_back(fallback_location: root_path)

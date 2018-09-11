@@ -3,7 +3,9 @@
 <div class="container">
 	<div class="form-wrapper">
 		<h1>ブックマーク編集</h1>
-		<%= link_to '削除', bookmark_path(@bookmark.id), method: :delete %>
+		<div class="delete-box">
+			<p class="delete-button"><%= link_to '削除する', bookmark_path(@bookmark.id), method: :delete %></p>
+		</div>
 		<div class="new-posts">
 			<%= form_for(@bookmark) do |f| %>
 				<div class="field">

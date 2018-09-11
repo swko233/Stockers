@@ -31,6 +31,15 @@ h1{
 	color: #40AAFF;
 
 }
+.delete-box{
+	display: flex;
+	justify-content: flex-end;
+}
+.delete-button{
+	display: inline-block;
+	margin-right: 10px;
+
+}
 .new-posts{
 	// padding: 25px;
 }
