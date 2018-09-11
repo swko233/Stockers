@@ -210,6 +210,24 @@ body,#wrapper {
 		height: 40px;
 	}
 }
+// 利用規約など
+.terms{
+	width: 30%;
+	margin: 30px auto;
+	min-width: 425px;
+}
+.terms-wrapper,.copy{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.terms-wrapper{
+	margin-bottom: 10px;
+}
+.terms-wrapper a,.terms-wrapper span{
+	color: #73899c;
+	padding: 5px;
+}
 // フッター
 .my-footer{
 	width: 100%;
@@ -502,6 +520,9 @@ label{
   	width: 100%;
   }
   .form-wrapper{
+  	margin-bottom: 40px;
+  }
+  .terms{
   	margin-bottom: 80px;
   }
  // ヘッダー
@@ -551,6 +572,13 @@ label{
 	}
 	.my-footer .footer-wrapper{
 		width: 85%;
+	}
+	// 利用規約
+	.terms{
+		width: 100%;
+		margin: 0 auto;
+		margin-bottom: 80px;
+		min-width: 0;
 	}
 	// ユーザープロフィール
 	.user-profile{
