@@ -18,9 +18,10 @@
 			</div>
 		</div>
 	</section>
+	<section class="usage-intro">
 		<div class="about-overview">
 			<div class="intro-wrap">
-				<div class="intro-bookmark-box">
+				<div class="intro-box">
 					<div class="intro-bookmark">
 						<p class="intro-title">ブックマークを登録</p>
 						<p class="intro-text">
@@ -33,13 +34,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="about-overview-2">
+		<div class="about-overview work">
 			<div class="intro-wrap">
 				<div class="intro-work-image-wrap">
 					<div class="intro-work-image">
 					</div>
 				</div>
-				<div class="intro-work-box">
+				<div class="intro-box right">
 					<div class="intro-work">
 						<p class="intro-title">自作サービスを投稿</p>
 						<p class="intro-text">
@@ -50,18 +51,30 @@
 				</div>
 			</div>
 		</div>
-		<div class="about-overview">
+		<div class="about-overview recommend">
 			<div class="intro-wrap">
-				<div class="intro-bookmark-box">
-					<div class="intro-bookmark">
+				<div class="intro-box">
+					<div class="intro-recommend">
 						<p class="intro-title">おすすめを知る</p>
 						<p class="intro-text">
 							● おすすめのサービスを登録する<br>
 							● 投稿作品をおすすめする<br>
+							● おすすめサービスを試してみる<br>
+						</p>
 					</div>
 				</div>
-				<div class="intro-bookmark-image">
+				<div class="intro-recommend-image">
 				</div>
 			</div>
 		</div>
+	</section>
+	<section class="navigation">
+		<div class="navigation-box">
+			<p class="navigation-title">Stockersをはじめる</p>
+			<div class="buttons">
+				<%= link_to 'ログイン', new_user_session_path ,class: "login-button btn btn-following" %>
+				<%= link_to '新規登録', new_user_registration_path, class: "registration-button btn btn-following" %>
+			</div>
+		</div>
+	</section>
 </div>

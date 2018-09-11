@@ -1,11 +1,12 @@
 .container-fluid{
 	margin: 0;
 	padding: 0;
+	background: #f1f4f7;
 }
 .main-title{
 	width: 100%;
-	padding-top: 80px;
-	padding-bottom: 80px;
+	padding-top: 120px;
+	padding-bottom: 120px;
 	background: #40aaff;
 
 	.about-main{
@@ -19,49 +20,52 @@
 		color: #fff;
 	}
 	.about-title{
-		margin-bottom: 60px;
+		margin-bottom: 90px;
 	}
 	.catch-copy{
-		font-size: 30px;
+		font-size: 35px;
 		margin-bottom: 40px;
 	}
 	h1#logo{
 		font-family: 'Nunito', sans-serif;
-		font-size: 80px;
+		font-size: 85px;
 		font-weight: bold;
 		letter-spacing: 0.1em;
 		color: #fff;
 	}
 	.title-description{
-		font-size: 20px;
-	}
-	.buttons .login-button,.buttons .registration-button{
-		margin: 20px;
-		width: 200px;
-	}
-	.buttons .login-button{
-		border-color: #fff;
-	}
-	.buttons .registration-button{
-		border-color: #fff;
-		background: #fff;
-		color: #40aaff;
-		// margin: 20px;
+		font-size: 23px;
 	}
 }
-	.about-overview,.intro-wrap,.about-overview-2,.intro-bookmark-box,.intro-bookmark-image,.intro-work-box,.intro-work-image{
+.buttons .login-button,.buttons .registration-button{
+	margin: 25px;
+	width: 220px;
+}
+.buttons .login-button{
+	border-color: #fff;
+}
+.buttons .registration-button{
+	border-color: #fff;
+	background: #fff;
+	color: #40aaff;
+	// margin: 20px;
+}
+	.about-overview,.intro-wrap,.intro-box,.intro-bookmark-image,.intro-work-image,.intro-recommend-image{
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
 	}
-	.intro-bookmark-box{
+	.intro-box{
 		justify-content: flex-start;
 	}
-	.intro-work-box{
+	.intro-box.right{
 		justify-content: flex-end;
 	}
-	.about-overview,.about-overview-2{
+	.intro-box.right *{
+		color: #f1f4f7;
+	}
+	.about-overview{
 		width: 100%;
 		padding-top: 40px;
 		padding-bottom: 40px;
@@ -69,7 +73,7 @@
 	.intro-wrap{
 		width: 70%;
 	}
-	.intro-bookmark,.intro-work{
+	.intro-bookmark,.intro-work,.intro-recommend{
 		text-align: left;
 	}
 	.intro-title{
@@ -80,14 +84,14 @@
 	.intro-text{
 		line-height: 25px;
 	}
-	.intro-bookmark-box,.intro-bookmark-image,.intro-work-box,.intro-work-image{
+	.intro-box,.intro-bookmark-image,.intro-work-image,.intro-recommend-image{
 		width: 50%;
 		text-align: left;
 	}
 	.intro-bookmark-image .fa-folder-open{
 		font-size: 80px;
 	}
-	.intro-bookmark-image,.intro-work-image{
+	.intro-bookmark-image,.intro-work-image,.intro-recommend-image{
 		width: 250px;
 		height: 450px;
 		background-size: cover;
@@ -100,6 +104,9 @@
 	.intro-work-image{
 		background-image: url(/assets/work-image.png);
 	}
+	.intro-recommend-image{
+		background-image: url(/assets/recommend-image.png);
+	}
 	.intro-work-image-wrap{
 		background: #fff;
 		width: 280px;
@@ -109,12 +116,28 @@
 		justify-content: center;
 		border-radius: 3px;
 	}
-	.about-overview-2{
+	.about-overview.work{
 		background: #40aaff;
 		background: #73899c;
 	}
+.navigation{
+	width: 100%;
+	padding-top: 50px;
+	padding-bottom: 30px;
+	background: #40aaff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 100%;
+
+	.navigation-title{
+		color: #fff;
+		font-size: 20px;
+	}
+}
 @media screen and (max-width:767px) {
-	.intro-bookmark-image,.intro-work-image{
+	.intro-bookmark-image,.intro-work-image,.intro-recommend-image{
 		width: 150px;
 		height: 270px;
 	}
