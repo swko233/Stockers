@@ -42,7 +42,7 @@
 							<!-- <p class="sub-headline">タグ</p> -->
 							<ul>
 								<% @work.tag_list.each do |tag| %>
-									<li><a href=""><span><%= tag %></span></a></li>
+									<li><a href="<%= work_path(@work.id) %>"><span><%= tag %></span></a></li>
 								<% end %>
 							</ul>
 						</div>
