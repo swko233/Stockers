@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+	before_action :authenticate_user!
+	before_action :ensure_active_user, except: [:index]
 
 	def index
-		@users = User.all
+		@users = User.where(deleted_at: nil)
 	end
 
 	def show
@@ -164,6 +166,13 @@ class UsersController < ApplicationController
 
 	def user_params
 		params.require(:user).permit(:name,:nickname,:image,:introduction,:email,:password, :password_confirmation, :current_password)
+	end
+
+	def ensure_active_user
+		user = User.find(params[:id])
+		unless user.deleted_at.nil?
+			redirect_back(fallback_location: root_path)
+		end
 	end
 
 end
