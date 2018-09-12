@@ -58,6 +58,9 @@ label{
 .password-notice p{
 	color: #ea352d;
 }
+.password-notice.success p{
+	color: #55c500;
+}
 //エラー時のフォーム赤枠
 .field_with_errors input, .field_with_errors textarea{
 	border: 2px solid #ea352d;

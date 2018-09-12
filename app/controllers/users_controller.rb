@@ -133,18 +133,18 @@ class UsersController < ApplicationController
 	def following
 		@user = User.find(params[:id])
 		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
-		@following_number = @user.following.count
-		@follower_number = @user.followers.count
-		@users = @user.following
+		@users = @user.following.where(deleted_at: nil)
+		@following_number = @user.following.where(deleted_at: nil).count
+		@follower_number = @user.followers.where(deleted_at: nil).count
 		render 'show_following'
 	end
 
 	def followers
 		@user = User.find(params[:id])
 		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
-		@following_number = @user.following.count
-		@follower_number = @user.followers.count
-		@users = @user.followers
+		@users = @user.followers.where(deleted_at: nil)
+		@following_number = @user.following.where(deleted_at: nil).count
+		@follower_number = @user.followers.where(deleted_at: nil).count
 		render 'show_followers'
 	end
 

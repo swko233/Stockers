@@ -117,11 +117,12 @@ class BookmarksController < ApplicationController
     render 'edit'
   end
 
-  def destroy #フォルダアイコンを押して解除した場合
+  def destroy
   	bookmark = Bookmark.find(params[:id])
   	if bookmark.destroy
       respond_to do |format|
-        format.html { redirect_back(fallback_location: root_path) } #自作サービスのブックマークボタン
+        format.html { redirect_to user_path(current_user.id) }
+        #フォルダアイコンを押して解除した場合
         format.js do
           @this_bookmark = Bookmark.find(params[:this_bookmark_id])
         end

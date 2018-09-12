@@ -4,6 +4,16 @@
 	<div class="form-wrapper">
 		<div class="user-info">
 			<h1>ユーザー設定</h1>
+			<% if flash[:notice] %>
+				<div class="password-notice success">
+			  		<p><%= flash[:notice] %></p>
+			 	</div>
+			<% end %>
+			<% if flash[:password_notice] %>
+				<div class="password-notice">
+			  		<p><%= flash[:password_notice] %></p>
+			 	</div>
+			<% end %>
 			<%= form_for(@user) do |f| %>
 				<div class="field">
 					<%= f.label :name, 'ユーザー名' %></br>
@@ -46,11 +56,6 @@
 		<!-- ツイッターログインの有無で表示切り替え予定 -->
 		<div class="password-info">
 			<h1>ログイン情報</h1>
-			<% if flash[:password_notice] %>
-				<div class="password-notice">
-			  		<p><%= flash[:password_notice] %></p>
-			 	</div>
-			<% end %>
 				<%= form_for(@user, :url => {:action => "password_update"}) do |f| %>
 				<div class="field">
 	            	<%= f.label :current_password, "現在のパスワード" %><br />
