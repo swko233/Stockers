@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_140646) do
+ActiveRecord::Schema.define(version: 2018_09_13_173554) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_140646) do
     t.boolean "is_published", default: true
     t.boolean "is_recommended", default: false
     t.boolean "is_work", default: false, null: false
-    t.integer "folder_id"
+    t.integer "developer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

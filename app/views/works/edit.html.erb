@@ -4,7 +4,7 @@
 	<div class="form-wrapper">
 		<h1>自作サービス編集</h1>
 		<div class="delete-box">
-			<p class="delete-button"><%= link_to '削除する', work_path(@work.id), method: :delete %></p>
+			<p class="delete-button"><%= link_to '削除する', work_path(@work.id), method: :delete, data: {confirm: "自作サービスを削除しますか？",cancel: "やめる",commit: "削除する"},title: "自作サービス削除" %></p>
 		</div>
 		<div class="new-posts">
 			<%= form_for(@work) do |f| %>

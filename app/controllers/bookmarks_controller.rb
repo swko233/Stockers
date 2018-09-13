@@ -1,6 +1,6 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
   	@bookmark = Bookmark.new
   end
@@ -71,6 +71,7 @@ class BookmarksController < ApplicationController
       bookmark.url = @added_work.url
       bookmark.user_id = current_user.id
       bookmark.is_work = true
+      bookmark.developer_id = @added_work.user_id
       bookmark.work_id = @added_work.id
       bookmark.service_image_id = @added_work.service_image_id
       bookmark.tag_list = @added_work.tag_list  #タグの継承

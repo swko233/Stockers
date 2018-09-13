@@ -4,7 +4,7 @@
 	<div class="form-wrapper">
 		<h1>ブックマーク編集</h1>
 		<div class="delete-box">
-			<p class="delete-button"><%= link_to '削除する', bookmark_path(@bookmark.id), method: :delete %></p>
+			<p class="delete-button"><%= link_to '削除する', bookmark_path(@bookmark.id), method: :delete, data: {confirm: "ブックマークを削除しますか？",cancel: "やめる",commit: "削除する"},title: "ブックマーク削除" %></p>
 		</div>
 		<div class="new-posts">
 			<%= form_for(@bookmark) do |f| %>
@@ -26,14 +26,7 @@
 						<% end %>
 					<% end %>
 				</div>
-				<div class="field">
-					<%= f.label :overview, 'サービスの概要' %></br>
-					<%= f.text_field :overview %>
-				</div>
-				<div class="field">
-					<%= f.label :description, 'サービスの詳細' %></br>
-					<%= f.text_area :description %>
-				</div>
+				
 				<div class="field">
 					<%= f.label :service_image, 'メインイメージ' %></br>
 					<%= f.attachment_field :service_image %>
