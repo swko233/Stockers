@@ -70,7 +70,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	    if @user.update_with_password(user_params)
 	      	bypass_sign_in(@user)
-			flash[:notice] = "パスワードを変更しました"
+			flash[:password_success_notice] = "パスワードを変更しました"
 			redirect_to edit_user_path(current_user.id)
 	    else
 	        flash[:password_notice] = "パスワードが正しく設定されていません"

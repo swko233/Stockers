@@ -5,7 +5,7 @@
 					<%= link_to user_path(user.id) do %>
 						<div class="follow-user-profile">
 							<div class="icon-box">
-								<% if user.provider == "twitter" && user.image_id.empty? %>
+								<% if user.provider == "twitter" && user.image_id.nil? %>
 						            <img src="<%= user.twitter_image_url %>" class="icon">
 						        <% else %>
 									<%= attachment_image_tag user, :image,fallback: "no_user_image", format: "png", class: "icon" %>

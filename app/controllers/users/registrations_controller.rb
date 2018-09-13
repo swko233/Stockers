@@ -50,10 +50,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def build_resource(hash=nil)
-    hash[:uid] = User.create_unique_string
-    super
-  end
+  # def build_resource(hash=nil)
+  #   hash[:uid] = User.create_unique_string
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit

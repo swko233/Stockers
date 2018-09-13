@@ -4,9 +4,9 @@
 	<div class="form-wrapper">
 		<div class="user-info">
 			<h1>ユーザー設定</h1>
-			<% if flash[:notice] %>
+			<% if flash[:password_success_notice] %>
 				<div class="password-notice success">
-			  		<p><%= flash[:notice] %></p>
+			  		<p><%= flash[:password_success_notice] %></p>
 			 	</div>
 			<% end %>
 			<% if flash[:password_notice] %>

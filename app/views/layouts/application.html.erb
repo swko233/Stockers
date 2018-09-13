@@ -68,7 +68,7 @@
                  </div>
                 </div>
                 <div class="user-icon">
-                  <% if current_user.provider == "twitter" && current_user.image_id.empty? %>
+                  <% if current_user.provider == "twitter" && current_user.image_id.nil? %>
                     <img src="<%= current_user.twitter_image_url %>" class="header-icon">
                   <% else %>
                     <%= attachment_image_tag current_user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "header-icon" %>
@@ -129,7 +129,7 @@
               <% end %>
               <%= link_to user_path(current_user.id) do %>
                 <div class="nav-user-page">
-                  <% if current_user.provider == "twitter" && current_user.image_id.empty? %>
+                  <% if current_user.provider == "twitter" && current_user.image_id.nil? %>
                     <img src="<%= current_user.twitter_image_url %>" class="footer-icon">
                   <% else %>
                     <%= attachment_image_tag current_user, :image, :fill, 30, 30, fallback: "no_user_image", format: "png", class: "footer-icon" %>

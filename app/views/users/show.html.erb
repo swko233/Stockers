@@ -6,7 +6,7 @@
 		<div class="profile-main">
 			<div class="profile-body">
 				<div class="icon-box">
-					<% if @user.provider == "twitter" && @user.image_id.empty? %>
+					<% if @user.provider == "twitter" && @user.image_id.nil? %>
 			            <img src="<%= @user.twitter_image_url %>" class="icon">
 			        <% else %>
 						<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
@@ -131,7 +131,7 @@
 										<!-- ユーザー情報取得（worksとbookmarksのアソシエーションはなし） -->
 									<% developer = User.find_by(id: Work.find_by(id: bookmark.work_id).user_id) %>
 									<%= link_to user_path(developer.id) do %>
-										<% if developer.provider == "twitter" && developer.image_id.empty? %>
+										<% if developer.provider == "twitter" && developer.image_id.nil? %>
 								            <img src="<%= developer.twitter_image_url %>" class="icon developer-icon">
 								        <% else %>
 											<%= attachment_image_tag developer, :image, fallback: "no_user_image", format: "png", class: "icon developer-icon"%>

@@ -1,6 +1,6 @@
 <div class="developer-icon">
 	<%= link_to user_path(developer.id) do %>
-		<% if developer.provider == "twitter" && developer.image_id.empty? %>
+		<% if developer.provider == "twitter" && developer.image_id.nil? %>
             <img src="<%= developer.twitter_image_url %>" class="icon developer-icon">
         <% else %>
 			<%= attachment_image_tag developer, :image, fallback: "no_user_image", format: "png", class: "icon developer-icon" %>

@@ -63,9 +63,9 @@ class User < ApplicationRecord
   end
 
   # 通常サインアップ時のuid用、Twitter OAuth認証時のemail用にuuidな文字列を生成
-  def self.create_unique_string
-    SecureRandom.uuid
-  end
+  # def self.create_unique_string
+  #   SecureRandom.uuid
+  # end
 
   private
 
