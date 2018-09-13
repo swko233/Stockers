@@ -65,11 +65,46 @@ h1{
   color: #999;
 }
 // 新規登録、ログイン
+.terms-notification{
+	color: #aaa;
+	padding-bottom: 20px;
+}
+.terms-link{
+	color: #AEBFC7;
+}
 .links-new{
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-top: 30px;
+}
+.twitter-login-button{
+	background: #1da1f2;
+	width: 100%;
+	border-radius: 5px;
+	padding: 8px 20px;
+	text-align: center;
+}
+.fa-twitter{
+	color: #fff;
+	margin-right: 10px;
+}
+.twitter-login-button span{
+	color: #fff;
+	letter-spacing: 0.05em;
+}
+.twitter-button-wrapper{
+	padding-bottom: 20px;
+	// border-bottom: 1px solid #D4DDE8;
+}
+.twitter-button-wrapper a{
+	text-decoration: none;
+}
+.twitter-button-wrapper a:hover{
+	opacity: 0.8;
+}
+.login-form,.registration-form{
+	margin-top: 20px;
 }
 @media screen and (max-width:767px) {
 	.radio-area{
