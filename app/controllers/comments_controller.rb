@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
-	# def index
-	# 	@comments = Work.find(params[:id]).comments
-	# end
+	before_action :authenticate_user!
 
 	def create
 		comment = Comment.new(comment_params)

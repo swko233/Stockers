@@ -136,7 +136,39 @@
 		font-size: 20px;
 	}
 }
+@media screen and (max-width:1023px) {
+	.intro-wrap{
+		width: 80%;
+	}
+	.intro-box.right{
+		padding-left: 20px;
+	}
+}
 @media screen and (max-width:767px) {
+	.main-title{
+		padding-top: 60px;
+		padding-bottom: 60px;
+
+		.about-title{
+			margin-bottom: 50px;
+		}
+		.catch-copy{
+			font-size: 22px;
+			margin-bottom: 40px;
+		}
+		h1#logo{
+			font-size: 65px;
+		}
+		.title-description{
+			font-size: 17px;
+		}
+	}
+	.buttons .login-button,.buttons .registration-button{
+		margin: 18px;
+	}
+	.intro-wrap{
+		width: 95%;
+	}
 	.intro-bookmark-image,.intro-work-image,.intro-recommend-image{
 		width: 150px;
 		height: 270px;
@@ -145,4 +177,64 @@
 		width: 180px;
 		height: 270px;
 	}
+	.intro-box{
+		padding-right: 15px;
+	}
+	.intro-title{
+		font-size: 18px;
+	}
+	.intro-text{
+		font-size: 14px;
+	}
+	.terms{
+		margin: 20px auto;
+	}
 }
+@media screen and (max-width:424px) {
+	.main-title{
+		padding-top: 60px;
+		padding-bottom: 60px;
+
+		.about-title{
+			margin-bottom: 50px;
+		}
+		.catch-copy{
+			font-size: 20px;
+			margin-bottom: 40px;
+		}
+		h1#logo{
+			font-size: 60px;
+		}
+		.title-description{
+			font-size: 17px;
+		}
+	}
+	.terms{
+		margin: 20px auto;
+	}
+}
+@media screen and (max-width:374px) {
+	.main-title{
+		padding-top: 60px;
+		padding-bottom: 60px;
+
+		.about-title{
+			margin-bottom: 50px;
+		}
+		.catch-copy{
+			font-size: 18px;
+			margin-bottom: 40px;
+		}
+		h1#logo{
+			font-size: 55px;
+		}
+		.title-description{
+			font-size: 15px;
+		}
+	}
+	.buttons .login-button,.buttons .registration-button{
+		margin: 15px;
+	}
+}
+
+

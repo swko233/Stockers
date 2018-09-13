@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+	before_action :authenticate_user!
+	before_action :ensure_active_user, except: [:index]
 
 	def index
-		@users = User.all
+		@users = User.where(deleted_at: nil)
 	end
 
 	def show
@@ -50,7 +52,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
-			flash[:notice] = "ユーザー情報を変更しました"
+			# flash[:notice] = "ユーザー情報を変更しました"
 			redirect_to user_path(current_user.id)
 		else
 			@email_errmsg = @user.errors.full_messages_for(:email)
@@ -68,7 +70,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	    if @user.update_with_password(user_params)
 	      	bypass_sign_in(@user)
-			flash[:notice] = "パスワードを変更しました"
+			flash[:password_success_notice] = "パスワードを変更しました"
 			redirect_to edit_user_path(current_user.id)
 	    else
 	        flash[:password_notice] = "パスワードが正しく設定されていません"
@@ -133,18 +135,18 @@ class UsersController < ApplicationController
 	def following
 		@user = User.find(params[:id])
 		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
-		@following_number = @user.following.count
-		@follower_number = @user.followers.count
-		@users = @user.following
+		@users = @user.following.where(deleted_at: nil)
+		@following_number = @user.following.where(deleted_at: nil).count
+		@follower_number = @user.followers.where(deleted_at: nil).count
 		render 'show_following'
 	end
 
 	def followers
 		@user = User.find(params[:id])
 		#フォローボタンを押しても表示が変更されないように移動（不具合があった）
-		@following_number = @user.following.count
-		@follower_number = @user.followers.count
-		@users = @user.followers
+		@users = @user.followers.where(deleted_at: nil)
+		@following_number = @user.following.where(deleted_at: nil).count
+		@follower_number = @user.followers.where(deleted_at: nil).count
 		render 'show_followers'
 	end
 
@@ -164,6 +166,13 @@ class UsersController < ApplicationController
 
 	def user_params
 		params.require(:user).permit(:name,:nickname,:image,:introduction,:email,:password, :password_confirmation, :current_password)
+	end
+
+	def ensure_active_user
+		user = User.find(params[:id])
+		unless user.deleted_at.nil?
+			redirect_back(fallback_location: root_path)
+		end
 	end
 
 end

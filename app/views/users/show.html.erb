@@ -6,7 +6,11 @@
 		<div class="profile-main">
 			<div class="profile-body">
 				<div class="icon-box">
-					<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
+					<% if @user.provider == "twitter" && @user.image_id.nil? %>
+			            <img src="<%= @user.twitter_image_url %>" class="icon">
+			        <% else %>
+						<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
+					<% end %>
 				</div>
 				<div class="user-info">
 					<div class="user-name">
@@ -125,9 +129,13 @@
 							<div class="service-developer">
 								<div class="developer-icon">
 										<!-- ユーザー情報取得（worksとbookmarksのアソシエーションはなし） -->
-									<% developer = User.find_by(id: Work.find_by(id: bookmark.work_id).user_id) %>
+									<% developer = User.find_by(id: bookmark.developer_id) %>
 									<%= link_to user_path(developer.id) do %>
-										<%= attachment_image_tag developer, :image, fallback: "no_user_image", format: "png", class: "icon developer-icon"%>
+										<% if developer.provider == "twitter" && developer.image_id.nil? %>
+								            <img src="<%= developer.twitter_image_url %>" class="icon developer-icon">
+								        <% else %>
+											<%= attachment_image_tag developer, :image, fallback: "no_user_image", format: "png", class: "icon developer-icon"%>
+										<% end %>
 									<% end %>
 								</div>
 								<div class="developer-introduction">
@@ -188,7 +196,7 @@
  			<div class="no-bookmark-wrap">
  				<div class="no-bookmark">
  					<i class="fas fa-folder-open fa-4x"></i>
- 					<p>表示できるブックマークはありません</p>
+ 					<p>ブックマークはありません</p>
  				</div>
  			</div>
  		<% else %>
@@ -209,7 +217,7 @@
 									<!-- 自作サービスなら開発者情報を表示 -->
 									<% if bookmark.is_work == true %>
 										<!-- ユーザー情報取得（worksとbookmarksのアソシエーションはなし） -->
-										<% developer = User.find_by(id: Work.find_by(id: bookmark.work_id).user_id) %>
+										<% developer = User.find_by(id: bookmark.developer_id) %>
 										<div class="item-developer">
 											<%= render 'users/show_developer', developer: developer %>
 										</div>
@@ -232,7 +240,7 @@
 								<%= link_to edit_bookmark_path(bookmark.id) do %>
 									<i class="fas fa-edit"></i>
 								<% end %>
-								<%= link_to bookmark_path(bookmark.id), method: :delete do %>
+								<%= link_to bookmark_path(bookmark.id), method: :delete, data: {confirm: "ブックマークを削除しますか？",cancel: "やめる",commit: "削除する"},title: "ブックマーク削除" do %>
 									<i class="far fa-trash-alt"></i>
 								<% end %>
 							</div>

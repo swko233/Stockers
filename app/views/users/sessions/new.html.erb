@@ -3,27 +3,34 @@
 <div class="container">
   <div class="form-wrapper">
     <h1>ログイン</h1>
-
+    <div class="twitter-button-wrapper">
+      <%= link_to user_twitter_omniauth_authorize_path do %>
+        <div class="twitter-login-button">
+          <i class="fab fa-twitter"></i><span>Twitterでログイン</span>
+        </div>
+      <% end %>
+    </div>
     <p class="login-alert"><%= flash[:alert] %></p>
+    <div class="login-form">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+           <%= f.label :email, 'メールアドレス' %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <% if @email_errmsg.present? %>
+            <div class="error-message">入力してください</div>
+          <% end %>
+        </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-         <%= f.label :email, 'メールアドレス' %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        <% if @email_errmsg.present? %>
-          <div class="error-message">入力してください</div>
-        <% end %>
-      </div>
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
 
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "ログイン", class: "btn btn-success" %>
-      </div>
-    <% end %>
+        <div class="actions">
+          <%= f.submit "ログイン", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
     <div class="links-new">
       <%= render "users/shared/links" %>
     </div>

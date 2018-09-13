@@ -5,7 +5,11 @@
 		<div class="profile-main">
 			<%= link_to user_path(@user.id) do %>
 			<div class="icon-box">
-				<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
+				<% if @user.provider == "twitter" && @user.image_id.nil? %>
+			    <img src="<%= @user.twitter_image_url %>" class="icon">
+			    <% else %>
+					<%= attachment_image_tag @user, :image,fallback: "no_user_image", format: "png", class: "icon" %>
+				<% end %>
 			</div>
 			<% end %>
 			<div class="user-info">
@@ -24,7 +28,9 @@
 		<div class="profile-sub">
 		</div>
 	</section>
-	<section class="user-list">
-		<%= render 'user_index', users: @user.following, user_index_flag: false%>
-	</section>
+	<% unless @user.following.where(deleted_at: nil).count == 0 %>
+		<section class="user-list">
+			<%= render 'user_index', users: @users, user_index_flag: false %>
+		</section>
+	<% end %>
 </div>

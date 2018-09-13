@@ -2,7 +2,11 @@
 	<%= link_to user_path(user.id) do %>
 		<div class="target-user-box">
 			<div class="target-user-icon">
-				<%= attachment_image_tag user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "target-icon" %>
+				<% if user.provider == "twitter" && user.image_id.nil? %>
+		            <img src="<%= user.twitter_image_url %>" class="target-icon">
+		        <% else %>
+					<%= attachment_image_tag user, :image, :fill,40,40,fallback: "no_user_image", format: "png", class: "target-icon" %>
+				<% end %>
 			</div>
 			<div class="target-user-info">
 				<div>

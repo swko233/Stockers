@@ -4,7 +4,7 @@
 	<div class="form-wrapper">
 		<h1>ブックマーク編集</h1>
 		<div class="delete-box">
-			<p class="delete-button"><%= link_to '削除する', bookmark_path(@bookmark.id), method: :delete %></p>
+			<p class="delete-button"><%= link_to '削除する', bookmark_path(@bookmark.id), method: :delete, data: {confirm: "ブックマークを削除しますか？",cancel: "やめる",commit: "削除する"},title: "ブックマーク削除" %></p>
 		</div>
 		<div class="new-posts">
 			<%= form_for(@bookmark) do |f| %>
@@ -26,14 +26,7 @@
 						<% end %>
 					<% end %>
 				</div>
-				<div class="field">
-					<%= f.label :overview, 'サービスの概要' %></br>
-					<%= f.text_field :overview %>
-				</div>
-				<div class="field">
-					<%= f.label :description, 'サービスの詳細' %></br>
-					<%= f.text_area :description %>
-				</div>
+				
 				<div class="field">
 					<%= f.label :service_image, 'メインイメージ' %></br>
 					<%= f.attachment_field :service_image %>
@@ -42,18 +35,16 @@
 					<%= f.label :tag_list, 'タグ' %></br>
 					<%= text_field_tag 'bookmark[tag_list]', @bookmark.tag_list.join(','), placeholder: "カンマ区切りで入力（例：SNS,写真)", "data-role" => "tagsinput" %> <!-- 仮に -->
 				</div>
-				<div class="field">
+				<div class="check-box-field">
 					<%= f.label :is_published, '公開設定' %></br>
 					<div class="radio-area">
-						<div><span>公開<%= f.radio_button :is_published, true %></span></div>
-						<div><span>非公開<%= f.radio_button :is_published, false %></span></div>
+						<div><span><%= f.check_box :is_published, {class: "toggle-btn center"} , "true", "false" %></span></div>
 					</div>
 				</div>
-				<div class="field">
+				<div class="check-box-field">
 					<%= f.label :is_recommended, 'おすすめ設定（3つまで）' %></br>
 					<div class="radio-area">
-						<div><span>する<%= f.radio_button :is_recommended, true %></span></div>
-						<div><span>しない<%= f.radio_button :is_recommended, false %></span></div>
+						<div><span><%= f.check_box :is_recommended, {class: "toggle-btn center"} , "true", "false" %></span></div>
 					</div>
 					<% if @too_many_recommended_flag.present? %>
 						<div class="error-message">おすすめ設定は3つまでです</div>

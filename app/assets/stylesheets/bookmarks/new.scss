@@ -1,6 +1,9 @@
 .container{
 	max-width: 600px;
 }
+.actions{
+	margin-top: 90px;
+}
 h1{
 	font-size: 20px;
 	margin-bottom: 35px;
@@ -65,25 +68,102 @@ h1{
   color: #999;
 }
 // 新規登録、ログイン
+.terms-notification{
+	color: #aaa;
+	padding-bottom: 20px;
+}
+.terms-link{
+	color: #AEBFC7;
+}
 .links-new{
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-top: 30px;
 }
-@media screen and (max-width:767px) {
-	.radio-area{
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-	}
-	.radio-area div{
-		width: 50%;
-	}
-	.radio-area input{
-		width: 35px;
-	}
-	.radio-button{
-		width: 35px;
-	}
+.twitter-login-button{
+	background: #1da1f2;
+	width: 100%;
+	border-radius: 5px;
+	padding: 8px 20px;
+	text-align: center;
 }
+.fa-twitter{
+	color: #fff;
+	margin-right: 10px;
+}
+.twitter-login-button span{
+	color: #fff;
+	letter-spacing: 0.05em;
+}
+.twitter-button-wrapper{
+	padding-bottom: 20px;
+	// border-bottom: 1px solid #D4DDE8;
+}
+.twitter-button-wrapper a{
+	text-decoration: none;
+}
+.twitter-button-wrapper a:hover{
+	opacity: 0.8;
+}
+.login-form,.registration-form{
+	margin-top: 20px;
+}
+// トグルボタン
+.radio-area{
+	position: relative;
+}
+$white: #f8f8f2;
+$blue: #40AAFF;
+.center {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  margin: auto;
+}
+.toggle-btn {
+  $size: 35px;
+  $delay: .2;
+
+  border: none;
+  border-radius: $size / 2;
+  width: $size * 2; height: $size;
+  box-shadow: 0 0 2px rgba(0, 0, 0, .4) inset;
+  background: $white;
+  cursor: pointer;
+  outline: none;
+  transition: background #{$delay}s ease-in-out;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  
+  &:after {
+    display: block;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 50%;
+    width: $size; height: $size;
+    content: "";
+    background: $white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .4);
+    transition: left #{$delay}s ease-in-out;
+    pointer-events: none;
+  }
+  
+  &:checked {
+    background: $blue;
+    
+    &:after {
+      left: $size * 1;
+    }
+  }
+}
+.check-box-field{
+	margin-bottom: 60px;
+}
+.check-box-field:last-child{
+	margin-bottom: 90px;
+}
+

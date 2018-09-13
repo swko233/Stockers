@@ -4,6 +4,16 @@
 	<div class="form-wrapper">
 		<div class="user-info">
 			<h1>ユーザー設定</h1>
+			<% if flash[:password_success_notice] %>
+				<div class="password-notice success">
+			  		<p><%= flash[:password_success_notice] %></p>
+			 	</div>
+			<% end %>
+			<% if flash[:password_notice] %>
+				<div class="password-notice">
+			  		<p><%= flash[:password_notice] %></p>
+			 	</div>
+			<% end %>
 			<%= form_for(@user) do |f| %>
 				<div class="field">
 					<%= f.label :name, 'ユーザー名' %></br>
@@ -19,17 +29,19 @@
 			          <div class="error-message">入力してください</div>
 			      <% end %>
 				</div>
-				<div class="field">
-					<%= f.label :email, 'メールアドレス' %></br>
-					<%= f.text_field :email %>
-					<% if @email_errmsg.present? %>
-				        <% if @email_exist_flag == true %>
-				          <div class="error-message">すでに登録済みのメールアドレスです</div>
-				        <% else %>
-				          <div class="error-message">入力してください</div>
-				        <% end %>
-				   	<% end %>
-				</div>
+				<% unless @user.provider == "twitter" %>
+					<div class="field">
+						<%= f.label :email, 'メールアドレス' %></br>
+						<%= f.text_field :email %>
+						<% if @email_errmsg.present? %>
+					        <% if @email_exist_flag == true %>
+					          <div class="error-message">すでに登録済みのメールアドレスです</div>
+					        <% else %>
+					          <div class="error-message">入力してください</div>
+					        <% end %>
+					   	<% end %>
+					</div>
+				<% end %>
 				<div class="field">
 					<%= f.label :image, 'プロフィール画像' %></br>
 					<%= f.attachment_field :image %>
@@ -38,41 +50,47 @@
 					<%= f.label :introduction, 'プロフィール' %></br>
 					<%= f.text_area :introduction %>
 				</div>
-				<div class="action">
-					<%= f.submit '更新する', class: "btn btn-info" %>
+				<div class="actions">
+					<div class="action">
+						<%= f.submit '更新する', class: "btn btn-info" %>
+					</div>
+					<% if @user.provider == "twitter" %>
+						<div class="soft-delete">
+				            <%= link_to '退会する', user_path(current_user.id),method: :delete, data: {confirm: "本当に退会してよろしいですか？","verify" => current_user.name, "verify-text" => "確認のため、ユーザー名を入力してください",cancel: "やめる",commit: "退会する"},title: "退会確認" %>
+				      	</div>
+				    <% end %>
 				</div>
 			<% end %>
 		</div>
-		<!-- ツイッターログインの有無で表示切り替え予定 -->
-		<div class="password-info">
-			<h1>ログイン情報</h1>
-			<% if flash[:password_notice] %>
-				<div class="password-notice">
-			  		<p><%= flash[:password_notice] %></p>
-			 	</div>
-			<% end %>
-				<%= form_for(@user, :url => {:action => "password_update"}) do |f| %>
-				<div class="field">
-	            	<%= f.label :current_password, "現在のパスワード" %><br />
-	              	<%= f.password_field :current_password, autocomplete: "off", size: "30" %>
-	            </div>
-	           	<div class="field">
-	              	<%= f.label :password %><br />
-	              	<%= f.password_field :password, autocomplete: "off", size: "30" %>
-	           	</div>
-	           	<div class="field">
-	              	<%= f.label :password_confirmation %><br />
-	              	<%= f.password_field :password_confirmation, autocomplete: "off", size: "30" %>
-	            </div>
-	            <div class="actions">
-		            <div class="action">
-		            	<%= f.submit '更新する', class: "btn btn-info" %>
-	            	</div>
-	            	<div class="soft-delete">
-	            		<%= link_to '退会する', user_path(current_user.id),method: :delete, data: {confirm: "本当に退会してよろしいですか？","verify" => current_user.name, "verify-text" => "確認のため、ユーザー名を入力してください",cancel: "やめる",commit: "退会する"},title: "退会確認" %>
-	            	</div>
-	            </div>
-			</div>
-		<% end %>
 	</div>
+	<!-- ツイッターログインの有無で表示切り替え -->
+	<% unless @user.provider == "twitter" %>
+		<div class="form-wrapper">
+			<div class="password-info">
+				<h1>ログイン情報</h1>
+					<%= form_for(@user, :url => {:action => "password_update"}) do |f| %>
+					<div class="field">
+		            	<%= f.label :current_password, "現在のパスワード" %><br />
+		              	<%= f.password_field :current_password, autocomplete: "off", size: "30" %>
+		            </div>
+		           	<div class="field">
+		              	<%= f.label :password %><br />
+		              	<%= f.password_field :password, autocomplete: "off", size: "30" %>
+		           	</div>
+		           	<div class="field">
+		              	<%= f.label :password_confirmation %><br />
+		              	<%= f.password_field :password_confirmation, autocomplete: "off", size: "30" %>
+		            </div>
+		            <div class="actions">
+			            <div class="action">
+			            	<%= f.submit '更新する', class: "btn btn-info" %>
+		            	</div>
+		            	<div class="soft-delete">
+		            		<%= link_to '退会する', user_path(current_user.id),method: :delete, data: {confirm: "本当に退会してよろしいですか？","verify" => current_user.name, "verify-text" => "確認のため、ユーザー名を入力してください",cancel: "やめる",commit: "退会する"},title: "退会確認" %>
+		            	</div>
+		            </div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
 </div>

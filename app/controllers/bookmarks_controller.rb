@@ -1,4 +1,6 @@
 class BookmarksController < ApplicationController
+  before_action :authenticate_user!
+
   def new
   	@bookmark = Bookmark.new
   end
@@ -69,6 +71,7 @@ class BookmarksController < ApplicationController
       bookmark.url = @added_work.url
       bookmark.user_id = current_user.id
       bookmark.is_work = true
+      bookmark.developer_id = @added_work.user_id
       bookmark.work_id = @added_work.id
       bookmark.service_image_id = @added_work.service_image_id
       bookmark.tag_list = @added_work.tag_list  #タグの継承
@@ -117,11 +120,12 @@ class BookmarksController < ApplicationController
     render 'edit'
   end
 
-  def destroy #フォルダアイコンを押して解除した場合
+  def destroy
   	bookmark = Bookmark.find(params[:id])
   	if bookmark.destroy
       respond_to do |format|
-        format.html { redirect_back(fallback_location: root_path) } #自作サービスのブックマークボタン
+        format.html { redirect_to user_path(current_user.id) }
+        #フォルダアイコンを押して解除した場合
         format.js do
           @this_bookmark = Bookmark.find(params[:this_bookmark_id])
         end

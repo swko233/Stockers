@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
-
+	before_action :authenticate_user!
+	
 	def new
 		@work = Work.new
 	end
