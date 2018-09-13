@@ -1,6 +1,9 @@
 .container{
 	max-width: 600px;
 }
+.form-wrapper{
+	margin-bottom: 10px;
+}
 h1{
 	font-size: 20px;
 	margin-bottom: 35px;
@@ -9,8 +12,7 @@ h1{
 	padding: 25px;
 }
 .user-info{
-	padding-bottom: 40px;
-	border-bottom: 1px solid #ddd;
+	padding-bottom: 20px;
 }
 .field{
 	margin-bottom: 20px;

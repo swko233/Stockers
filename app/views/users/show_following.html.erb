@@ -28,7 +28,9 @@
 		<div class="profile-sub">
 		</div>
 	</section>
-	<section class="user-list">
-		<%= render 'user_index', users: @users, user_index_flag: false %>
-	</section>
+	<% unless @user.following.where(deleted_at: nil).count == 0 %>
+		<section class="user-list">
+			<%= render 'user_index', users: @users, user_index_flag: false %>
+		</section>
+	<% end %>
 </div>
