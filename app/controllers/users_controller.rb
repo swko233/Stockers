@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
-			flash[:notice] = "ユーザー情報を変更しました"
+			# flash[:notice] = "ユーザー情報を変更しました"
 			redirect_to user_path(current_user.id)
 		else
 			@email_errmsg = @user.errors.full_messages_for(:email)

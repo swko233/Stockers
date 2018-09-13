@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'privacy_policy' =>'root#privacy_policy', as: "privacy"
   get 'terms_of_service' => 'root#terms_of_service', as: "terms"
   get 'contact' => 'root#contact', as: "contact"
+
 	devise_for :admins, controllers: {
 	  sessions:      'admins/sessions',
 	  passwords:     'admins/passwords',
@@ -12,7 +13,8 @@ Rails.application.routes.draw do
 	devise_for :users, controllers: {
 	  sessions:      'users/sessions',
 	  passwords:     'users/passwords',
-	  registrations: 'users/registrations'
+	  registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
 	}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'users/:id/search_bookmarks' => 'users#search_bookmark', as: "search_bookmark"

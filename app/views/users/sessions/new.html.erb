@@ -3,6 +3,7 @@
 <div class="container">
   <div class="form-wrapper">
     <h1>ログイン</h1>
+    <%= link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path,  :class => 'navbar-link' %>
 
     <p class="login-alert"><%= flash[:alert] %></p>
 
